@@ -1,0 +1,12 @@
+﻿{
+  "ConexoesII": [
+    {
+      "NomeConexao": "PRINCIPAL",
+      "IpPrincipal": "201.16.175.114",
+      "PortaSecundaria": 3306,
+      "UsuarioPrincipal": "root",
+      "SenhaPrincipal": "4532HJ867GH@#",
+      "BancoDadosPrincipal": "srefiltekfilial"
+    }
+  ]
+}

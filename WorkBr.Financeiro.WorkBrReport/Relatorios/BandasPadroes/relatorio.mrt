@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="0" />
+    <DataSources isList="true" count="0" />
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="2" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="2">
+        <PageHeaderBand1 Ref="3" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,1.6</ClientRectangle>
+          <Components isList="true" count="5">
+            <Image1 Ref="4" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,7.8,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn>DadosEmpresa.Logo</DataColumn>
+              <Guid>a603ce7c8e7542939edd9511a33d3567</Guid>
+              <Name>Image1</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+            </Image1>
+            <Text5 Ref="5" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.4,0,7.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>8d097d625b1441cc96af8938eef9f1ed</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>{DadosEmpresa.NomeEmpresa}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text5>
+            <Text2 Ref="6" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.4,0.4,7.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>95fb06bd1daa41f58da1f9a8235f3bc1</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>{DadosEmpresa.RuaAvenida}, {DadosEmpresa.Bairro}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text3 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.4,0.8,7.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>4bb0298f8c8c422494ea969204590551</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>{DadosEmpresa.Cidade} {DadosEmpresa.Cep}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text3>
+            <Text4 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.4,1.2,7.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>1a38726e1d044cb3a35426a1ff519859</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="2" />
+              <Parent isRef="3" />
+              <Text>Fone: {DadosEmpresa.Telefone}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>5004c8739a89429c9a5dbde66cd26eb3</Guid>
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="2" />
+          <Parent isRef="2" />
+        </PageHeaderBand1>
+        <Text1 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8.8,3.4,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="2" />
+          <Parent isRef="2" />
+          <Text>Relatorio
+</Text>
+          <TextBrush>Black</TextBrush>
+        </Text1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>24194efb54bd4ba9afec0d323e0aacb1</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="10" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="11" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>4/28/2015 9:13:14 AM</ReportChanged>
+  <ReportCreated>4/27/2015 3:54:28 PM</ReportCreated>
+  <ReportFile>D:\WorkBr.Financeiro.WorkBrFinan\WorkBr.Financeiro.WorkBrReport\Relatorios\BandasPadroes\relatorio.mrt</ReportFile>
+  <ReportGuid>b2df0b1c6af1489ab0eb34d1049cd60d</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

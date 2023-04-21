@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><enviNFe xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.portalfiscal.inf.br/nfe enviNFe_v1.10.xsd" versao="1.10"><idLote>%s</idLote>%s%s</enviNFe>

@@ -1,0 +1,18 @@
+<enviCLe xmlns="http://www.portalfiscal.inf.br/nfe" versao="1">
+<tpAmb>%s</tpAmb>
+<CLe>
+<transportador>
+%s%s
+<xNome>%s</xNome>
+%s
+</transportador>
+<mdTransp>
+%s%s
+</mdTransp>
+<cUFOrigem>%s</cUFOrigem>
+<cUFDestino>%s</cUFDestino>
+<det>
+%s
+</det>
+</CLe>
+</enviCLe>

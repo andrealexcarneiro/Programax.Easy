@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C5FF4E68-4042-41E0-840F-D6799F70E738}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Programax.Easy.Negocio</RootNamespace>
+    <AssemblyName>Programax.Easy.Negocio</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DFe.Utils, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\DFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.5.2.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NFe.Classes, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Servicos, Version=1.0.0.729, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Servicos.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Utils, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Wsdl">
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Wsdl.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cadastros\CaixaObj\ObjetoDeNegocio\Caixa.cs" />
+    <Compile Include="Cadastros\CaixaObj\ObjetoDeNegocio\ValidacaoCaixa.cs" />
+    <Compile Include="Cadastros\CaixaObj\Repositorio\IRepositorioCaixa.cs" />
+    <Compile Include="Cadastros\CidadeObj\ObjetoDeNegocio\Cidade.cs" />
+    <Compile Include="Cadastros\CidadeObj\ObjetoDeNegocio\ValidacaoCidade.cs" />
+    <Compile Include="Cadastros\CidadeObj\Repositorio\IRepositorioCidade.cs" />
+    <Compile Include="Cadastros\ComissaoObj\ObjetoDeNegocio\Comissao.cs" />
+    <Compile Include="Cadastros\ComissaoObj\ObjetoDeNegocio\ValidacaoComissao.cs" />
+    <Compile Include="Cadastros\ComissaoObj\Repositorio\IRepositorioComissao.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumNaturezaProduto.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoCalculoPisCofins.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoInscricaoICMS.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoCliente.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoCategoria.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoSaidaTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\ObjetoDeNegocio\GrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\ObjetoDeNegocio\ValidacaoGrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\ObjetoDeNegocio\ValidacaoTributacaoFederalIpi.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\ObjetoDeNegocio\ValidacaoTributacaoFederalPis.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\ObjetoDeNegocio\ValidacaoTributacaoFederalCofins.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalObj\Repositorio\IRepositorioGrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsObj\ObjetoDeNegocio\ValidacaoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaObj\ObjetoDeNegocio\MotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaObj\ObjetoDeNegocio\ValidacaoMotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaObj\Repositorio\IRepositorioMotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumOrdenacaoPesquisaPessoa.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumOrdenacaoPesquisaProduto.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumPerfilCaixa.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumSituacaoTributariaProduto.cs" />
+    <Compile Include="Cadastros\PaisObj\ObjetoDeNegocio\Pais.cs" />
+    <Compile Include="Cadastros\PaisObj\ObjetoDeNegocio\ValidacaoPais.cs" />
+    <Compile Include="Cadastros\PaisObj\Repositorio\IRepositorioPais.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\VWClienteSemComprar.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\VWEnderecosPessoas.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\VWPessoasSelecao.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\FornecedorProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\ValidacaoFornecedorProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\VWProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\VWProdutoPdv.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsObj\ObjetoDeNegocio\TributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsObj\ObjetoDeNegocio\GrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsObj\ObjetoDeNegocio\ValidacaoGrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsObj\Repositorio\IRepositorioGrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\SubEstoqueObj\ObjetoDeNegocio\SubEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueObj\ObjetoDeNegocio\ValidacaoSubEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueObj\Repositorio\IRepositorioSubEstoque.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\ObjetoDeNegocio\Transferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\ObjetoDeNegocio\ItemTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\ObjetoDeNegocio\ValidacaoTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\ObjetoDeNegocio\ValidacaoItemTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\Repositorio\IRepositorioTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaObj\Repositorio\IRepositorioItemTransferencia.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupObj\ObjetoDeNegocio\Backup.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupObj\ObjetoDeNegocio\ValidacaoBackup.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupObj\Repositorio\IRepositorioBackup.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvObj\ObjetoDeNegocio\ConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvObj\ObjetoDeNegocio\ValidacaoConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvObj\Repositorio\IRepositorioConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\Enumeradores\EnumTipoCartaoCreditoEDebito.cs" />
+    <Compile Include="ConfiguracoesSistema\Enumeradores\EnumTipoCodigoBarrasBalanca.cs" />
+    <Compile Include="ConfiguracoesSistema\Enumeradores\EnumVinculoProdutoCodigoBarrasBalanca.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\ParametrosCadastros.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\ParametrosFiscais.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\FinanceiroEntrada.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\ItemEntrada.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumOrigemDestino.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoMovimentacaoNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\FabricanteObj\ObjetoDeNegocio\Fabricante.cs" />
+    <Compile Include="Cadastros\FabricanteObj\ObjetoDeNegocio\ValidacaoFabricante.cs" />
+    <Compile Include="Cadastros\FabricanteObj\Repositorio\IRepositorioMarca.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumFuncaoPessoaComissao.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoObj\ObjetoDeNegocio\NaturezaOperacao.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoObj\ObjetoDeNegocio\NaturezaOperacaoCfop.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoObj\ObjetoDeNegocio\ValidacaoNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoObj\ObjetoDeNegocio\ValidacaoNaturezaOperacaoCfop.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoObj\Repositorio\IRepositorioNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\OrigemClienteObj\ObjetoDeNegocio\OrigemCliente.cs" />
+    <Compile Include="Cadastros\OrigemClienteObj\ObjetoDeNegocio\ValidacaoOrigemCliente.cs" />
+    <Compile Include="Cadastros\OrigemClienteObj\Repositorio\IRepositorioOrigemCliente.cs" />
+    <Compile Include="Cadastros\PautaIcmsObj\ObjetoDeNegocio\PautaIcms.cs" />
+    <Compile Include="Cadastros\PautaIcmsObj\ObjetoDeNegocio\ValidacaoPautaIcms.cs" />
+    <Compile Include="Cadastros\PautaIcmsObj\Repositorio\IRepositorioPautaIcms.cs" />
+    <Compile Include="Cadastros\RamoAtividadeObj\ObjetoDeNegocio\RamoAtividade.cs" />
+    <Compile Include="Cadastros\RamoAtividadeObj\ObjetoDeNegocio\ValidacaoRamoAtividade.cs" />
+    <Compile Include="Cadastros\RamoAtividadeObj\Repositorio\IRepositorioRamoAtividade.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumCstCsosn.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumFiltroOrdenacaoContagem.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumOrigem.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumStatusInventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\ObjetoDeNegocio\Inventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\ObjetoDeNegocio\ItemInventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\ObjetoDeNegocio\ValidacaoInventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\ObjetoDeNegocio\ValidacaoItemInventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\Repositorio\IRepositorioInventario.cs" />
+    <Compile Include="Cadastros\InventarioObj\Repositorio\IRepositorioItemInventario.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueObj\ObjetoDeNegocio\MotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueObj\ObjetoDeNegocio\ValidacaoMotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueObj\Repositorio\IRepositorioMotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\CalculosFormacaoPrecoProduto.cs" />
+    <Compile Include="Cadastros\TamanhoObj\ObjetoDeNegocio\Tamanho.cs" />
+    <Compile Include="Cadastros\TamanhoObj\ObjetoDeNegocio\ValidacaoTamanho.cs" />
+    <Compile Include="Cadastros\TamanhoObj\Repositorio\IRepositorioTamanho.cs" />
+    <Compile Include="Cadastros\CorObj\ObjetoDeNegocio\Cor.cs" />
+    <Compile Include="Cadastros\CorObj\ObjetoDeNegocio\ValidacaoCor.cs" />
+    <Compile Include="Cadastros\CorObj\Repositorio\IRepositorioCor.cs" />
+    <Compile Include="Cadastros\EmpresaObj\ObjetoDeNegocio\DadosContador.cs" />
+    <Compile Include="Cadastros\EmpresaObj\ObjetoDeNegocio\DadosEmpresa.cs" />
+    <Compile Include="Cadastros\EmpresaObj\ObjetoDeNegocio\Empresa.cs" />
+    <Compile Include="Cadastros\EmpresaObj\ObjetoDeNegocio\EnderecoEmpresaComEmail.cs" />
+    <Compile Include="Cadastros\EmpresaObj\ObjetoDeNegocio\ValidacaoEmpresa.cs" />
+    <Compile Include="Cadastros\EmpresaObj\Repositorio\IRepositorioEmpresa.cs" />
+    <Compile Include="Cadastros\EnderecoObj\ObjetoDeNegocio\Endereco.cs" />
+    <Compile Include="Cadastros\EnderecoObj\ObjetoDeNegocio\ValidacaoEndereco.cs" />
+    <Compile Include="Cadastros\EnderecoObj\Repositorio\IRepositorioEndereco.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumCodigoRegimeTributario.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumEstadoCivil.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumGrauDeInstrucao.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumSexo.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumSexoProduto.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoBanco.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoEndereco.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoPessoa.cs" />
+    <Compile Include="Cadastros\Enumeradores\EnumTipoTelefone.cs" />
+    <Compile Include="Cadastros\EstadoObj\ObjetoDeNegocio\Estado.cs" />
+    <Compile Include="Cadastros\EstadoObj\ObjetoDeNegocio\ValidacaoEstado.cs" />
+    <Compile Include="Cadastros\EstadoObj\Repositorio\IRepositorioEstado.cs" />
+    <Compile Include="Cadastros\GrupoObj\ObjetoDeNegocio\Grupo.cs" />
+    <Compile Include="Cadastros\GrupoObj\ObjetoDeNegocio\ValidacaoGrupo.cs" />
+    <Compile Include="Cadastros\GrupoObj\Repositorio\IRepositorioGrupo.cs" />
+    <Compile Include="Cadastros\CateogriaObj\ObjetoDeNegocio\Categoria.cs" />
+    <Compile Include="Cadastros\CateogriaObj\ObjetoDeNegocio\ValidacaoCategoria.cs" />
+    <Compile Include="Cadastros\CateogriaObj\Repositorio\IRepositorioCategoria.cs" />
+    <Compile Include="Cadastros\MarcaObj\ObjetoDeNegocio\Marca.cs" />
+    <Compile Include="Cadastros\MarcaObj\ObjetoDeNegocio\ValidacaoMarca.cs" />
+    <Compile Include="Cadastros\MarcaObj\Repositorio\IRepositorioMarca.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\Atendimento.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\DadosGerais.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\EmpresaPessoa.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\EnderecoPessoa.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\DadosPessoais.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\Funcionario.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\Pessoa.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\PessoaSimplificada.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\Telefone.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\ValidacaoEnderecoPessoa.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\ValidacaoPessoa.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\ValidacaoTelefone.cs" />
+    <Compile Include="Cadastros\PessoaObj\ObjetoDeNegocio\Vendedor.cs" />
+    <Compile Include="Cadastros\PessoaObj\Repositorio\IRepositorioPessoa.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\ContabilFiscalProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\DadosGeraisProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\FormacaoPrecoProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\PrincipalProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\Produto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\ValidacaoProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\ObjetoDeNegocio\VestuarioProduto.cs" />
+    <Compile Include="Cadastros\ProdutoObj\Repositorio\IRepositorioProduto.cs" />
+    <Compile Include="Cadastros\SubGrupoObj\ObjetoDeNegocio\SubGrupo.cs" />
+    <Compile Include="Cadastros\SubGrupoObj\ObjetoDeNegocio\ValidacaoSubGrupo.cs" />
+    <Compile Include="Cadastros\SubGrupoObj\Repositorio\IRepositorioSubGrupo.cs" />
+    <Compile Include="Cadastros\TabelaPrecosObj\ObjetoDeNegocio\TabelaPreco.cs" />
+    <Compile Include="Cadastros\TabelaPrecosObj\ObjetoDeNegocio\ValidacaoTabelaPreco.cs" />
+    <Compile Include="Cadastros\TabelaPrecosObj\Repositorio\IRepositorioTabelaPreco.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaObj\ObjetoDeNegocio\UnidadeMedida.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaObj\ObjetoDeNegocio\ValidacaoUnidadeMedida.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaObj\Repositorio\IRepositorioUnidadeMedida.cs" />
+    <Compile Include="Cadastros\VendedorObj\ObjetoDeNegocio\ValidacaoVendedor.cs" />
+    <Compile Include="Cadastros\VendedorObj\ObjetoDeNegocio\VendedorAntigo.cs" />
+    <Compile Include="Cadastros\VendedorObj\Repositorio\IRepositorioVendedor.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaObj\ObjetoDeNegocio\InformacaoSistema.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaObj\ObjetoDeNegocio\ValidcaoInformacaoSistema.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaObj\Repositorio\IRepositorioLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\Enumeradores\EnumFuncionalidade.cs" />
+    <Compile Include="ConfiguracoesSistema\Enumeradores\EnumTipoFuncionalidade.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoObj\ObjetoDeNegocio\LicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoObj\ObjetoDeNegocio\ValidacaoLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoObj\Repositorio\IRepositorioLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\Parametros.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\ParametrosFinanceiro.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\ParametrosVenda.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\ObjetoDeNegocio\ValidacaoParametros.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosObj\Repositorio\IRepositorioParametros.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoObj\ObjetoDeNegocio\Permissao.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoObj\ObjetoDeNegocio\ValidacaoPermissao.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoObj\Repositorio\IRepositorioPermissao.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoObj\ObjetoDeNegocio\GrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoObj\ObjetoDeNegocio\ValidacaoGrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoObj\Repositorio\IRepositorioGrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioObj\ObjetoDeNegocio\Usuario.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioObj\ObjetoDeNegocio\ValidacaoUsuario.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioObj\Repositorio\IRepositorioUsuario.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\EntradaMercadoria.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\ValidacaoEntradaMercadoria.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\ValidacaoFinanceiroEntrada.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\ObjetoDeNegocio\ValidacaoItemEntrada.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaObj\Repositorio\IRepositorioEntradaMercadoria.cs" />
+    <Compile Include="Estoque\Enumeradores\EnumFormaPagamentoEntrada.cs" />
+    <Compile Include="Estoque\Enumeradores\EnumStatusEntrada.cs" />
+    <Compile Include="Financeiro\AgenciaObj\ObjetoDeNegocio\Agencia.cs" />
+    <Compile Include="Financeiro\AgenciaObj\ObjetoDeNegocio\ValidacaoAgencia.cs" />
+    <Compile Include="Financeiro\AgenciaObj\Repositorio\IRepositorioAgencia.cs" />
+    <Compile Include="Financeiro\BancoObj\ObjetoDeNegocio\Banco.cs" />
+    <Compile Include="Financeiro\BancoObj\ObjetoDeNegocio\ValidacaoBanco.cs" />
+    <Compile Include="Financeiro\BancoObj\Repositorio\IRepositorioBanco.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoObj\ObjetoDeNegocio\BancoParaMovimento.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoObj\ObjetoDeNegocio\ValidacaoBancoParaMovimento.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoObj\Repositorio\IRepositorioBancoParaMovimento.cs" />
+    <Compile Include="Financeiro\CashBackObj\ObjetoDeNegocio\Cashback.cs" />
+    <Compile Include="Financeiro\CashBackObj\ObjetoDeNegocio\ValidacaoCash.cs" />
+    <Compile Include="Financeiro\CashBackObj\Repositorio\IRepositorioCashBack.cs" />
+    <Compile Include="Financeiro\CategoriaDreObj\ObjetoDeNeocio\CategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaDreObj\ObjetoDeNeocio\ValidacaoCategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaDreObj\Repositorio\IRepositorioCategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaObj\ObjetoDeNegocio\CategoriaFinanceira.cs" />
+    <Compile Include="Financeiro\CategoriaObj\ObjetoDeNegocio\ValidacaoCategoria.cs" />
+    <Compile Include="Financeiro\CategoriaObj\Repositorio\IRepositorioCategoria.cs" />
+    <Compile Include="Financeiro\ChequeObj\ObjetoDeNegocio\Cheque.cs" />
+    <Compile Include="Financeiro\ChequeObj\ObjetoDeNegocio\ValidacaoCheque.cs" />
+    <Compile Include="Financeiro\ChequeObj\Repositorio\IRepositorioCheque.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaObj\ObjetoDeNegocio\ConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaObj\ObjetoDeNegocio\ValidacaoConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaObj\ObjetoDeNegocio\vw_fluxo_caixa.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaObj\Repositorio\IRepositorioConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoObj\ObjetoDeNegocio\CondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoObj\ObjetoDeNegocio\ParcelaCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoObj\ObjetoDeNegocio\ValidacaoCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoObj\ObjetoDeNegocio\ValidacaoParcelaCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoObj\Repositorio\IRepositorioCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoObj\ObjetoDeNegocio\ConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoObj\ObjetoDeNegocio\InstrucoesBoleto.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoObj\ObjetoDeNegocio\ValidacaoConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoObj\Repositorio\IRepositorioConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ContaBancariaObj\ObjetoDeNegocio\ContaBancaria.cs" />
+    <Compile Include="Financeiro\ContaBancariaObj\ObjetoDeNegocio\ValidacaoContaBancaria.cs" />
+    <Compile Include="Financeiro\ContaBancariaObj\Repositorio\IRepositorioContaBancaria.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\ObjetoDeNegocio\CalculoValorTotalContaPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\ObjetoDeNegocio\ContaPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\ObjetoDeNegocio\ContaPagarReceberPesquisa.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\ObjetoDeNegocio\HistoricoAlteracaoVencimento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\ObjetoDeNegocio\ValidacaoContasPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberObj\Repositorio\IRepositorioContasPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\ContaPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\ValidacaoContasPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAPagarAnual.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAPagarMensal.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAPagarTodosDiasDoAno.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAReceberAnual.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAReceberMensal.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWAReceberTodosDiasDoAno.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWTotalAPagar.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWTotalAPagarEmAtraso.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWTotalAReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\ObjetoDeNegocio\VWTotalAReceberEmAtraso.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoObj\Repositorio\IRepositorioContaPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\CrediarioObj\ObjetoDeNegocio\Crediario.cs" />
+    <Compile Include="Financeiro\CrediarioObj\ObjetoDeNegocio\ValidacaoCrediario.cs" />
+    <Compile Include="Financeiro\CrediarioObj\Repositorio\IRepositorioCrediario.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumDataFiltrarCheque.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumDataFiltrarConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumDataFiltrarContasPagarReceber.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumDataFiltrarMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumFiltroSituacao.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumModalidadeInventario.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumNaturezaPlanoContas.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumOrdenacaoPesquisaContasPagarReceber.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumOrigemConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumOrigemDocumento.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumOrigemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumOrigemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumPeriodicidade.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumResultadoCaixa.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumStatusAnaliseCredito.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumStatusCheque.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumStatusContaPagarReceber.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumStatusMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoContaBancaria.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoFormaPagamento.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoInventario.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoOperacaoContasPagarReceber.cs" />
+    <Compile Include="Financeiro\Enumeradores\EnumTipoPlanoContas.cs" />
+    <Compile Include="Financeiro\FormaPagamentoObj\ObjetoDeNegocio\CondicaoDePagamentoDaForma.cs" />
+    <Compile Include="Financeiro\FormaPagamentoObj\ObjetoDeNegocio\FormaPagamento.cs" />
+    <Compile Include="Financeiro\FormaPagamentoObj\ObjetoDeNegocio\ValidacaoFormaPagamento.cs" />
+    <Compile Include="Financeiro\FormaPagamentoObj\Repositorio\IRepositorioFormaPagamento.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\ObjetoDeNegocio\GrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\ObjetoDeNegocio\SubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\ObjetoDeNegocio\ValidacaoGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\ObjetoDeNegocio\ValidacaoSubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\Repositorio\IRepositorioGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasObj\Repositorio\IRepositorioSubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposDreObj\ObjetoDeNegocio\GrupoDre.cs" />
+    <Compile Include="Financeiro\GruposDreObj\ObjetoDeNegocio\ValidacaoGrupoDre.cs" />
+    <Compile Include="Financeiro\GruposDreObj\Repositorio\IRepositorioGrupoDre.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoObj\ObjetoDeNegocio\ItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoObj\ObjetoDeNegocio\ValidacaoItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoObj\Repositorio\IRepositorioItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaObj\ObjetoDeNegocio\ItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaObj\ObjetoDeNegocio\ValidacaoItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaObj\Repositorio\IRepositorioItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoObj\ObjetoDeNegocio\MovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoObj\ObjetoDeNegocio\ValidacaoMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoObj\Repositorio\IRepositorioMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaObj\ObjetoDeNegocio\MovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaObj\ObjetoDeNegocio\ValidacaoMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaObj\ObjetoDeNegocio\VWMovimetacaoItemCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaObj\ObjetoDeNegocio\VWSaldoAtualCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaObj\Repositorio\IRepositorioMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\ObjetoDeNegocio\ItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\ObjetoDeNegocio\OperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\ObjetoDeNegocio\ValidaItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\ObjetoDeNegocio\ValidaOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\Repositorio\IRepositorioItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoObj\Repositorio\IRepositorioOperadorasCartao.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoObj\ObjetoDeNegocio\PerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoObj\ObjetoDeNegocio\ValidacaoPerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoObj\Repositorio\IRepositorioPerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\PlanoContasDreObj\ObjetoDeNegocio\PlanoContaDre.cs" />
+    <Compile Include="Financeiro\PlanoContasDreObj\ObjetoDeNegocio\ValidacaoPlanoContasDre.cs" />
+    <Compile Include="Financeiro\PlanoContasDreObj\Repositorio\IRepositorioPlanoDeContasDre.cs" />
+    <Compile Include="Financeiro\PlanoContasObj\ObjetoDeNegocio\PlanoDeContas.cs" />
+    <Compile Include="Financeiro\PlanoContasObj\ObjetoDeNegocio\ValidacaoPlanoContas.cs" />
+    <Compile Include="Financeiro\PlanoContasObj\Repositorio\IRepositorioPlanoDeContas.cs" />
+    <Compile Include="Financeiro\VincularChequePedidosObj\ObjetoDeNegocio\VincularChequePedidos.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoObj\ObjetoDeNegocio\CartaCorrecao.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoObj\ObjetoDeNegocio\ValidacaoCartaCorrecao.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoObj\Repositorio\IRepositorioCartaCorrecao.cs" />
+    <Compile Include="Fiscal\CestObj\ObjetoDeNegocio\Cest.cs" />
+    <Compile Include="Fiscal\CestObj\ObjetoDeNegocio\ValidacaoCest.cs" />
+    <Compile Include="Fiscal\CestObj\Repositorio\IRepositorioCest.cs" />
+    <Compile Include="Fiscal\CfopObj\ObjetoDeNegocio\Cfop.cs" />
+    <Compile Include="Fiscal\CfopObj\ObjetoDeNegocio\ValidacaoCfop.cs" />
+    <Compile Include="Fiscal\CfopObj\Repositorio\IRepositorioCfop.cs" />
+    <Compile Include="Fiscal\CnaeObj\ObjetoDeNegocio\Cnae.cs" />
+    <Compile Include="Fiscal\CnaeObj\ObjetoDeNegocio\ValidacaoCnae.cs" />
+    <Compile Include="Fiscal\CnaeObj\Repositorio\IRepositorioCnae.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeObj\ObjetoDeNegocio\ConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeObj\ObjetoDeNegocio\ValidacaoConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeObj\Repositorio\IRepositorioConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumAtividadeCnae.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumBandeiraCartao.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumCstCofins.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumCstIpi.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumCstPis.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumFinalidadeEmissaoNfe.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumFormaPagamentoNfce.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumFormatoImpressaoDanfe.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumIdenficacaoOperacaoNotaFiscal.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumIndicacaoPresenca.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumIndicadorIEDestinatario.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumModBC.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumModBCST.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumModeloNotaFiscal.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumModeloNotaFiscalReferenciada.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumStatusNotaFiscal.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoAmbiente.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoCfop.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoDeEmissaoPesquisa.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoDocumento.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoEmissaoDanfe.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumCondicaoVistaPrazo.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoIntegracaoPagamento.cs" />
+    <Compile Include="Fiscal\Enumeradores\EnumTipoNotaReferenciada.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualObj\ObjetoDeNegocio\IcmsInterestadual.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualObj\ObjetoDeNegocio\IcmsInterestadualEstado.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualObj\ObjetoDeNegocio\ValidacaoIcmsInterestadual.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualObj\ObjetoDeNegocio\ValidacaoIcmsInterestadualEstado.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualObj\Repositorio\IRepositorioIcmsInterestadual.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaObj\ObjetoDeNegocio\InutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaObj\ObjetoDeNegocio\ValidacaoInutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaObj\Repositorio\IRepositorioInutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\NcmObj\ObjetoDeNegocio\Ncm.cs" />
+    <Compile Include="Fiscal\NcmObj\ObjetoDeNegocio\ValidacaoNcm.cs" />
+    <Compile Include="Fiscal\NcmObj\Repositorio\IRepositorioNcm.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\CalculosNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\CartaoFormaPagamentoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\CofinsNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\DadosCobrancaNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\DestinatarioNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\EmitenteNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\FaturaNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\FormaPagamentoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\IcmsNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\FCP.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\IcmsPartilha.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\IdentificacaoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\IINotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\ImpostosNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesCancelamentoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesComercioExteriorNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesCompraNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesDocumentoOrigemNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesGeraisNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesProtocoloAutorizacaoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\InformacoesSuplementaresNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\IpiNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\ItemNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\LocalEntregaNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\LocalRetiradaNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\NotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\DuplicataNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\NotaFiscalReferenciada.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\PisNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\RetencaoTributosNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\TotaisNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\TributosDevolvidosNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\ValidacaoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\ObjetoDeNegocio\VwNotasDocumentos.cs" />
+    <Compile Include="Fiscal\NotaFiscalObj\Repositorio\IRepositorioNotaFiscal.cs" />
+    <Compile Include="Gerais\TipoMensagem.cs" />
+    <Compile Include="Integracao\Enumeradores\EnumTabelaModificada.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvObj\ObjetoDeNegocio\PreVendaDjpdv.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvObj\ObjetoDeNegocio\ValidacaoPreVendaDjpdv.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvObj\Repositorio\IRepositorioPreVendaDjpdv.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJObj\ObjetoDeNegocio\TabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJObj\ObjetoDeNegocio\ValidacaoTabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJObj\Repositorio\IRepositorioTabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalObj\ObjetoDeNegocio\AjusteFiscal.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalObj\ObjetoDeNegocio\ValidacaoAjusteFiscal.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalObj\Repositorio\IRepositorioAjusteFiscal.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumModeloDocumentoFiscal.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumMotivoDesoneracaoProduto.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumOrigemMovimentacao.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumTipoDesconto.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumTipoFrete.cs" />
+    <Compile Include="Movimentacao\Enumeradores\EnumTipoMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\BaixaItens.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\ItemMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\MovimentacaoBase.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\ValidacaoItemMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\ValidacaoMovimentacaoBase.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\VwMovimentacaoSaidaItens.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\ObjetoDeNegocio\VwMovimentacaoProduto.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\Repositorio\IRepositorioMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoObj\Repositorio\IRepositorioMovimentacaoBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Sessao.cs" />
+    <Compile Include="Telemarkenting\Enumeradores\EnumPeriodoPreDeterminado .cs" />
+    <Compile Include="Telemarkenting\Enumeradores\EnumStatusAtendimento.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\ObjetoDeNegocio\GerenciarTmk.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\ObjetoDeNegocio\HistoricoAtendimento.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\ObjetoDeNegocio\Tmk.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\ObjetoDeNegocio\ValidacaoHistoricoAtendimento.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\ObjetoDeNegocio\ValidacaoTmk.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\Repositorio\IRepositorioHistoricoAtendimento.cs" />
+    <Compile Include="Telemarkenting\TelemarketingObj\Repositorio\IRepositorioTmk.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumDataFiltrarRoteiro.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumPeriodo.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumStatusRoteiro.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumTipoServico.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumTipoDocumentoLiberacao.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoObj\ObjetoDeNegocio\LiberacaoDocumento.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoObj\ObjetoDeNegocio\ValidacaoLiberacaoDocumento.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoObj\Repositorio\IRepositorioLiberacaoDocumento.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumOrdenacaoPesquisaVwVendas.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumPesquisaPorFuncao.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumStatusPedidoDeVenda.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumStatusTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumTipoDocumentoRecebimento.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumTipoMovimentacaoFinanceiraTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\Enumeradores\EnumTipoPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\CalculosPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\CustoFinanceiro.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\EnderecoPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\ItemPedidoVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\MotivoBloqueio.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\ParcelaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\PedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\ValidacaoItemPedidoVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\ValidacaoPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\VWVendaTransportes.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\ObjetoDeNegocio\VWVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaObj\Repositorio\IRepositorioPedidoDeVenda.cs" />
+    <Compile Include="Vendas\RecebimentoObj\ObjetoDeNegocio\ParcelaRecebimento.cs" />
+    <Compile Include="Vendas\RecebimentoObj\ObjetoDeNegocio\RecebimentoNf .cs" />
+    <Compile Include="Vendas\RecebimentoObj\ObjetoDeNegocio\Recebimento.cs" />
+    <Compile Include="Vendas\RecebimentoObj\ObjetoDeNegocio\ValidacaoRecebimento.cs" />
+    <Compile Include="Vendas\RecebimentoObj\Repositorio\IRepositorioRecebimento.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\HistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\Roteirizacao.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\Roteiro.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\ValidacaoRoteirizacao.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\ValidacaoHistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroObj\ObjetoDeNegocio\ValidacaoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroObj\Repositorio\IRepositorioHistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroObj\Repositorio\IRepositorioRoteirizacao.cs" />
+    <Compile Include="Vendas\RoteiroObj\Repositorio\IRepositorioRoteiro.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\ItemPedidoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\ItemTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\TrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\ValidacaoItemPedidoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\ValidacaoItemTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\ObjetoDeNegocio\ValidacaoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaObj\Repositorio\IRepositorioTrocaPedidoDeVenda.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Financeiro\VincularChequePedidosObj\Repositorio\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Negocio\Programax.Infraestrutura.Negocio.csproj">
+      <Project>{58af4bbe-eed3-495b-bd9b-c7c9ed4728c8}</Project>
+      <Name>Programax.Infraestrutura.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

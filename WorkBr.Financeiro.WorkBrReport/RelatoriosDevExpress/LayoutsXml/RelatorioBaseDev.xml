@@ -1,0 +1,10 @@
+﻿<XtraSerializer version="1.0" application="XtraPrintingPageSettings">
+  <property name="PrinterName" />
+  <property name="Data" isnull="true" iskey="true">
+    <property name="MarginsF">123,102,36,18</property>
+    <property name="MinMarginsF">0,0,0,0</property>
+    <property name="PaperKind">A4</property>
+    <property name="Size">@3,Width=827@4,Height=1169</property>
+    <property name="Landscape">false</property>
+  </property>
+</XtraSerializer>

@@ -1,0 +1,12 @@
+﻿{
+  "Conexoes": [
+    {
+      "NomeConexao": "PRINCIPAL",
+      "IpPrincipal": "localhost",
+      "PortaSecundaria": 3306,
+      "UsuarioPrincipal": "root",
+      "SenhaPrincipal": "Programax-2015",
+      "BancoDadosPrincipal": "aguaboa"
+    }
+  ]
+}

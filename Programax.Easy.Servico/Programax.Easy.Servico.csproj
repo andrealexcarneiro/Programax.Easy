@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{925B20C4-E81E-4D79-82E4-FB9409B5E235}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Programax.Easy.Servico</RootNamespace>
+    <AssemblyName>Programax.Easy.Servico</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Danzor">
+      <HintPath>..\..\..\Dlls_Terceiros\Danzor.dll</HintPath>
+    </Reference>
+    <Reference Include="DFe.Classes, Version=0.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\DFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="DFe.Utils, Version=1.0.0.772, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\DFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.0.9.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\MySqlBackup.NET 2.0.9.2\binaries\v4.0\MySqlBackup.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\Dlls_Terceiros\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Classes, Version=1.0.0.772, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Impressao">
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Impressao.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Servicos, Version=1.0.0.729, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Servicos.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Utils, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Wsdl">
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Wsdl.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Programax.Infraestrutura.Negocio">
+      <HintPath>..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Negocio\bin\Debug\Programax.Infraestrutura.Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="Programax.Infraestrutura.Servico">
+      <HintPath>..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Servico\bin\Debug\Programax.Infraestrutura.Servico.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtualizacaoSistema\FTP.cs" />
+    <Compile Include="Cadastros\CaixaServ\CaixaMap.cs" />
+    <Compile Include="Cadastros\CaixaServ\ConversorCaixa.cs" />
+    <Compile Include="Cadastros\CaixaServ\RepositorioCaixa.cs" />
+    <Compile Include="Cadastros\CaixaServ\ServicoCaixa.cs" />
+    <Compile Include="Cadastros\CashBack\CashBackServ\conversorCash.cs" />
+    <Compile Include="Cadastros\CashBack\CashBackServ\RepositorioCash.cs" />
+    <Compile Include="Cadastros\CashBack\Repositorio\IRepositorioCashBack.cs" />
+    <Compile Include="Cadastros\CidadeServ\CidadeMap.cs" />
+    <Compile Include="Cadastros\CidadeServ\ConversorCidade.cs" />
+    <Compile Include="Cadastros\CidadeServ\RepositorioCidade.cs" />
+    <Compile Include="Cadastros\CidadeServ\ServicoCidade.cs" />
+    <Compile Include="Cadastros\ComissaoServ\ComissaoMap.cs" />
+    <Compile Include="Cadastros\ComissaoServ\ConversorComissao.cs" />
+    <Compile Include="Cadastros\ComissaoServ\RepositorioComissao.cs" />
+    <Compile Include="Cadastros\ComissaoServ\ServicoComissao.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\ConversorGrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\GrupoTributacaoFederalMap.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\RepositorioGrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\ServicoGrupoTributacaoFederal.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\TributacaoFederalIpiMap.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\TributacaoFederalPisMap.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoFederalServ\TributacaoFederalCofinsMap.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsServ\ConversorGrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsServ\RepositorioGrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsServ\ServicoGrupoTributacaoIcms.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsServ\GrupoTributacaoIcmsMap.cs" />
+    <Compile Include="Cadastros\GrupoTributacaoIcmsServ\TributacaoIcmsMap.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaServ\ConversorMotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaServ\MotivoTrocaPedidoDeVendaMap.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaServ\RepositorioMotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\MotivoTrocaPedidoDeVendaServ\ServicoMotivoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Cadastros\FabricanteServ\ConversorFabricante.cs" />
+    <Compile Include="Cadastros\FabricanteServ\FabricanteMap.cs" />
+    <Compile Include="Cadastros\FabricanteServ\RepositorioFabricante.cs" />
+    <Compile Include="Cadastros\FabricanteServ\ServicoFabricante.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoServ\ConversorNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoServ\NaturezaOperacaoCfopMap.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoServ\NaturezaOperacaoMap.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoServ\RepositorioNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\NaturezaOperacaoServ\ServicoNaturezaOperacao.cs" />
+    <Compile Include="Cadastros\OrigemClienteServ\ConversorOrigemCliente.cs" />
+    <Compile Include="Cadastros\OrigemClienteServ\OrigemClienteMap.cs" />
+    <Compile Include="Cadastros\OrigemClienteServ\RepositorioOrigemCliente.cs" />
+    <Compile Include="Cadastros\OrigemClienteServ\ServicoOrigemCliente.cs" />
+    <Compile Include="Cadastros\PaisServ\ConversorPais.cs" />
+    <Compile Include="Cadastros\PaisServ\PaisMap.cs" />
+    <Compile Include="Cadastros\PaisServ\RepositorioPais.cs" />
+    <Compile Include="Cadastros\PaisServ\ServicoPais.cs" />
+    <Compile Include="Cadastros\PautaIcmsServ\ConversorPautaIcms.cs" />
+    <Compile Include="Cadastros\PautaIcmsServ\PautaIcmsMap.cs" />
+    <Compile Include="Cadastros\PautaIcmsServ\RepositorioPautaIcms.cs" />
+    <Compile Include="Cadastros\PautaIcmsServ\ServicoPautaIcms.cs" />
+    <Compile Include="Cadastros\PessoaServ\AtendimentoMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\PessoaMetodosAuxiliares.cs" />
+    <Compile Include="Cadastros\PessoaServ\SevicoClienteRapido.cs" />
+    <Compile Include="Cadastros\PessoaServ\VWClienteSemComprarMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\VWPessoasSelecaoMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\VWEnderecosPessoasMap.cs" />
+    <Compile Include="Cadastros\ProdutoServ\FornecedorProdutoMap.cs" />
+    <Compile Include="Cadastros\ProdutoServ\VWProdutoMap.cs" />
+    <Compile Include="Cadastros\ProdutoServ\VWProdutoPdvMap.cs" />
+    <Compile Include="Cadastros\RamoAtividadeServ\RamoAtividadeMap.cs" />
+    <Compile Include="Cadastros\RamoAtividadeServ\ConversorRamoAtividade.cs" />
+    <Compile Include="Cadastros\RamoAtividadeServ\RepositorioRamoAtividade.cs" />
+    <Compile Include="Cadastros\RamoAtividadeServ\ServicoRamoAtividade.cs" />
+    <Compile Include="Cadastros\CorrecaoEstoqueServ\ServicoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\InventarioServ\ConversorInventario.cs" />
+    <Compile Include="Cadastros\InventarioServ\ConversorItemInventario.cs" />
+    <Compile Include="Cadastros\InventarioServ\InventarioMap.cs" />
+    <Compile Include="Cadastros\InventarioServ\ItemInventarioMap.cs" />
+    <Compile Include="Cadastros\InventarioServ\RepositorioInventario.cs" />
+    <Compile Include="Cadastros\InventarioServ\RepositorioItemInventario.cs" />
+    <Compile Include="Cadastros\InventarioServ\ServicoInventario.cs" />
+    <Compile Include="Cadastros\InventarioServ\ServicoItemInventario.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueServ\ConversorMotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueServ\MotivoCorrecaoEstoqueMap.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueServ\RepositorioMotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\MotivoCorrecaoEstoqueServ\ServicoMotivoCorrecaoEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueServ\ConversorSubEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueServ\RepositorioSubEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueServ\ServicoSubEstoque.cs" />
+    <Compile Include="Cadastros\SubEstoqueServ\SubEstoqueMap.cs" />
+    <Compile Include="Cadastros\TamanhoServ\ConversorTamanho.cs" />
+    <Compile Include="Cadastros\TamanhoServ\TamanhorMap.cs" />
+    <Compile Include="Cadastros\TamanhoServ\RepositorioTamanho.cs" />
+    <Compile Include="Cadastros\TamanhoServ\ServicoTamanho.cs" />
+    <Compile Include="Cadastros\SubGrupoServ\ConversorSubGrupo.cs" />
+    <Compile Include="Cadastros\SubGrupoServ\SubGrupoMap.cs" />
+    <Compile Include="Cadastros\SubGrupoServ\RepositorioSubGrupo.cs" />
+    <Compile Include="Cadastros\SubGrupoServ\ServicoSubGrupo.cs" />
+    <Compile Include="Cadastros\CorServ\ConversorCor.cs" />
+    <Compile Include="Cadastros\CorServ\CorMap.cs" />
+    <Compile Include="Cadastros\CorServ\RepositorioCor.cs" />
+    <Compile Include="Cadastros\CorServ\ServicoCor.cs" />
+    <Compile Include="Cadastros\EmpresaServ\ConversorEmpresa.cs" />
+    <Compile Include="Cadastros\EmpresaServ\EmpresaMap.cs" />
+    <Compile Include="Cadastros\EmpresaServ\RepositorioEmpresa.cs" />
+    <Compile Include="Cadastros\EmpresaServ\ServicoEmpresa.cs" />
+    <Compile Include="Cadastros\EnderecoServ\ConversorEndereco.cs" />
+    <Compile Include="Cadastros\EnderecoServ\EnderecoMap.cs" />
+    <Compile Include="Cadastros\EnderecoServ\RepositorioEndereco.cs" />
+    <Compile Include="Cadastros\EnderecoServ\ServicoEndereco.cs" />
+    <Compile Include="Cadastros\EstadoServ\ConversorEstado.cs" />
+    <Compile Include="Cadastros\EstadoServ\EstadoMap.cs" />
+    <Compile Include="Cadastros\EstadoServ\RepositorioEstado.cs" />
+    <Compile Include="Cadastros\EstadoServ\ServicoEstado.cs" />
+    <Compile Include="Cadastros\GrupoServ\ConversorGrupo.cs" />
+    <Compile Include="Cadastros\GrupoServ\GrupoMap.cs" />
+    <Compile Include="Cadastros\GrupoServ\RepositorioGrupo.cs" />
+    <Compile Include="Cadastros\GrupoServ\ServicoGrupo.cs" />
+    <Compile Include="Cadastros\CategoriaServ\ConversorCategoria.cs" />
+    <Compile Include="Cadastros\CategoriaServ\CategoriaMap.cs" />
+    <Compile Include="Cadastros\CategoriaServ\RepositorioCategoria.cs" />
+    <Compile Include="Cadastros\CategoriaServ\ServicoCategoria.cs" />
+    <Compile Include="Cadastros\MarcaServ\ConversorMarca.cs" />
+    <Compile Include="Cadastros\MarcaServ\MarcaMap.cs" />
+    <Compile Include="Cadastros\MarcaServ\RepositorioMarca.cs" />
+    <Compile Include="Cadastros\MarcaServ\ServicoMarca.cs" />
+    <Compile Include="Cadastros\PessoaServ\ConversorPessoa.cs" />
+    <Compile Include="Cadastros\PessoaServ\DadosPessoaisMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\EmpresaPessoaMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\EnderecoPessoaMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\FuncionarioMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\PessoaMap.cs" />
+    <Compile Include="Cadastros\PessoaServ\RepositorioPessoa.cs" />
+    <Compile Include="Cadastros\PessoaServ\ServicoPessoa.cs" />
+    <Compile Include="Cadastros\PessoaServ\TelefoneMap.cs" />
+    <Compile Include="Cadastros\ProdutoServ\ConversorProduto.cs" />
+    <Compile Include="Cadastros\ProdutoServ\ProdutoMap.cs" />
+    <Compile Include="Cadastros\ProdutoServ\RepositorioProduto.cs" />
+    <Compile Include="Cadastros\ProdutoServ\ServicoProduto.cs" />
+    <Compile Include="Cadastros\TabelaPrecoServ\ConversorTabelaPreco.cs" />
+    <Compile Include="Cadastros\TabelaPrecoServ\RepositorioTabelaPreco.cs" />
+    <Compile Include="Cadastros\TabelaPrecoServ\ServicoTabelaPreco.cs" />
+    <Compile Include="Cadastros\TabelaPrecoServ\TabelaPrecoMap.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\ConversorTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\ConversorItemTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\TransferenciaMap.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\ItemTransferenciaMap.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\RepositorioTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\RepositorioItemTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\ServicoTransferencia.cs" />
+    <Compile Include="Cadastros\TransferenciaServ\ServicoItemTransferencia.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaServ\ConversorUnidadeMedida.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaServ\RepositorioUnidadeMedida.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaServ\ServicoUnidadeMedida.cs" />
+    <Compile Include="Cadastros\UnidadeMedidaServ\UnidadeMedidaMap.cs" />
+    <Compile Include="Cadastros\CashBack\CashBackServ\CashMap.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupServ\BackupMap.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupServ\ConversorBackup.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupServ\RepositorioBackup.cs" />
+    <Compile Include="ConfiguracoesSistema\BackupServ\ServicoBackup.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvServ\ConfiguracoesPdvMap.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvServ\ConversorConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvServ\RepositorioConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\ConfiguracoesPdvServ\ServicoConfiguracoesPdv.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaServ\ConversorInformacaoSistema.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaServ\InformacaoSistemaMap.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaServ\RepositorioInformacaoSistema.cs" />
+    <Compile Include="ConfiguracoesSistema\InformacaoSistemaServ\ServicoInformacaoSistema.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoServ\ConversorLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoServ\LicencaDeUsoMap.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoServ\RepositorioLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\LicencaDeUsoServ\ServicoLicencaDeUso.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosServ\ConversorParametros.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosServ\ParametrosMap.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosServ\RepositorioParametros.cs" />
+    <Compile Include="ConfiguracoesSistema\ParametrosServ\ServicoParametros.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoServ\ConversorPermissao.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoServ\PermissaoMap.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoServ\RepositorioPermissao.cs" />
+    <Compile Include="ConfiguracoesSistema\PermissaoServ\ServicoPermissao.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoServ\ConversorGrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoServ\RepositorioGrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoServ\ServicoGrupoAcesso.cs" />
+    <Compile Include="ConfiguracoesSistema\GrupoAcessoServ\GrupoAcessoMap.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioServ\ConversorUsuario.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioServ\RepositorioUsuario.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioServ\ServicoUsuario.cs" />
+    <Compile Include="ConfiguracoesSistema\UsuarioServ\UsuarioMap.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\ConversorEntradaMercadoria.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\EntradaMercadoriaMap.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\FinanceiroEntradaMap.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\ItemEntradaMap.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\RepositorioEntradaMercadoria.cs" />
+    <Compile Include="Estoque\EntradaMercadoriaServ\ServicoEntradaMercadoria.cs" />
+    <Compile Include="Financeiro\AgenciaServ\AgenciaMap.cs" />
+    <Compile Include="Financeiro\AgenciaServ\ConversorAgencia.cs" />
+    <Compile Include="Financeiro\AgenciaServ\RepositorioAgencia.cs" />
+    <Compile Include="Financeiro\AgenciaServ\ServicoAgencia.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoServ\BancoParaMovimentoMap.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoServ\ConversorBancoParaMovimento.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoServ\RepositorioBancoParaMovimento.cs" />
+    <Compile Include="Financeiro\BancoParaMovimentoServ\ServicoBancoParaMovimento.cs" />
+    <Compile Include="Financeiro\BancoServ\BancoMap.cs" />
+    <Compile Include="Financeiro\BancoServ\ConversorBanco.cs" />
+    <Compile Include="Financeiro\BancoServ\RepositorioBanco.cs" />
+    <Compile Include="Financeiro\BancoServ\ServicoBanco.cs" />
+    <Compile Include="Financeiro\CategoriaDreServ\CategoriaFinanceiraDreMap.cs" />
+    <Compile Include="Financeiro\CategoriaDreServ\ConversorCategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaDreServ\RepositorioCategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaDreServ\ServicoCategoriaDre.cs" />
+    <Compile Include="Financeiro\CategoriaServ\CategoriaFinanceiraMap.cs" />
+    <Compile Include="Financeiro\CategoriaServ\ConversorCategoria.cs" />
+    <Compile Include="Financeiro\CategoriaServ\RepositorioCategoria.cs" />
+    <Compile Include="Financeiro\CategoriaServ\ServicoCategoria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaServ\ConciliacaoBancariaMap.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaServ\ConversorConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaServ\RepositorioConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaServ\ServicoConciliacaoBancaria.cs" />
+    <Compile Include="Financeiro\ConciliacaoBancariaServ\VwFluxoCaixaMap.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoServ\InstrucoesBoletoMap.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoServ\ConversorConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoServ\ConfiguracaoBoletoMap.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoServ\RepositorioConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ConfiguracaoBoletoServ\ServicoConfiguracaoBoleto.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAPagarAnualMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAPagarTodosDiasDoAnoMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAReceberTodosDiasDoAnoMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAPagarMensalMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAReceberMensalMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWTotalAReceberEmAtrasoMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWAReceberAnualMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWTotalAReceberrMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWTotalAPagarEmAtrasoMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\VWTotalAPagarMap.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\ConversorSubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\ConversorGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\ServicoSubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\SubGrupoCategoriaMap.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\GrupoCategoriaMap.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\RepositorioSubGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\RepositorioGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposCategoriasServ\ServicoGrupoCategoria.cs" />
+    <Compile Include="Financeiro\GruposDreServ\ConversorGrupoDre.cs" />
+    <Compile Include="Financeiro\GruposDreServ\GrupoDreMap.cs" />
+    <Compile Include="Financeiro\GruposDreServ\RepositorioGrupoDre.cs" />
+    <Compile Include="Financeiro\GruposDreServ\ServicoGrupoDre.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoServ\ConversorItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoServ\ItemMovimentacaoBancoMap.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoServ\RepositorioItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoBancoServ\ServicoItemMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoServ\ConversorMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoServ\MovimentacaoBancoMap.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoServ\RepositorioMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\MovimentacaoBancoServ\ServicoMovimentacaoBanco.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\ConversorItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\ConversorOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\ItemOperadorasCartaoMap.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\OperadorasCartaoMap.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\RepositorioItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\RepositorioOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\ServicoItemOperadorasCartao.cs" />
+    <Compile Include="Financeiro\OperadorasCartaoServ\ServicoOperadorasCartao.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoServ\PerfilEmissaoBoletoMap.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoServ\ConversorPerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoServ\RepositorioPerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\PerfilEmissaoBoletoServ\ServicoPerfilEmissaoBoleto.cs" />
+    <Compile Include="Financeiro\ChequeServ\ChequeMap.cs" />
+    <Compile Include="Financeiro\ChequeServ\ConversorCheque.cs" />
+    <Compile Include="Financeiro\ChequeServ\RepositorioCheque.cs" />
+    <Compile Include="Financeiro\ChequeServ\ServicoCheque.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoServ\CondicaoPagamentoMap.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoServ\ConversorCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoServ\ParcelaCondicaoPagamentoMap.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoServ\RepositorioCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\CondicaoPagamentoServ\ServicoCondicaoPagamento.cs" />
+    <Compile Include="Financeiro\ContaBancariaServ\ContaBancariaMap.cs" />
+    <Compile Include="Financeiro\ContaBancariaServ\ConversorContaBancaria.cs" />
+    <Compile Include="Financeiro\ContaBancariaServ\RepositorioContaBancaria.cs" />
+    <Compile Include="Financeiro\ContaBancariaServ\ServicoContaBancaria.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoServ\ConversorContasPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoServ\ServicoContasPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\ContasPagarReceberMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoServ\ContasPagarReceberParcialMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\ConversorContasPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\HistoricoAlteracaoVencimentoMap.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberPagamentoServ\RepositorioContaPagarReceberPagamento.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\RepositorioContasPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\ServicoContasPagar.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\ServicoContasPagarReceber.cs" />
+    <Compile Include="Financeiro\ContasPagarReceberServ\ServicoContasReceber.cs" />
+    <Compile Include="Financeiro\FormaPagamentoServ\CondicaoDePagamentoDaFormaMap.cs" />
+    <Compile Include="Financeiro\FormaPagamentoServ\ConversorFormaPagamento.cs" />
+    <Compile Include="Financeiro\FormaPagamentoServ\FormaPagamentoMap.cs" />
+    <Compile Include="Financeiro\FormaPagamentoServ\RepositorioFormaPagamento.cs" />
+    <Compile Include="Financeiro\FormaPagamentoServ\ServicoFormaPagamento.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaServ\ConversorItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaServ\ItemMovimentacaoCaixaMap.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaServ\RepositorioItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\ItemMovimentacaoCaixaServ\ServicoItemMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaServ\ConversorMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaServ\MovimentacaoCaixaMap.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaServ\RepositorioMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\MovimentacaoCaixaServ\ServicoMovimentacaoCaixa.cs" />
+    <Compile Include="Financeiro\PlanoContasDreServ\ConversorPlanoDeContasDre.cs" />
+    <Compile Include="Financeiro\PlanoContasDreServ\PlanoDeContasDreMap.cs" />
+    <Compile Include="Financeiro\PlanoContasDreServ\RepositorioPlanoDeContasDre.cs" />
+    <Compile Include="Financeiro\PlanoContasDreServ\ServicoPlanoDeContasDre.cs" />
+    <Compile Include="Financeiro\PlanoContasServ\ConversorPlanoDeContas.cs" />
+    <Compile Include="Financeiro\PlanoContasServ\PlanoDeContasMap.cs" />
+    <Compile Include="Financeiro\PlanoContasServ\RepositorioPlanoDeContas.cs" />
+    <Compile Include="Financeiro\PlanoContasServ\ServicoPlanoDeContas.cs" />
+    <Compile Include="Financeiro\AnaliseCreditoServ\CrediarioMap.cs" />
+    <Compile Include="Financeiro\AnaliseCreditoServ\ConversorCrediario.cs" />
+    <Compile Include="Financeiro\AnaliseCreditoServ\RepositorioCrediario.cs" />
+    <Compile Include="Financeiro\AnaliseCreditoServ\ServicoCrediario.cs" />
+    <Compile Include="Financeiro\VincularChequePedidosServ\VincularChequePedidosMap.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoServ\CartaCorrecaoMap.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoServ\ConversorCartaCorrecao.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoServ\RepositorioCartaCorrecao.cs" />
+    <Compile Include="Fiscal\CartaCorrecaoServ\ServicoCartaCorrecao.cs" />
+    <Compile Include="Fiscal\CestServ\CestMap.cs" />
+    <Compile Include="Fiscal\CestServ\ConversorCest.cs" />
+    <Compile Include="Fiscal\CestServ\RepositorioCest.cs" />
+    <Compile Include="Fiscal\CestServ\ServicoCest.cs" />
+    <Compile Include="Fiscal\CfopServ\CfopMap.cs" />
+    <Compile Include="Fiscal\CfopServ\ConversorCfop.cs" />
+    <Compile Include="Fiscal\CfopServ\RepositorioCfop.cs" />
+    <Compile Include="Fiscal\CfopServ\ServicoCfop.cs" />
+    <Compile Include="Fiscal\CnaeServ\CnaeMap.cs" />
+    <Compile Include="Fiscal\CnaeServ\ConversorCnae.cs" />
+    <Compile Include="Fiscal\CnaeServ\RepositorioCnae.cs" />
+    <Compile Include="Fiscal\CnaeServ\ServicoCnae.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeServ\ConfiguracaoNfeMap.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeServ\ConversorConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeServ\RepositorioConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\ConfiguracaoNfeServ\ServicoConfiguracaoNfe.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualServ\IcmsInterestadualEstadoMap.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualServ\IcmsInterestadualMap.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualServ\ConversorIcmsInterestadual.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualServ\RepositorioIcmsInterestadual.cs" />
+    <Compile Include="Fiscal\IcmsInterestadualServ\ServicoIcmsInterestadual.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaServ\ConversorInutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaServ\InutilizacaoNumeracaoNotaMap.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaServ\RepositorioInutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\InutilizacaoNumeracaoNotaServ\ServicoInutilizacaoNumeracaoNota.cs" />
+    <Compile Include="Fiscal\NcmServ\ConvercorNcm.cs" />
+    <Compile Include="Fiscal\NcmServ\NcmMap.cs" />
+    <Compile Include="Fiscal\NcmServ\RepositorioNcm.cs" />
+    <Compile Include="Fiscal\NcmServ\ServicoNcm.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\ClassesAuxiliares\DestinatarioAuxiliarNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\ConversorNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\ConversorNotaFiscalAkilParaZeus.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\DuplicataNotaFiscalMap.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\FormaPagamentoNotaFiscalMap.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\ItemNotaFiscalMap.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\NotaFiscalMap.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\NotaFiscalReferenciadaMap.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\RepositorioNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\ServicoNotaFiscal.cs" />
+    <Compile Include="Fiscal\NotaFiscalServ\VwNotasDocumentosMap.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvServ\ConversorPreVendaDjpdv.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvServ\RepositorioPreVendaDjpdv.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvServ\ServicoPreVendaDjpdv.cs" />
+    <Compile Include="Integracao\PreVendaDjpdvServ\PreVendaDjpdvMap.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJServ\ConversorTabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJServ\RepositorioTabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJServ\ServicoTabelasModificadasIntegracaoDJ.cs" />
+    <Compile Include="Integracao\TabelasModificadasIntegracaoDJServ\TabelasModificadasIntegracaoDJMap.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalServ\AjusteFiscalMap.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalServ\ConversorAjusteFiscal.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalServ\RepositorioAjusteFiscal.cs" />
+    <Compile Include="Movimentacao\AjusteFiscalServ\ServicoAjusteFiscal.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\ConversorMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\ServicoMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\RepositorioMovimentacao.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\ItemMovimentacaoMap.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\MovimentacaoBaseMap.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\VwSaldoAtualCaixaMap.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\VwMovimentacaoItemCaixaMap.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\VwMovimentacaoSaidaItens.cs" />
+    <Compile Include="Movimentacao\MovimentacaoServ\VwMovimentacaoProdutoMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroDeMapeamentos.cs" />
+    <Compile Include="ServicoBase\FuncionalidadeAttribute.cs" />
+    <Compile Include="ServicoBase\ServicoAkilSmallBusiness.cs" />
+    <Compile Include="Telemarketing\TmkServ\ConversorHistoricoAtendimento.cs" />
+    <Compile Include="Telemarketing\TmkServ\ConversorTmk.cs" />
+    <Compile Include="Telemarketing\TmkServ\HistoricoAtendimentoMap.cs" />
+    <Compile Include="Telemarketing\TmkServ\RepositorioHistoricoAtendimento.cs" />
+    <Compile Include="Telemarketing\TmkServ\RepositorioTmk.cs" />
+    <Compile Include="Telemarketing\TmkServ\ServicoHistoricoAtendimento.cs" />
+    <Compile Include="Telemarketing\TmkServ\ServicoTmk.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoServ\ConversorLiberacaoDocumento.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoServ\LiberacaoDocumentoMap.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoServ\RepositorioLiberacaoDocumento.cs" />
+    <Compile Include="Vendas\LiberacaoDocumentoServ\ServicoLiberacaoDocumento.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\ConversorPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\ItemPedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\ParcelaPedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\PedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\RepositorioPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\ServicoPedidoDeVenda.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\VWVendaTranportesMap.cs" />
+    <Compile Include="Vendas\PedidoDeVendaServ\VWVendaMap.cs" />
+    <Compile Include="Vendas\RecebimentoServ\ConversorRecebimento.cs" />
+    <Compile Include="Vendas\RecebimentoServ\ParcelaRecebimentoMap.cs" />
+    <Compile Include="Vendas\RecebimentoServ\RecebimentoNfMap.cs" />
+    <Compile Include="Vendas\RecebimentoServ\RecebimentoMap.cs" />
+    <Compile Include="Vendas\RecebimentoServ\RepositorioRecebimento.cs" />
+    <Compile Include="Vendas\RecebimentoServ\ServicoRecebimento.cs" />
+    <Compile Include="Vendas\RoteiroServ\ConversorHistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroServ\ConversorRoteirizacao.cs" />
+    <Compile Include="Vendas\RoteiroServ\ConversorRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroServ\HistoricoRoteiroMap.cs" />
+    <Compile Include="Vendas\RoteiroServ\RepositorioHistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroServ\RepositorioRoteirizacao.cs" />
+    <Compile Include="Vendas\RoteiroServ\RoteirizacaoMap.cs" />
+    <Compile Include="Vendas\RoteiroServ\RoteiroMap.cs" />
+    <Compile Include="Vendas\RoteiroServ\RepositorioRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroServ\ServicoHistoricoRoteiro.cs" />
+    <Compile Include="Vendas\RoteiroServ\ServicoRoteirizacao .cs" />
+    <Compile Include="Vendas\RoteiroServ\ServicoRoteiro.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\ConversorTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\ItemPedidoTrocaPedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\ItemTrocaPedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\RepositorioTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\ServicoTrocaPedidoDeVenda.cs" />
+    <Compile Include="Vendas\TrocaPedidoDeVendaServ\TrocaPedidoDeVendaMap.cs" />
+    <Compile Include="Vendas\VendaRapidaServ\ServicoVendaRapida.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TipoCustomizadosDeMapeamento\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorkBr.Financeiro.Negocio\Programax.Easy.Negocio.csproj">
+      <Project>{C5FF4E68-4042-41E0-840F-D6799F70E738}</Project>
+      <Name>Programax.Easy.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="conexoes.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="conexoesII.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExecutaveisExternos\mysql.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExecutaveisExternos\mysqldump.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

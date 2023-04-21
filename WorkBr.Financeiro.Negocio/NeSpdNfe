@@ -1,0 +1,631 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel;
+using System.Data.SqlClient;
+using System.Data;
+
+namespace Programax.Easy.Negocio
+{
+    public class NeNfSaida : Programax.Easy.Core.Persistencia.PsDataAccess
+    {
+        #region --> Construtor da classe
+
+        /// <summary>
+        /// Permite criar uma instância do objeto com a passagem de parametros
+        /// </summary>
+        /// <param name="pConnectString">Informe a string de conexão com a base de dados</param>
+        public NeNfSaida(string pConnectString)
+        {
+            _ConnectString = "";
+            if (pConnectString != null) _ConnectString = pConnectString;
+
+            ConnectionStringBase = _ConnectString;
+        }
+        private Component components = new Component();
+
+
+        #endregion
+
+        #region -- > Destrutor da classe
+        ~NeNfSaida() { Dispose(); }
+
+
+        #endregion
+
+        #region -- > Propriedades de conexão e de campos de tabela
+        private string _ConnectString { get; set; }
+        #endregion --------------------------------------------------
+
+        #region --> Propriedades para valores de campo de base dados.
+        /// <summary>
+        /// Informar o numero da nota fiscal.
+        /// </summary>
+        public Int32 Id { get; set; }
+        /// <summary>
+        /// Informe o codigo da NFE complementar.
+        /// </summary>
+        public Int32 CodigoNFe { get; set; }
+        /// <summary>
+        /// Informe a Serie da nota fiscal.
+        /// </summary>
+        public string Serie { get; set; }
+        /// <summary>
+        /// Informar o codigo do pedido;
+        /// </summary>
+        public Int32 PedidoId { get; set; }
+        /// <summary>
+        /// Informar o codigo da pessoa (fisica ou juridica);
+        /// </summary>
+        public Int32 PessoaId { get; set; }
+        /// <summary>
+        ///  Informe a razão social / Nome;
+        /// </summary>
+        public string PessoaNome { get; set; }
+        /// <summary>
+        ///  Informe o nome de fantasia da empresa;
+        /// </summary>
+        public string PessoaFantasia { get; set; }
+        /// <summary>
+        ///  Informe o nome do Municipio.
+        /// </summary>
+        public string Cidade { get; set; }
+        /// <summary>
+        ///  Informe o Estado.
+        /// </summary>
+        public string Estado { get; set; }
+        /// <summary>
+        /// Informar o codigo padrão de lançamento.
+        /// </summary>
+        public int CplId { get; set; }
+        /// <summary>
+        /// Informe a descricao do (CPL) codigo padrão de lançamento.
+        /// </summary>
+        public string CplDescricao { get; set; }
+        /// <summary>
+        /// Informe a data de emissao da nota fiscal.
+        /// </summary>
+        public string DataEmissao { get; set; }
+        /// <summary>
+        /// Informe a data de movimento da nota fiscal.
+        /// </summary>
+        public string DataMovimento { get; set; }
+        /// <summary>
+        /// Informe o tipo de pedido (Pedido / Requisição / Orçamento ).
+        /// </summary>
+        public string TipoPedido { get; set; }
+        /// <summary>
+        /// Informe o tipo de venda. (A Vista / A Prazo).
+        /// </summary>
+        public string TipoVenda { get; set; }
+        /// <summary>
+        /// Informe o se o registro esta (Aberto - Cancelado - Devolvido - Fechado)
+        /// </summary>
+        public string Status { get; set; }
+        /// <summary>
+        /// Informe o codigo natureza de operacao da nota fiscal.
+        /// </summary>
+        public int NaturezaOperacaoId { get; set; }
+        /// <summary>
+        /// Informe a descricao da natureza de operacao da nota fiscal.
+        /// </summary>
+        public string NaturezaOperacaoDescricao { get; set; }
+        /// <summary>
+        /// Informe o status da venda.
+        /// </summary>
+        public string StatusVenda { get; set; }
+        /// <summary>
+        /// Informe o codigo do Cfop-Codigo Fiscal de Operações.
+        /// </summary>
+        public Int32 CfopCodigo { get; set; }
+        /// <summary>
+        /// Informe a descricao do Cfop-Codigo Fiscal de Operações.
+        /// </summary>
+        public string CfopDescricao { get; set; }
+        /// <summary>
+        /// Informe o valor do frete.
+        /// <summary>
+        public decimal ValorFrete { get; set; }
+        /// <summary>
+        /// Informe o valor do seguro.
+        /// <summary>
+        public decimal ValorSeguro { get; set; }
+        /// <summary>
+        /// Informe o valor de outras despesas acessorias.
+        /// <summary>
+        public decimal OutrasDespesas { get; set; }
+        /// <summary>
+        /// Informe a quantiade de volumes.
+        /// <summary>
+        public decimal QtdeVolumes { get; set; }
+        /// <summary>
+        /// Informe o peso bruto para transporte.
+        /// <summary>
+        public decimal PesoBruto { get; set; }
+        /// <summary>
+        /// Informe o peso liquido para transporte.
+        /// <summary>
+        public decimal PesoLiquido { get; set; }
+        /// <summary>
+        /// Informe o numero de volumes para transporte.
+        /// <summary>
+        public string NumeroVolumes { get; set; }
+        /// <summary>
+        /// Informe a especie de volumes para transporte.
+        /// <summary>
+        public string EspecieVolumes { get; set; }
+        /// <summary>
+        /// Informe marca de volumes para transporte.
+        /// <summary>
+        public string MarcaVolumes { get; set; }
+        /// <summary>
+        /// Informe o codigo da transportadora.
+        /// <summary>
+        public int TransportadoraId { get; set; }
+        /// <summary>
+        /// Informe o nome da transportadora.
+        /// <summary>
+        public string TransportadoraNome { get; set; }
+        /// <summary>
+        /// Informe o valor da base de icms.
+        /// <summary>
+        public decimal BaseIcms { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal ValorIcms { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal BaseIpi { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal ValorIpi { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal BaseSubTributaria { get; set; }
+        /// <summary>
+        /// Informe o valor do icms retido.
+        /// <summary>
+        public decimal IcmsRetido { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal OutrasSubTributaria { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal TotalProdutos { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal Isentas { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal NaoTributado { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal Outras { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal ParcelaReduzida { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal Pis { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal Cofins { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal Desconto { get; set; }
+        /// <summary>
+        /// Informe o valor do icms.
+        /// <summary>
+        public decimal TotalNotaFiscal { get; set; }
+        /// <summary>
+        /// Informe a chave da NFE.
+        /// </summary>
+        public string ChaveNFE { get; set; }
+        /// <summary>
+        /// Informe o status da NFE.
+        /// </summary>
+        public string StatusNFe { get; set; }
+        /// <summary>
+        /// Informe o tipo se saida ou entrada.
+        /// </summary>
+        public string Tipo { get; set; }
+        /// <summary>
+        /// Informe o numero do recibo.
+        /// </summary>
+        public string NrRecibo { get; set; }
+        /// <summary>
+        /// Informe o numero protocolo de envio.
+        /// </summary>
+        public string NrProtocoloEnvio { get; set; }
+        /// <summary>
+        /// Informe o numero protocolo de cancelamento.
+        /// </summary>
+        public string NrProtocoloCancelamento { get; set; }
+        /// <summary>
+        /// Informe o numero do protocolo de inutilizacao.
+        /// </summary>
+        public string NrProtocoloInutilizacao { get; set; }
+
+        /// <summary>
+        /// Ao pesquisar o registro está propriedade será true- para editando.
+        /// </summary>
+        public bool Editando { get; set; }
+
+        public enum MovTipo
+        {
+            MovExclui = 1,
+            MovInclui = 2
+        }
+
+        public enum eMovItens
+        {
+            MovItensEntradaNormal = 1,
+            MovItensEntradaNFe = 2,
+            MovItensSaida = 3
+        }
+
+        public enum MovTipoEs
+        {
+            MovEntrada = 1,
+            MovSaida = 2
+        }
+
+        #endregion --------------------------------------------------
+
+        public void Pesquisar()
+        {
+            try
+            {
+                StringBuilder _Builder = new StringBuilder();
+                _Builder.Append(" select nfsai_id, nfsai_codnfe, nfsai_serie, nfsai_data_movimento, nfsai_pedi_id, pedi_data_emissao, pedi_total_liquido, ");
+                _Builder.Append(" case pedi_tipopedido when 'P' then 'PEDIDO' when 'R' then 'REQUISIÇÃO' when 'O' then 'ORÇAMENTO' end as pedi_tipopedido, ");
+                _Builder.Append(" case pedi_tipovenda when 'AV' then 'AVISTA' when 'AP' then 'APRAZO' end as pedi_tipovenda, ");
+                _Builder.Append(" case pedi_statusvenda when 'A' then 'ABERTO' when 'C' then 'CANCELADO' when 'E' then 'EXCLUIDO' when 'Q' then 'QUITADO' end as pedi_statusvenda, ");
+                _Builder.Append(" pedi_pes_id, pes_razao, pes_fantasia, pes_cida_id, cida_descricao, cida_esta_id, nfsai_natoper_id, natoper_descricao, nfsai_cpl_id, cpl_descricao, ");
+                _Builder.Append(" nfsai_valorfrete, nfsai_valorseguro, nfsai_outrasdespesas, nfsai_qtdevolumes, ");
+                _Builder.Append(" nfsai_pesobruto, nfsai_pesoliquido, nfsai_numerovolumes, nfsai_especievolumes, ");
+                _Builder.Append(" nfsai_marcavolumes, nfsai_pes_id_transporte, nfsai_baseicms, nfsai_valoricms, ");
+                _Builder.Append(" nfsai_baseipi, nfsai_valoripi, nfsai_basesubtributaria, nfsai_icmsretido, nfsai_outrassubtributaria, nfsai_totalprodutos, ");
+                _Builder.Append(" nfsai_isentas, nfsai_naotributado, nfsai_outras, nfsai_parcelareduzida, ");
+                _Builder.Append(" nfsai_pis, nfsai_cofins, nfsai_desconto, nfsai_totalnf, nfsai_chavenfe ");
+                _Builder.Append(" cfop_codigo, cfop_descricao, nfsai_impresso, nfsai_data_devolvida, nfsai_status, nfsai_status_nfe, nfsai_tipo ");
+                _Builder.Append(" from Pedido INNER JOIN ");
+                _Builder.Append(" Pessoas ON pedi_pes_id = pes_id INNER JOIN ");
+                _Builder.Append(" NfSaida ON pedi_id = nfsai_pedi_id INNER JOIN ");
+                _Builder.Append(" Cidades ON pes_cida_id = cida_id INNER JOIN ");
+                _Builder.Append(" NaturezaOperacao ON nfsai_natoper_id  = natoper_id INNER JOIN ");
+                _Builder.Append(" Cpl ON nfsai_cpl_id  = cpl_id INNER JOIN ");
+                _Builder.Append(" Cfop ON cpl_cfop_id = cfop_id ");
+                _Builder.Append(String.Format(" where nfsai_id='{0}'", Id));
+
+                // -- > Mova as informações encontradas para as propriedades.
+                Carregar(ConsulteDReader(_Builder.ToString()));
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+        }
+
+        private void Carregar(SqlDataReader pDr)
+        {
+            try
+            {
+                if (pDr != null) // -- > Verifique se não é nulo
+                    if (pDr.HasRows) // -- > Verifique se há linhas no resultado final
+                        if (pDr.Read()) // -- > Avance o ponte de leitura, se retorna true é porque exite registros
+                        {
+                            // -- > Mova os registros para as propriedades
+                            // Nota Fiscal
+                            Id = pDr["nfsai_id"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_id"].ToString()) : 0;
+                            CodigoNFe = pDr["nfsai_codnfe"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_codnfe"].ToString()) : 0;
+                            Serie = pDr["nfsai_Serie"] != DBNull.Value ? pDr["nfsai_Serie"].ToString() : "";
+                            DataMovimento = pDr["nfsai_data_movimento"] != DBNull.Value ? pDr["nfsai_data_movimento"].ToString() : "";
+                            PedidoId = pDr["nfsai_pedi_id"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_pedi_id"].ToString()) : 0;
+                            NaturezaOperacaoId = pDr["nfsai_natoper_id"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_natoper_id"].ToString()) : 0;
+                            NaturezaOperacaoDescricao = pDr["natoper_descricao"] != DBNull.Value ? pDr["natoper_descricao"].ToString() : "";
+                            CplId = pDr["nfsai_cpl_id"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_cpl_id"].ToString()) : 0;
+                            CplDescricao = pDr["cpl_descricao"] != DBNull.Value ? pDr["cpl_descricao"].ToString() : "";
+
+                            // Pedido
+                            PessoaId = pDr["pedi_pes_id"] != DBNull.Value ? Convert.ToInt32(pDr["pedi_pes_id"].ToString()) : 0;
+                            PessoaNome = pDr["pes_razao"] != DBNull.Value ? pDr["pes_razao"].ToString() : "";
+                            PessoaFantasia = pDr["pes_fantasia"] != DBNull.Value ? pDr["pes_fantasia"].ToString() : "";
+                            DataEmissao = pDr["pedi_data_emissao"] != DBNull.Value ? pDr["pedi_data_emissao"].ToString() : "";
+                            TipoPedido = pDr["pedi_tipopedido"] != DBNull.Value ? pDr["pedi_tipopedido"].ToString() : "";
+                            TipoVenda = pDr["pedi_tipovenda"] != DBNull.Value ? pDr["pedi_tipovenda"].ToString() : "";
+                            StatusVenda = pDr["pedi_statusvenda"] != DBNull.Value ? pDr["pedi_statusvenda"].ToString() : "";
+                            Cidade = pDr["cida_descricao"] != DBNull.Value ? pDr["cida_descricao"].ToString() : "";
+                            Estado = pDr["cida_esta_id"] != DBNull.Value ? pDr["cida_esta_id"].ToString() : "";
+
+                            CfopCodigo = pDr["cfop_codigo"] != DBNull.Value ? Convert.ToInt32(pDr["cfop_codigo"].ToString()) : 0;
+                            CfopDescricao = pDr["cfop_descricao"] != DBNull.Value ? pDr["cfop_descricao"].ToString() : "";
+
+                            ValorFrete = pDr["nfsai_valorfrete"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_valorfrete"].ToString()) : 0;
+                            ValorSeguro = pDr["nfsai_valorseguro"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_valorseguro"].ToString()) : 0;
+
+                            OutrasDespesas = pDr["nfsai_outrasdespesas"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_outrasdespesas"].ToString()) : 0;
+                            QtdeVolumes = pDr["nfsai_qtdevolumes"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_qtdevolumes"].ToString()) : 0;
+                            PesoBruto = pDr["nfsai_pesobruto"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_pesobruto"].ToString()) : 0;
+                            PesoLiquido = pDr["nfsai_pesoliquido"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_pesoliquido"].ToString()) : 0;
+                            NumeroVolumes = pDr["nfsai_numerovolumes"] != DBNull.Value ? pDr["nfsai_numerovolumes"].ToString() : "";
+                            EspecieVolumes = pDr["nfsai_especievolumes"] != DBNull.Value ? pDr["nfsai_especievolumes"].ToString() : "";
+                            MarcaVolumes = pDr["nfsai_marcavolumes"] != DBNull.Value ? pDr["nfsai_marcavolumes"].ToString() : "";
+
+                            TransportadoraId = pDr["nfsai_pes_id_transporte"] != DBNull.Value ? Convert.ToInt32(pDr["nfsai_pes_id_transporte"].ToString()) : 0;
+                            TransportadoraNome = pDr["pes_razao"] != DBNull.Value ? pDr["pes_razao"].ToString() : "";
+
+                            BaseIcms = pDr["nfsai_baseicms"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_baseicms"].ToString()) : 0;
+                            ValorIcms = pDr["nfsai_valoricms"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_valoricms"].ToString()) : 0;
+                            BaseIpi = pDr["nfsai_baseipi"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_baseipi"].ToString()) : 0;
+                            ValorIpi = pDr["nfsai_valoripi"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_valoripi"].ToString()) : 0;
+                            BaseSubTributaria = pDr["nfsai_basesubtributaria"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_basesubtributaria"].ToString()) : 0;
+                            IcmsRetido = pDr["nfsai_icmsretido"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_icmsretido"].ToString()) : 0;
+                            OutrasSubTributaria = pDr["nfsai_outrassubtributaria"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_outrassubtributaria"].ToString()) : 0;
+                            TotalProdutos = pDr["nfsai_totalprodutos"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_totalprodutos"].ToString()) : 0;
+
+                            Isentas = pDr["nfsai_isentas"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_isentas"].ToString()) : 0;
+                            NaoTributado = pDr["nfsai_naotributado"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_naotributado"].ToString()) : 0;
+                            Outras = pDr["nfsai_outras"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_outras"].ToString()) : 0;
+                            ParcelaReduzida = pDr["nfsai_parcelareduzida"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_parcelareduzida"].ToString()) : 0;
+                            Pis = pDr["nfsai_pis"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_pis"].ToString()) : 0;
+                            Cofins = pDr["nfsai_cofins"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_cofins"].ToString()) : 0;
+                            Desconto = pDr["nfsai_desconto"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_desconto"].ToString()) : 0;
+                            TotalNotaFiscal = pDr["nfsai_totalnf"] != DBNull.Value ? Convert.ToDecimal(pDr["nfsai_totalnf"].ToString()) : 0;
+                            ChaveNFE = pDr["nfsai_chavenfe"] != DBNull.Value ? pDr["nfsai_chavenfe"].ToString() : "";
+
+                            Editando = true;
+                        }
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (!pDr.IsClosed) pDr.Close(); // -- > Feche o datareader}
+            }
+        }
+
+        /// <summary>
+        /// Gravar registros na base de dados utilizando uma procedures
+        /// </summary>
+        /// <returns>Qualquer valor maior 0 é que o registro foi gravado com sucesso</returns>
+        public int Gravar()
+        {
+            int _Result = 0;
+            try
+            {
+                // -- > Passe as informações para a coleção de parâmetros, logo após a passagem de valores a mesma será submetida a storedprocedure
+                SqlParameter[] _Parameters = new SqlParameter[31];
+                _Parameters[0] = Parameter("nfsai_id", System.Data.SqlDbType.BigInt, 0, System.Data.ParameterDirection.Input, Id);
+                _Parameters[1] = Parameter("nfsai_codnfe", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, CodigoNFe);
+                _Parameters[2] = Parameter("nfsai_Serie", System.Data.SqlDbType.VarChar, 2, System.Data.ParameterDirection.Input, Serie);
+                _Parameters[3] = Parameter("nfsai_cpl_id", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, CplId);
+                _Parameters[4] = Parameter("nfsai_natoper_id", System.Data.SqlDbType.Int, 0, System.Data.ParameterDirection.Input, NaturezaOperacaoId);
+
+                _Parameters[5] = Parameter("nfsai_valorfrete", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, ValorFrete);
+                _Parameters[6] = Parameter("nfsai_valorseguro", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, ValorSeguro);
+                _Parameters[7] = Parameter("nfsai_outrasdespesas", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, OutrasDespesas);
+                _Parameters[8] = Parameter("nfsai_qtdevolumes", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, QtdeVolumes);
+                _Parameters[9] = Parameter("nfsai_pesobruto", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, PesoBruto);
+                _Parameters[10] = Parameter("nfsai_pesoliquido", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, PesoLiquido);
+
+                _Parameters[11] = Parameter("nfsai_numerovolumes", System.Data.SqlDbType.VarChar, 20, System.Data.ParameterDirection.Input, NumeroVolumes);
+                _Parameters[12] = Parameter("nfsai_especievolumes", System.Data.SqlDbType.VarChar, 20, System.Data.ParameterDirection.Input, EspecieVolumes);
+                _Parameters[13] = Parameter("nfsai_marcavolumes", System.Data.SqlDbType.VarChar, 20, System.Data.ParameterDirection.Input, MarcaVolumes);
+
+                _Parameters[14] = Parameter("nfsai_pes_id_transporte", System.Data.SqlDbType.BigInt, 0, System.Data.ParameterDirection.Input, TransportadoraId);
+
+                _Parameters[15] = Parameter("nfsai_baseicms", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, BaseIcms);
+                _Parameters[16] = Parameter("nfsai_valoricms", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, ValorIcms);
+                _Parameters[17] = Parameter("nfsai_baseipi", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, BaseIpi);
+                _Parameters[18] = Parameter("nfsai_valoripi", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, ValorIpi);
+                _Parameters[19] = Parameter("nfsai_basesubtributaria", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, BaseSubTributaria);
+                _Parameters[20] = Parameter("nfsai_icmsretido", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, IcmsRetido);
+                _Parameters[21] = Parameter("nfsai_outrassubtributaria", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, OutrasSubTributaria);
+                _Parameters[22] = Parameter("nfsai_totalprodutos", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, TotalProdutos);
+
+                _Parameters[23] = Parameter("nfsai_isentas", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, Isentas);
+                _Parameters[24] = Parameter("nfsai_naotributado", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, NaoTributado);
+                _Parameters[25] = Parameter("nfsai_outras", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, Outras);
+                _Parameters[26] = Parameter("nfsai_parcelareduzida", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, ParcelaReduzida);
+                _Parameters[27] = Parameter("nfsai_pis", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, Pis);
+                _Parameters[28] = Parameter("nfsai_cofins", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, Cofins);
+                _Parameters[29] = Parameter("nfsai_desconto", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, Desconto);
+                _Parameters[30] = Parameter("nfsai_totalnf", System.Data.SqlDbType.Decimal, 0, System.Data.ParameterDirection.Input, TotalNotaFiscal);
+
+                // -- > Execute a storedprocedure que encontra-se no banco de dados afim de gravar ou editar o registro
+                _Result = StoredProcedure("proc_gravar_nfsaida", _Parameters);
+
+                // -- > Force o fechamento da conexão da conexão com a base dados
+                CloseConnection();
+            }
+            catch (Exception Ex)
+            {
+                // -- > Force o fechamento da conexão da conexão com a base dados
+                CloseConnection();
+                throw Ex;
+            }
+            return _Result;// -- > Retorne a quantidade de registro foi afetado pela operação.
+        }
+
+        public int Apagar()
+        {
+            int _Result = 0;
+            try
+            {
+                // -- > Passe as informações para a collection de parametros
+                SqlParameter[] _Parameters = new SqlParameter[1];
+                _Parameters[0] = Parameter("@nfsai_id", System.Data.SqlDbType.BigInt, 0, System.Data.ParameterDirection.Input, Id);
+
+                // --> Tente apagar o registro, executado a storedprocedure
+                _Result = StoredProcedure("proc_apagar_nfsaida", _Parameters);
+
+                // -- > Force o fechamento da conexão
+                CloseConnection();
+            }
+            catch (Exception Ex)
+            {
+                // -- > Force o fechamento da conexão
+                CloseConnection();
+                throw Ex;
+            }
+            return _Result;
+        }
+
+        public DataTable ListaNfSaida(string pComplemento)
+        {
+            DataTable _Result = null;
+            try
+            {
+                StringBuilder _Builder = new StringBuilder();
+                _Builder.Append(" select nfsai_id, nfsai_codnfe, nfsai_serie, nfsai_data_emissao, nfsai_data_movimento, nfsai_pedi_id, pedi_data_emissao, pedi_total_liquido, ");
+                _Builder.Append(" case pedi_tipopedido when 'P' then 'PEDIDO' when 'R' then 'REQUISIÇÃO' when 'O' then 'ORÇAMENTO' end as pedi_tipopedido, ");
+                _Builder.Append(" case pedi_tipovenda when 'AV' then 'AVISTA' when 'AP' then 'APRAZO' end as pedi_tipovenda, ");
+                _Builder.Append(" case pedi_statusvenda when 'A' then 'ABERTO' when 'C' then 'CANCELADO' when 'E' then 'EXCLUIDO' when 'Q' then 'QUITADO' end as pedi_statusvenda, ");
+                _Builder.Append(" pedi_pes_id, pes_razao, pes_fantasia, pes_cida_id, cida_descricao, cida_esta_id, nfsai_natoper_id, natoper_descricao, nfsai_cpl_id, cpl_descricao, ");
+                _Builder.Append(" nfsai_valorfrete, nfsai_valorseguro, nfsai_outrasdespesas, nfsai_qtdevolumes, ");
+                _Builder.Append(" nfsai_pesobruto, nfsai_pesoliquido, nfsai_numerovolumes, nfsai_especievolumes, ");
+                _Builder.Append(" nfsai_marcavolumes, nfsai_pes_id_transporte, nfsai_baseicms, nfsai_valoricms, ");
+                _Builder.Append(" nfsai_baseipi, nfsai_valoripi, nfsai_basesubtributaria, nfsai_icmsretido, nfsai_outrassubtributaria, nfsai_totalprodutos, ");
+                _Builder.Append(" nfsai_isentas, nfsai_naotributado, nfsai_outras, nfsai_parcelareduzida, ");
+                _Builder.Append(" nfsai_pis, nfsai_cofins, nfsai_desconto, nfsai_totalnf, ");
+                _Builder.Append(" cfop_codigo, cfop_descricao,  nfsai_impresso, nfsai_data_devolvida, nfsai_status, nfsai_status_nfe, nfsai_tipo, ");
+                _Builder.Append(" case nfsai_status when 'A' then 'AUTORIZADA' when 'R' then 'REJEITADA' when 'I' then 'INUTILIZADA' when 'C' then 'CANCELADA' when 'D' then 'DISPONIVEL' when 'E' then 'ERRO' end as nfsai_status, ");
+                _Builder.Append(" case nfsai_devolvida when 'S' then 'SIM' else 'NÃO' end as nfsai_devolvida, ");
+                _Builder.Append(" case nfsai_impresso when 'S' then 'SIM' else 'NÃO' end as nfsai_impresso ");
+                _Builder.Append(" from Pedido INNER JOIN ");
+                _Builder.Append(" Pessoas ON pedi_pes_id = pes_id INNER JOIN ");
+                _Builder.Append(" NfSaida ON pedi_id = nfsai_pedi_id INNER JOIN ");
+                _Builder.Append(" Cidades ON pes_cida_id = cida_id INNER JOIN ");
+                _Builder.Append(" NaturezaOperacao ON nfsai_natoper_id  = natoper_id INNER JOIN ");
+                _Builder.Append(" Cpl ON nfsai_cpl_id  = cpl_id INNER JOIN ");
+                _Builder.Append(" Cfop ON cpl_cfop_id = cfop_id ");
+
+                if (!string.IsNullOrEmpty(pComplemento))
+                    _Builder.Append(" where " + pComplemento);
+                _Builder.Append(" order by nfsai_id ");
+
+                // -- > Retorne o resultado
+                _Result = ConsulteDTable(_Builder.ToString());
+
+                // -- > Force o fechamento da conexão
+                CloseConnection();
+
+            }
+            catch (Exception Ex)
+            {
+                // -- > Force o fechamento da conexão
+                CloseConnection();
+                throw Ex;
+            }
+
+            return _Result;
+        }
+
+        public bool VerificaNotaComplementar(Int32 varNFeComplementar)
+        {
+            bool _Result = false;
+            try
+            {
+
+                StringBuilder _Builder = new StringBuilder();
+                _Builder.Append(" SELECT nfsai_id, nfsai_chavenfe FROM NfSaida");
+                _Builder.Append(" where nfsai_codnfe=" + varNFeComplementar + " "); 
+                SqlDataReader _Dr = ConsulteDReader(_Builder.ToString());
+                _Builder = null;
+                if (_Dr != null) // -- > Verifique se não é nulo 
+                {
+                    if (_Dr.HasRows) // -- > Verifique se há linhas no resultado final.
+                    {
+                        while (_Dr.Read()) // -- > Avance o ponte de leitura.
+                        {
+                            Id = _Dr["nfsai_id"] != DBNull.Value ? Convert.ToInt32(_Dr["nfsai_id"].ToString()) : 0;
+                            ChaveNFE = _Dr["nfsai_chavenfe"] != DBNull.Value ? _Dr["nfsai_chavenfe"].ToString() : "";
+                            _Result = true;
+                        }
+                    }
+                }
+                if (!_Dr.IsClosed) _Dr.Close();
+                _Dr = null;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            return _Result;
+        }
+
+        public string UsarStatusNFe(Int32 intCodigo, bool booRetEnvia, bool booRetCancelamento, bool booRetInutilizacao)
+        {
+            string _Result = "";
+            bool booRecebida = false;
+            int booMovES = 0;
+            string strStatusBd = "D";
+            try
+            {
+                //Verificando o tipo de nota de entrada / saida.
+                StringBuilder _Builder = new StringBuilder();
+                _Builder.Append(" SELECT * FROM NfSaida INNER JOIN "); //nfsai_id, nfsai_status, nfsai_ped_id, nfsai_tipo
+                _Builder.Append(" Pedido ON nfsai_id = pedi_nfsai_id ");
+                _Builder.Append(" where nfsai_d=" + intCodigo + " ");
+                SqlDataReader _Dr = ConsulteDReader(_Builder.ToString());
+                _Builder = null;
+                if (_Dr != null) // -- > Verifique se não é nulo 
+                {
+                    if (_Dr.HasRows) // -- > Verifique se há linhas no resultado final.
+                    {
+                        while (_Dr.Read()) // -- > Avance o ponte de leitura.
+                        {
+                            Id = _Dr["nfsai_id"] != DBNull.Value ? Convert.ToInt32(_Dr["nfsai_id"].ToString()) : 0;
+                            StatusNFe = _Dr["nfsai_status"] != DBNull.Value ? _Dr["nfsai_status"].ToString() : "";
+                            PedidoId = _Dr["pedi_id"] != DBNull.Value ? Convert.ToInt32(_Dr["pedi_id"].ToString()) : 0;
+                            Tipo = _Dr["nfsai_tipo"] != DBNull.Value ? _Dr["nfsai_tipo"].ToString() : "";
+
+                            if (Tipo == "S")
+                            {
+                                booMovES = Convert.ToInt16(eMovItens.MovItensSaida);
+                            }
+                            else booMovES = Convert.ToInt16(eMovItens.MovItensEntradaNFe);
+
+                            // SPDNFE
+                            ChaveNFE = pDr["nfsai_chavenfe"] != DBNull.Value ? pDr["nfsai_chavenfe"].ToString() : "";
+                            NrRecibo = pDr["nfsai_nrrecibo"] != DBNull.Value ? pDr["nfsai_nrrecibo"].ToString() : "";
+                            NrProtocoloEnvio = pDr["nfsai_nprotenvio"] != DBNull.Value ? pDr["nfsai_nprotenvio"].ToString() : "";
+                            NrProtocoloCancelamento = pDr["nfsai_nprotcanc"] != DBNull.Value ? pDr["nfsai_nprotcanc"].ToString() : "";
+                            NrProtocoloInutilizacao = pDr["nfsai_nprotinutil"] != DBNull.Value ? pDr["nfsai_nprotinutil"].ToString() : "";
+
+
+
+
+                        }
+                    }
+                }
+                if (!_Dr.IsClosed) _Dr.Close();
+                _Dr = null;
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            return _Result;
+        }
+
+
+    }
+}

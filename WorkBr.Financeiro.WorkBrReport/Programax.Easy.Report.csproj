@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B1CCB15-3BEC-4524-B470-AEFC30F5CE9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Programax.Easy.Report</RootNamespace>
+    <AssemblyName>Programax.Easy.Report</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Extensions, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Wizard, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DFe.Classes">
+      <HintPath>..\..\..\Dlls_Terceiros\DFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.3.0.733, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Classes, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Classes.dll</HintPath>
+    </Reference>
+    <Reference Include="NFe.Utils, Version=1.0.0.685, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NFe.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Programax.Infraestrutura.Negocio, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Negocio\bin\Debug\Programax.Infraestrutura.Negocio.dll</HintPath>
+    </Reference>
+    <Reference Include="Programax.Infraestrutura.Relatorio">
+      <HintPath>..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Relatorio\bin\Debug\Programax.Infraestrutura.Relatorio.dll</HintPath>
+    </Reference>
+    <Reference Include="Programax.Infraestrutura.Servico">
+      <HintPath>..\..\..\Programax.Infraestrutura\Programax.Infraestrutura.Servico\bin\Debug\Programax.Infraestrutura.Servico.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Dlls_Terceiros\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatoriosDevExpress\Cadastros\RelatorioParceiro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Cadastros\RelatorioParceiro.Designer.cs">
+      <DependentUpon>RelatorioParceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Cadastros\RelatorioProdutos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Cadastros\RelatorioProdutos.Designer.cs">
+      <DependentUpon>RelatorioProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatoriodeDRE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioEntrada.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioEntrada.Designer.cs">
+      <DependentUpon>RelatorioEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoSaidas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoSaidas.Designer.cs">
+      <DependentUpon>RelatorioMovimentacaoSaidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoItens.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoItens.Designer.cs">
+      <DependentUpon>RelatorioMovimentacaoItens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioCarnePagamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioCarnePagamento.Designer.cs">
+      <DependentUpon>RelatorioCarnePagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoBanco.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoBanco.Designer.cs">
+      <DependentUpon>RelatorioMovimentacaoBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioNotaPromissoria.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioNotaPromissoria.Designer.cs">
+      <DependentUpon>RelatorioNotaPromissoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioContasPagarReceber.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioContasPagarReceber.Designer.cs">
+      <DependentUpon>RelatorioContasPagarReceber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioDeCheques.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioDeCheques.Designer.cs">
+      <DependentUpon>RelatorioDeCheques.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoCaixa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoCaixa.Designer.cs">
+      <DependentUpon>RelatorioMovimentacaoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioReciboCaixa.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Financeiro\RelatorioReciboCaixa.Designer.cs">
+      <DependentUpon>RelatorioReciboCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Fiscal\RelatorioCartaCorrecao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Fiscal\RelatorioCartaCorrecao.Designer.cs">
+      <DependentUpon>RelatorioCartaCorrecao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\LayoutsXml\RelatorioVendasClienteII.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\LayoutsXml\RelatorioVendasClienteII.Designer.cs">
+      <DependentUpon>RelatorioVendasClienteII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBaseDev.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBaseDev.Designer.cs">
+      <DependentUpon>RelatorioBaseDev.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBasePaisagem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBasePaisagem.Designer.cs">
+      <DependentUpon>RelatorioBasePaisagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Roteiros\RelatorioListaRoteiros.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Roteiros\RelatorioListaRoteiros.Designer.cs">
+      <DependentUpon>RelatorioListaRoteiros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Roteiros\RelatorioRoteiros.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Roteiros\RelatorioRoteiros.Designer.cs">
+      <DependentUpon>RelatorioRoteiros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioClientesSemComprar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioClientesSemComprar.Designer.cs">
+      <DependentUpon>RelatorioClientesSemComprar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCondicaoPagamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCondicaoPagamento.Designer.cs">
+      <DependentUpon>RelatorioCondicaoPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiroTodos .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiroTodos .Designer.cs">
+      <DependentUpon>RelatorioCustoFinanceiroTodos .cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioDeTransportes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioDeTransportes.Designer.cs">
+      <DependentUpon>RelatorioDeTransportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioContratoVenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioContratoVenda.Designer.cs">
+      <DependentUpon>RelatorioContratoVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaAgenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaAgenda.Designer.cs">
+      <DependentUpon>RelatorioPedidoVendaAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasViasAgenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasViasAgenda.Designer.cs">
+      <DependentUpon>RelatorioPedidoVendaDuasViasAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioTrocaDeVenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioTrocaDeVenda.Designer.cs">
+      <DependentUpon>RelatorioTrocaDeVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasVias.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasVias.Designer.cs">
+      <DependentUpon>RelatorioPedidoVendaDuasVias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaReduzido.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaReduzido.Designer.cs">
+      <DependentUpon>RelatorioPedidoVendaReduzido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiro.Designer.cs">
+      <DependentUpon>RelatorioCustoFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendasChoque.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendasChoque.Designer.cs">
+      <DependentUpon>RelatorioVendasChoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendasCliente.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendasCliente.Designer.cs">
+      <DependentUpon>RelatorioVendasCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVenda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVenda.Designer.cs">
+      <DependentUpon>RelatorioPedidoVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\RelatorioVendas.Designer.cs">
+      <DependentUpon>RelatorioVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\BandasPadroes\TituloAuxiliar.cs" />
+    <Compile Include="Relatorios\Estoque\ProdutoRelatorioInventarioAux.cs" />
+    <Compile Include="Relatorios\Estoque\RelatorioInventario.cs" />
+    <Compile Include="Relatorios\Estoque\RelatorioListaInventario.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Estoque\RelatorioListaInventario.Designer.cs">
+      <DependentUpon>RelatorioListaInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\RelatorioPadrao.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RelatoriosDevExpress\Cadastros\RelatorioParceiro.resx">
+      <DependentUpon>RelatorioParceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Cadastros\RelatorioProdutos.resx">
+      <DependentUpon>RelatorioProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatoriodeDRE.resx">
+      <DependentUpon>RelatoriodeDRE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Estoque\RelatorioEntrada.resx">
+      <DependentUpon>RelatorioEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoSaidas.resx">
+      <DependentUpon>RelatorioMovimentacaoSaidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Estoque\RelatorioMovimentacaoItens.resx">
+      <DependentUpon>RelatorioMovimentacaoItens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioCarnePagamento.resx">
+      <DependentUpon>RelatorioCarnePagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoBanco.resx">
+      <DependentUpon>RelatorioMovimentacaoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioNotaPromissoria.resx">
+      <DependentUpon>RelatorioNotaPromissoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioContasPagarReceber.resx">
+      <DependentUpon>RelatorioContasPagarReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioDeCheques.resx">
+      <DependentUpon>RelatorioDeCheques.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioMovimentacaoCaixa.resx">
+      <DependentUpon>RelatorioMovimentacaoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Financeiro\RelatorioReciboCaixa.resx">
+      <DependentUpon>RelatorioReciboCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Fiscal\RelatorioCartaCorrecao.resx">
+      <DependentUpon>RelatorioCartaCorrecao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\LayoutsXml\RelatorioVendasClienteII.resx">
+      <DependentUpon>RelatorioVendasClienteII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\RelatorioBaseDev.resx">
+      <DependentUpon>RelatorioBaseDev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\RelatorioBasePaisagem.resx">
+      <DependentUpon>RelatorioBasePaisagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Roteiros\RelatorioListaRoteiros.resx">
+      <DependentUpon>RelatorioListaRoteiros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Roteiros\RelatorioRoteiros.resx">
+      <DependentUpon>RelatorioRoteiros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioClientesSemComprar.resx">
+      <DependentUpon>RelatorioClientesSemComprar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioCondicaoPagamento.resx">
+      <DependentUpon>RelatorioCondicaoPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiroTodos .resx">
+      <DependentUpon>RelatorioCustoFinanceiroTodos .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioDeTransportes.resx">
+      <DependentUpon>RelatorioDeTransportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioContratoVenda.resx">
+      <DependentUpon>RelatorioContratoVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaAgenda.resx">
+      <DependentUpon>RelatorioPedidoVendaAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasViasAgenda.resx">
+      <DependentUpon>RelatorioPedidoVendaDuasViasAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioTrocaDeVenda.resx">
+      <DependentUpon>RelatorioTrocaDeVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaDuasVias.resx">
+      <DependentUpon>RelatorioPedidoVendaDuasVias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaReduzido.resx">
+      <DependentUpon>RelatorioPedidoVendaReduzido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioCustoFinanceiro.resx">
+      <DependentUpon>RelatorioCustoFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioVendasChoque.resx">
+      <DependentUpon>RelatorioVendasChoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioVendasCliente.resx">
+      <DependentUpon>RelatorioVendasCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVenda.resx">
+      <DependentUpon>RelatorioPedidoVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioVendas.resx">
+      <DependentUpon>RelatorioVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\BandasPadroes\RelatorioComTopoPadrao.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\BandasPadroes\RelatorioTitulo.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque\estoqueII.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque\RelatorioInventario.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Estoque\RelatorioListaInventario.resx">
+      <DependentUpon>RelatorioListaInventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.CidadeObj.ObjetoDeNegocio.Cidade.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EmpresaObj.ObjetoDeNegocio.DadosContador.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EmpresaObj.ObjetoDeNegocio.DadosEmpresa.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EmpresaObj.ObjetoDeNegocio.Empresa.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EmpresaObj.ObjetoDeNegocio.EnderecoEmpresaComEmail.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EnderecoObj.ObjetoDeNegocio.Endereco.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.EstadoObj.ObjetoDeNegocio.Estado.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.PessoaObj.ObjetoDeNegocio.Pessoa.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.PessoaObj.Repositorio.IRepositorioPessoa.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.ContabilFiscalProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.DadosGeraisProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.FormacaoPrecoProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.PrincipalProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.Produto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.ValidacaoProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Cadastros.ProdutoObj.ObjetoDeNegocio.VestuarioProduto.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.PedidoDeVendaObj.ObjetoDeNegocio.PedidoDeVenda.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.HistoricoRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.IRepositorioHistoricoRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.IRepositorioRoteirizacao.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.IRepositorioRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.Roteirizacao.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio.Roteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ValidacaoHistoricoRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ValidacaoRoteirizacao.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Negocio.Vendas.RoteiroObj.ValidacaoRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.Relatorios.BandasPadroes.TituloAuxiliar.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.Relatorios.Estoque.ProdutoRelatorioInventarioAux.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.Relatorios.Estoque.RelatorioInventario.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Cadastros.RelatorioClientes+ClienteRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Cadastros.RelatorioProdutos+ProdutoRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Cadastros.RelatorioProdutos.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Estoque.RelatorioEntrada+EntradaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Estoque.RelatorioEntrada+FinanceiroEntradaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Estoque.RelatorioEntrada+ItemEntradaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Estoque.RelatorioMovimentacaoItens+VwMovimentacaoProdutoRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Financeiro.RelatorioContasPagarReceber+ContasPagarReceberRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Financeiro.RelatoriodeDRE+RelatorioDRE.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Financeiro.RelatoriodeDRE.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Financeiro.RelatorioMovimentacaoCaixa+MovimentacaoCaixaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Financeiro.RelatorioReciboCaixa+ReciboCaixaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioClientesSemComprar+ClienteSemComprarRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioCustoFinanceiro+itensRel.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioCustoFinanceiro+VendasRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioCustoFinanceiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioListaInventario+InventarioRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioListaInventario+ItemInventarios.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioPedidoVenda+PedidoDeVendaRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioRoteiros+ItemParcela.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioRoteiros+ItemRoteiro.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioRoteiros+ItemVenda.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioRoteiros+RoteiroRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioRoteiros.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioVendas+VendasRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Easy.Report.RelatoriosDevExpress.Vendas.RelatorioVendasClientes+VendasClienteRelatorio.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Fabricas.FabricaDeRepositorios.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.ObjetosDeNegocio.ObjetoDeNegocioBase.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.ObjetosDeNegocio.ObjetoDeNegocioComStatus.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.ObjetosDeNegocio.ObjetoDescricaoValor.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.ControlExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.EnumeradorExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.LambdaExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.MetodosAuxiliares.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.ObjectLambda.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.ObjetoDeNegocioBaseExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.StringExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.ValidacoesGerais.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Utils.ValidatorExtensions.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Validacoes.ExceptionInconsistencias.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Validacoes.Inconsistencia.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Validacoes.InconsistenciasDeValidacao.datasource" />
+    <None Include="Properties\DataSources\Programax.Infraestrutura.Negocio.Validacoes.MensagemComposta.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Relatorios\BandasPadroes\relatorio.mrt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Relatorios\BandasPadroes\Rodape.mrt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Relatorios\BandasPadroes\Topo.mrt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Relatorios\Bandas\relatorio.mrt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+    <Service Include="{FE73BB80-53F4-4AD0-A5F9-6A0BCE662292}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Programax.Easy.Servico\Programax.Easy.Servico.csproj">
+      <Project>{925B20C4-E81E-4D79-82E4-FB9409B5E235}</Project>
+      <Name>Programax.Easy.Servico</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorkBr.Financeiro.Negocio\Programax.Easy.Negocio.csproj">
+      <Project>{C5FF4E68-4042-41E0-840F-D6799F70E738}</Project>
+      <Name>Programax.Easy.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataSet\" />
+    <Folder Include="RelatoriosDevExpress\DRE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RelatoriosDevExpress\LayoutsXml\RelatorioBasePaisagem.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RelatoriosDevExpress\LayoutsXml\RelatorioBaseDev.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

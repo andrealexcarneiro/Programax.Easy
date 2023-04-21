@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cleCadastroLote xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/CleCadastro">
+<cleCabecMsg><![CDATA[<cabecMsg xmlns="http://www.portalfiscal.inf.br/nfe"><versaoDados>1.00</versaoDados></cabecMsg>]]>
+</cleCabecMsg>
+<cleDadosMsg><![CDATA[<?xml version="1.0" encoding="utf-8"?>%s]]></cleDadosMsg>
+</cleCadastroLote>

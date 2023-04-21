@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><consReciNFe xmlns="http://www.portalfiscal.inf.br/nfe" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.portalfiscal.inf.br/nfe consReciNFe_v1.10.xsd" versao="1.10"><tpAmb>%s</tpAmb><nRec>%s</nRec></consReciNFe>

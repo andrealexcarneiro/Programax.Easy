@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="icons8-linha-vertical-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-linha-vertical-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="none-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\none-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-linha-vertical-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-linha-vertical-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_baixar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_baixar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-061.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fast44" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fast44.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_atalho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_atalho16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_caixafechado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_caixafechado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_tres_pontos1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_tres_pontos1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_remover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_remover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-baixar-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-baixar-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="qr-code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qr-code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_Sair2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Sair2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="linha_horizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linha_horizontal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_strongbox_3339047" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_strongbox_3339047.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_safebox_3339041" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_safebox_3339041.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_fechar_venda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_fechar_venda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_manutencao_titulo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_manutencao_titulo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="supermarket57" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\supermarket57.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_atualizar_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_atualizar_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSair1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSair1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_transportadora" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_transportadora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ponto-de-exclamacao-imagem-animada-0034" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ponto-de-exclamacao-imagem-animada-0034.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_Suporte2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Suporte2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_confirmar_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_confirmar_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_selecionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_selecionar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_199_CircledPlus_183316" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_199_CircledPlus_183316.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_adicionar_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_adicionar_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_remover_preto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_remover_preto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuAdmSistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuAdmSistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_excluir_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_excluir_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AkilSB_Avatar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AkilSB_Avatar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_EntradaSistema-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_EntradaSistema-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela-login3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela-login3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Enhancedlabs-Longhorn-Pinstripe-None" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Enhancedlabs-Longhorn-Pinstripe-None.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_condpagto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_condpagto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Akil-acqua" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Akil-acqua.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_usuario1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuPDV" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuPDV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alerta2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alerta2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-diretorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-diretorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_EntradaSistema-02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_EntradaSistema-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_inativar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_inativar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Akil-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Akil-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuVendas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuVendas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-08_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-08_01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_Akil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_Akil.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconLimpar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconLimpar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="linha_horizontal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linha_horizontal1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LucaNet_BI_cube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LucaNet_BI_cube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder_advanced-search_49813" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_advanced-search_49813.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_tabelapreco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_tabelapreco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSalvar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSalvar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Sobre-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Sobre-041.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLimpar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLimpar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_xml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_xml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_obrigatorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_obrigatorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_selecionar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_selecionar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dialog_information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dialog_information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_adicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_adicionar (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rightarrow_application_derecha_flech_4432" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rightarrow_application_derecha_flech_4432.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cancelar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cancelar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_gerar_parcelas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_gerar_parcelas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_vermelho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\geometric (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuFiscal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuFiscal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_azul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\geometric.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Akil-branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Akil-branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="supermarket57 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\supermarket57 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_atualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_selecionar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_sair_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_sair_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_obrigatorio_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_obrigatorio_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="whatsapp_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whatsapp_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-09" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-09.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_lixeira" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_lixeira (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_balloon_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_balloon_top.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_seguranca" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_seguranca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSair1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconSair1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_estornar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_estornar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuEstoque" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuEstoque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_webcam" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_webcam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cheque" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cheque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bodyBG_sub1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodyBG_sub.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnLimpar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnLimpar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_EntradaSistema-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_EntradaSistema-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleRed16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleRed16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_comentario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_comentario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-07" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-07.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_tres_pontos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_tres_pontos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cancelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cancelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_Imprimir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Imprimir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editar_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\editar_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuCadastros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuCadastros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="programax-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\programax-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_Manual2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_Manual2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_EntradaSistema1-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_EntradaSistema1-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="auth-gfx-ms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\auth-gfx-ms.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones-parametros-produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones-parametros-produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleGreen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_atualizar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_atualizar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_duplicar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_duplicar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_sair_tela" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_sair_tela.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pesquisar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pesquisar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_TrocarUsuario2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_TrocarUsuario2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-linha-vertical-grossa-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-linha-vertical-grossa-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_fechamento_financeiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_fechamento_financeiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSalvar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconSalvar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuFinanceiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuFinanceiro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_liberacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_liberacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icones2-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icones2-08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cancelar_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cancelar_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleYellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleYellow1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Akil-claro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Akil-claro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="download-direto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download-direto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_formapagamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_formapagamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_pesquisar_branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_pesquisar_branco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="294" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\294.GIF;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_caixaaberto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_caixaaberto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_img.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BolaCinza16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BolaCinza16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_carta_correcao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_carta_correcao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bodyBG_sub" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bodyBG_sub.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MenuRelatorios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MenuRelatorios.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="produtos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\produtos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btnSair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btnSair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_enviar_nfe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_enviar_nfe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-06" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-06.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela-login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela-login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_importar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_importar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela_Recebimento-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela_Recebimento-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_exclamacao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_exclamacao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_enviand_nfe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_enviand_nfe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconSair" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconSair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2941" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\294.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\geometric (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp-icon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp-icon_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tela-login2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tela-login2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone_cancelar_venda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone_cancelar_venda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lamp-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lamp-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle_Blue16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\circle_Blue16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
