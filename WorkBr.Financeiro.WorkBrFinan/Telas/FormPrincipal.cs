@@ -362,7 +362,7 @@ namespace Programax.Easy.View.Telas
         #endregion
 
         #region " EVENTOS MENU ESTOQUE "
-
+        //Andre
         private void tspMenuItens_Click(object sender, EventArgs e)
         {
             FormCadastroDeProduto formCadastroDeProduto = new FormCadastroDeProduto();
