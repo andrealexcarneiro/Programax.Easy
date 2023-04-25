@@ -309,6 +309,12 @@
     <Compile Include="RelatoriosDevExpress\Vendas\RelatorioContratoVenda.Designer.cs">
       <DependentUpon>RelatorioContratoVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\nfe .cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\Vendas\nfe .Designer.cs">
+      <DependentUpon>nfe .cs</DependentUpon>
+    </Compile>
     <Compile Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaAgenda.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -461,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioContratoVenda.resx">
       <DependentUpon>RelatorioContratoVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\Vendas\nfe .resx">
+      <DependentUpon>nfe .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatoriosDevExpress\Vendas\RelatorioPedidoVendaAgenda.resx">
       <DependentUpon>RelatorioPedidoVendaAgenda.cs</DependentUpon>
