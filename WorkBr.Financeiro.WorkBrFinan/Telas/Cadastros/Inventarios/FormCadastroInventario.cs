@@ -808,6 +808,13 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
 
         private void AtualizeContagem()
         {
+
+            double quantidadesubestoque = 0;
+            double quantidadeestoque = 0;
+            double Saldo = 0;
+           
+
+
             Action actionAatualizarItem = () =>
                 {
                     var itemInventario = _listaItemInventario.FirstOrDefault(item => item.Produto.Id == txtIdProduto.Text.ToInt());
@@ -826,6 +833,42 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
                         {
                             itemInventario.QuantidadeContagemTres = txtQuantidadeContada.Text.ToDouble();
                         }
+
+
+                        quantidadeestoque = itemInventario.Produto.FormacaoPreco.Estoque;
+
+                        ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
+                        var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(txtIdProduto.Text.ToInt());
+
+                        if (ItemTransferencia != null)
+                        {
+                            foreach (var itemproduto in ItemTransferencia)
+                            {
+                                quantidadesubestoque += itemproduto.QuantidadeEstoque;
+                            }
+
+                        }
+
+                        if (quantidadesubestoque != 0)
+
+                        {
+                            if (txtQuantidadeContada.Text.ToDouble() == 0)
+                            {
+                                MessageBox.Show("Produto não pode zerar o estoque, o produto tem " + quantidadesubestoque + " unidades no Sub Estoque", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+
+                            Saldo = quantidadeestoque - quantidadesubestoque;
+
+                            if ( txtQuantidadeContada.Text.ToDouble() < Saldo)
+                            {
+                                MessageBox.Show("Produto com saldo menor que o estoque, o produto tem " + quantidadesubestoque + " unidades no Sub Estoque", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+
+                        }
+
+
 
                         ServicoInventario servicoInventario = new ServicoInventario();
                         servicoInventario.AtualizeItem(itemInventario);

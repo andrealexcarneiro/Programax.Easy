@@ -271,7 +271,7 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
 
             DateTime? dataInicialPeriodo = DataDia == null? txtDia.Text.ToDateNullabel():DataDia;
             
-            _listaDeRoteiros = servicoRoteiro.ConsulteLista(null, periodo, EnumStatusRoteiro.EMAGENDA, EnumDataFiltrarRoteiro.ELABORACAO, dataInicialPeriodo, dataInicialPeriodo, 0);
+            _listaDeRoteiros = servicoRoteiro.ConsulteLista(null, periodo, EnumStatusRoteiro.EMAGENDA, EnumDataFiltrarRoteiro.ELABORACAO, dataInicialPeriodo, dataInicialPeriodo, 0, 0);
 
             preencherGrid();
 
@@ -581,7 +581,7 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
 
             //_listaDeRoteiros.CarregueLazyLoad();
 
-            RelatorioListaRoteiros relatorio = new RelatorioListaRoteiros(txtDia.Text.ToDate(), txtDia.Text.ToDate());
+            RelatorioListaRoteiros relatorio = new RelatorioListaRoteiros(txtDia.Text.ToDate(), txtDia.Text.ToDate(), 0, 0);
             relatorio.GereRelatorio();
 
             using (ReportPrintTool printTool = new ReportPrintTool(relatorio))

@@ -1137,7 +1137,7 @@ namespace Programax.Easy.View.Telas
             lblUsuario.Text = Sessao.PessoaLogada.Id + " - " + Sessao.PessoaLogada.DadosGerais.NomeFantasia;
             lblDataLicenca.Text = licencaDeUso.LiberadoAte.ToString("dd/MM/yyyy");
             //lblVersaoSistema.Text = informacaoSistema.Versao + " /Refiltek";
-            lblVersaoSistema.Text = " 1.1.32.3";
+            lblVersaoSistema.Text = " 1.1.33.5";
             //VerificarAtualizacao();?
 
             //if (" " + empresa.DadosEmpresa.Versao.ToString() != lblVersaoSistema.Text.ToString())

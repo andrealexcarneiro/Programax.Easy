@@ -35,7 +35,8 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
         protected bool _cadastroLiberado = true;
         protected bool _editarPedidoLiberado;
         Parametros _parametros = new ServicoParametros().ConsulteParametros();
-       
+        int RoteiroId = 0;
+        int IdRoteiro = 0;
 
         string numeroDocumentoValidacao;
 
@@ -61,6 +62,7 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
             {
                 _listaDeRoteiros = new ServicoRoteiro().ConsulteListaPorRoteirizacao(CodigoRoteiro);
                 preencherGrid();
+                IdRoteiro = CodigoRoteiro;
             }
 
             _editarPedidoLiberado = Sessao.ListaDePermissoes.FirstOrDefault(x => x.Funcionalidade == EnumFuncionalidade.PEDIDODEVENDAS).Alterar;
@@ -867,6 +869,9 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
             {
                 var roteiros = RetorneRoteiroSelecionado();
 
+                RoteiroId = roteiros.PedidoVenda.Id;
+                IdRoteiro = 0;
+
                 if (roteiros != null)
                 {
                     if (roteiros.Status == EnumStatusRoteiro.CONCLUIDO)
@@ -892,7 +897,9 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
 
             _listaDeRoteiros.CarregueLazyLoad();
 
-            RelatorioListaRoteiros relatorio = new RelatorioListaRoteiros(txtDataRoteiro.Text.ToDate(), txtDataRoteiro.Text.ToDate());
+            
+
+            RelatorioListaRoteiros relatorio = new RelatorioListaRoteiros(txtDataRoteiro.Text.ToDate(), txtDataRoteiro.Text.ToDate(), RoteiroId, IdRoteiro);
             relatorio.GereRelatorio();
 
             using (ReportPrintTool printTool = new ReportPrintTool(relatorio))

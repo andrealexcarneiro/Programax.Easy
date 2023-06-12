@@ -248,7 +248,7 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
                                 " Inner join produtos ON " +
                                 " pedidosvendasitens.peditem_produto_id = produtos.prod_id " +
                                 " Where peditem_produto_id = " + txtId.Text + " And pedido_status<> 3 And " +
-                                " produtos.PROD_ESTOQUE_RESERVADO > 0  And pedido_data_elaboracao >= '2023-03-01' And pedido_tipo_pedido_venda = 1 order by pedido_id desc LIMIT 50";
+                                " PEDITEM_RESERVA > 0  And pedido_tipo_pedido_venda = 1 order by pedido_id desc LIMIT 50";
 
                 MySqlCommand MyCommand = new MySqlCommand(sql, conn);
                 MySqlDataReader MyReader2;
@@ -334,14 +334,87 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
                 gcItens.DataSource = listaItemGrid;
                 gcItens.RefreshDataSource();
 
+               
+
             }
+            ConsultaReserva(txtId.Text.ToInt());
             this.Cursor = Cursors.Default;
 
 
             
         }
-        
 
+        private void carregaconexao()
+        {
+            string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
+
+            ConexoesJson conexoes = JsonConvert.DeserializeObject<ConexoesJson>(conexoesString);
+
+            var item = conexoes.Conexoes[IndiceBancoDados];
+            string ipServer = !string.IsNullOrEmpty(item.IpPrincipal) ? item.IpPrincipal : "localhost";
+            string database = !string.IsNullOrEmpty(item.BancoDadosPrincipal) ? item.BancoDadosPrincipal : "akilsmallbusiness";
+            string userId = !string.IsNullOrEmpty(item.UsuarioPrincipal) ? item.UsuarioPrincipal : "root";
+            string senha = !string.IsNullOrEmpty(item.SenhaPrincipal) ? item.SenhaPrincipal : "Progr@max-2015";
+            int porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+            var serverPrincipalOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+            if (serverPrincipalOnline)
+            {
+                ConectionString = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";" + "default command timeout = 240";
+            }
+            else
+            {
+                ipServer = !string.IsNullOrEmpty(item.IpSecundario) ? item.IpSecundario : "localhost";
+                database = !string.IsNullOrEmpty(item.BancoDadosSecundario) ? item.BancoDadosSecundario : "akilsmallbusiness";
+                userId = !string.IsNullOrEmpty(item.UsuarioSecundario) ? item.UsuarioSecundario : "root";
+                senha = !string.IsNullOrEmpty(item.SenhaSecundaria) ? item.SenhaSecundaria : "Progr@max-2015";
+                porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+                var serverSecundarioOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+                if (serverSecundarioOnline)
+                {
+                    StringConexaoII = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";";
+                }
+                else
+                {
+                    //throw new Exception();
+                    //throw new Exception("Servidor de banco de dados não encontrado");
+                }
+
+            }
+
+        }
+        private void ConsultaReserva(int CodProduto)
+        {
+
+            carregaconexao();
+
+
+            string Sql = string.Empty;
+            using (var conn = new MySqlConnection(ConectionString))
+            {
+                conn.Open();
+
+                var sql = "";
+
+                sql = "SELECT sum(PEDITEM_QUANTIDADE) as Reserva FROM pedidosvendasitens where peditem_produto_id = " + CodProduto + " And PEDITEM_RESERVA > 0 ";
+
+
+
+                MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+                MySqlDataReader MyReader2;
+
+
+                var returnValue = MyCommand.ExecuteReader();
+
+                while (returnValue.Read())
+                {
+                    txtreserva.Text = returnValue["Reserva"].ToString();
+                }
+            }
+        }
         #endregion
 
         #region " BLOQUEAR E DESBLOQUEAR CAPA "

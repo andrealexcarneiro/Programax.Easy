@@ -290,10 +290,16 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
                 LimpeCamposLancamentoProduto();
                 return;
             }
+            if (txtQuantidadeContada.Text.ToString() == "")
+            {
+                MessageBox.Show("Insira a quantidade a ser transferida.", "Informe a Quantidade", MessageBoxButtons.OK);
+                LimpeCamposLancamentoProduto();
+                return;
+            }
 
             if (rdnSubEstoque.Checked == true)
             {
-                if(txtQuantidadeContada.Text.ToInt()> txtdisponivel.Text.ToInt())
+                if(txtQuantidadeContada.Text.ToInt() > txtdisponivel.Text.ToInt())
                 {
                     MessageBox.Show("Quantidade Inserida é maior que Quantidade Disponível, altere a quantidade Inserida.", "Informe outro produto", MessageBoxButtons.OK);
                     txtQuantidadeContada.Text = string.Empty;
@@ -304,9 +310,9 @@ namespace Programax.Easy.View.Telas.Cadastros.Inventarios
 
             if (rdnEstoque.Checked == true)
             {
-                if (txtQuantidadeContada.Text.ToInt() > txtdisponivel.Text.ToInt())
+                if (txtdisponivel.Text.ToInt() > txtEstoqueTotal.Text.ToInt())
                 {
-                    MessageBox.Show("Quantidade Inserida é maior que Quantidade Disponível, altere a quantidade Inserida.", "Informe outro produto", MessageBoxButtons.OK);
+                    MessageBox.Show("Estoque Total do Produto é menor que Sub Estoque, corrija o estoque.", "Corrija o Estoque do produto", MessageBoxButtons.OK);
                     txtQuantidadeContada.Text = string.Empty;
                     txtQuantidadeContada.Focus();
                     return;

@@ -54,11 +54,25 @@ namespace Programax.Easy.Servico.Fiscal.ConfiguracaoNfeServ
 
         public ConfiguracaoServico RetorneConfiguracaoServicoZeus(EnumModeloNotaFiscal modeloNotaFiscal)
         {
+
+            ServicoEmpresa servicoempresa = new ServicoEmpresa();
+            var empresa = servicoempresa.ConsulteUltimaEmpresa();
+
             var configuracoesNfe = ConsulteConfiguracoesNfe(modeloNotaFiscal);
 
             var configuracaoZeus = ConfiguracaoServico.Instancia;
 
-            configuracaoZeus.cUF = DFe.Classes.Entidades.Estado.GO; 
+            if(empresa.DadosEmpresa.Endereco.Cidade.Estado.UF == "GO")
+            {
+                configuracaoZeus.cUF = DFe.Classes.Entidades.Estado.GO;
+            }
+            else
+            {
+                configuracaoZeus.cUF = DFe.Classes.Entidades.Estado.PA;
+            }
+
+            //configuracaoZeus.cUF = DFe.Classes.Entidades.Estado.GO;
+            
 
             configuracaoZeus.SalvarXmlServicos = false;
             configuracaoZeus.DiretorioSchemas = Directory.GetCurrentDirectory() + @"\Esquemas\PL_008g";

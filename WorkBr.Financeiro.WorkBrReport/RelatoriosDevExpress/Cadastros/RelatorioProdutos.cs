@@ -18,6 +18,10 @@ using Programax.Easy.Negocio.Cadastros.Enumeradores;
 using Programax.Easy.Servico.Fiscal.NcmServ;
 using Programax.Easy.Negocio.Fiscal.NcmObj.ObjetoDeNegocio;
 using Programax.Easy.Servico.Cadastros.TransferenciaServ;
+using Programax.Infraestrutura.Negocio.Utils;
+using static Programax.Easy.Servico.RegistroDeMapeamentos;
+using Newtonsoft.Json;
+using MySql.Data.MySqlClient;
 
 namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
 {
@@ -37,10 +41,15 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
         private string _status;
         private double totalVenda;
         private double totalcusto;
+        private bool _fiscal;
         private double totalSaldo;
         private int? _estoqueMairQue;
         private bool _mostrarNcms;
         private List<Ncm> listaNcms;
+        private string ConectionString;
+        private DateTime _dataInicialPeriodo;
+        private DateTime _dataFinalPeriodo;
+        private double dblReserva = 0;
 
         #endregion
 
@@ -57,6 +66,9 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
                                             int? itemComDDVAbaixoDe,
                                             EnumOrdenacaoPesquisaProduto ordenacaoPesquisaProduto,
                                             string status,
+                                            bool fiscal,
+                                            DateTime dataInicialPeriodo,
+                                            DateTime dataFinalPeriodo,
                                             int? estoqueMaiorQue = null)
         {
             InitializeComponent();
@@ -73,6 +85,9 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
             _status = status;
             _estoqueMairQue = estoqueMaiorQue;
             _mostrarNcms = mostrarNcms;
+            _fiscal = fiscal;
+            _dataInicialPeriodo = dataInicialPeriodo;
+            _dataFinalPeriodo = dataFinalPeriodo;
 
             _tituloRelatorio = "RELATÓRIO DE ITENS";
         }
@@ -106,6 +121,8 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
 
             List<ProdutoRelatorio> listaProdutosRelatorio = new List<ProdutoRelatorio>();
             double quantidadesubestoque = 0;
+            carregaconexao();
+
 
             foreach (var produto in listaProdutos)
             {
@@ -151,12 +168,13 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
                     produtoRelatorio.Saldo = produto.Estoque.ToString("#,###,##0");
 
                     produtoRelatorio.EstoqueMinimo = produto.QtdMinima.ToString("#,###,##0");
-                    estoquereservado = produto.EstoqueReservado;
-                    if (estoquereservado < 0)
-                    {
-                        estoquereservado = 0;
-                    }
-                    produtoRelatorio.Reserva = estoquereservado.ToString("#,###,##0");
+                    ConsultaReserva(produto.Id);
+                //if (dblReserva == 0)
+                //{
+                //    txtreserva.Text = "0.0000";
+                //}
+                    
+                    produtoRelatorio.Reserva = dblReserva.ToString("#,###,##0");
                     produtoRelatorio.Disponivel = (produto.Estoque - estoquereservado).ToString("#,###,##0");
 
                 ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
@@ -180,12 +198,46 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
 
 
                     produtoRelatorio.DDV = produto.DDV.ToString("#,###,##0");
+                if (_fiscal)
+                {
+                   
+                
+                    string sql = string.Empty;
+                    using (var conn = new MySqlConnection(ConectionString))
+                    {
+                        conn.Open();
 
+                        sql = "SELECT itement_prod_id FROM entradas " +
+                              " inner join entradasitens ON entradas.entrada_id = entradasitens.itement_entrada_id " +
+                              " where  itement_prod_id = " + produto.Id + " limit 1";
+
+                            //entrada_data_cadastro >= '" + _dataInicialPeriodo + "' and entrada_data_cadastro <= '" + _dataFinalPeriodo + "' And " +
+
+
+                        MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+
+                        var returnValue = MyCommand.ExecuteReader();
+                        while (returnValue.Read())
+                        {
+                            totalVenda += (produto.ValorVenda * produto.Estoque);
+                            totalcusto += (produto.PrecoCompra * produto.Estoque);
+                            totalSaldo += produto.Estoque;
+                            listaProdutosRelatorio.Add(produtoRelatorio);
+                        }
+                    }
+
+                }
+                else
+                {
                     totalVenda += (produto.ValorVenda * produto.Estoque);
                     totalcusto += (produto.PrecoCompra * produto.Estoque);
                     totalSaldo += produto.Estoque;
 
-                listaProdutosRelatorio.Add(produtoRelatorio);                
+                    listaProdutosRelatorio.Add(produtoRelatorio);
+                }
+
+
+
             }
 
             ConteudoRelatorio.DataSource = listaProdutosRelatorio;
@@ -195,7 +247,77 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Cadastros
             txtTotalVendas.Text = totalVenda.ToString("#,###,##0.00");
             txtTotalCustos.Text = totalcusto.ToString("#,###,##0.00");
         }
+        private void carregaconexao()
+        {
+            string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
+            ConexoesJson conexoes = JsonConvert.DeserializeObject<ConexoesJson>(conexoesString);
+
+            var item = conexoes.Conexoes[IndiceBancoDados];
+            string ipServer = !string.IsNullOrEmpty(item.IpPrincipal) ? item.IpPrincipal : "localhost";
+            string database = !string.IsNullOrEmpty(item.BancoDadosPrincipal) ? item.BancoDadosPrincipal : "akilsmallbusiness";
+            string userId = !string.IsNullOrEmpty(item.UsuarioPrincipal) ? item.UsuarioPrincipal : "root";
+            string senha = !string.IsNullOrEmpty(item.SenhaPrincipal) ? item.SenhaPrincipal : "Progr@max-2015";
+            int porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+            var serverPrincipalOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+            if (serverPrincipalOnline)
+            {
+                ConectionString = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";" + "default command timeout = 240";
+            }
+            else
+            {
+                ipServer = !string.IsNullOrEmpty(item.IpSecundario) ? item.IpSecundario : "localhost";
+                database = !string.IsNullOrEmpty(item.BancoDadosSecundario) ? item.BancoDadosSecundario : "akilsmallbusiness";
+                userId = !string.IsNullOrEmpty(item.UsuarioSecundario) ? item.UsuarioSecundario : "root";
+                senha = !string.IsNullOrEmpty(item.SenhaSecundaria) ? item.SenhaSecundaria : "Progr@max-2015";
+                porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+                var serverSecundarioOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+                if (serverSecundarioOnline)
+                {
+                    StringConexaoII = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";";
+                }
+                else
+                {
+                    //throw new Exception();
+                    //throw new Exception("Servidor de banco de dados não encontrado");
+                }
+
+            }
+
+        }
+        private void ConsultaReserva(int CodProduto)
+        {
+
+            carregaconexao();
+
+
+            string Sql = string.Empty;
+            using (var conn = new MySqlConnection(ConectionString))
+            {
+                conn.Open();
+
+                var sql = "";
+
+                sql = "SELECT sum(PEDITEM_QUANTIDADE) as Reserva FROM pedidosvendasitens where peditem_produto_id = " + CodProduto + " And PEDITEM_RESERVA > 0 ";
+
+
+
+                MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+                MySqlDataReader MyReader2;
+
+
+                var returnValue = MyCommand.ExecuteReader();
+                
+                while (returnValue.Read())
+                {
+                    dblReserva = returnValue["Reserva"].ToDouble();
+                }
+            }
+        }
         #endregion
 
         #region " CLASSES AUXILIARES "

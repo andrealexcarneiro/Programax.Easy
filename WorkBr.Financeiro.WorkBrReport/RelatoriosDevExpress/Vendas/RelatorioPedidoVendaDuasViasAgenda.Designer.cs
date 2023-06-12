@@ -1024,7 +1024,7 @@
             this.xrLabel52.CanShrink = true;
             this.xrLabel52.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Complemento]")});
-            this.xrLabel52.Font = new System.Drawing.Font("Verdana", 6.25F);
+            this.xrLabel52.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.xrLabel52.LocationFloat = new DevExpress.Utils.PointFloat(571.2901F, 171.6458F);
             this.xrLabel52.Multiline = true;
             this.xrLabel52.Name = "xrLabel52";

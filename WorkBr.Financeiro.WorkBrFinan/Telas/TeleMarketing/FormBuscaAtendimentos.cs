@@ -1177,11 +1177,14 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
                 var pedidoDeVenda = servicoPedidoDeVenda.Consulte(txtId.Text.ToInt());
 
-               
+               if (pedidoDeVenda != null)
+                {
+                    FormAtendimento formAtender = new FormAtendimento(pedidoDeVenda.Id, pedidoDeVenda.DataElaboracao, "", 0, cboCarteiras.EditValue.ToInt());
 
-                FormAtendimento formAtender = new FormAtendimento( pedidoDeVenda.Id, pedidoDeVenda.DataElaboracao,"",0,cboCarteiras.EditValue.ToInt());
+                    formAtender.Show();
+                }
 
-                formAtender.Show();
+         
             }
         }
 

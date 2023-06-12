@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastroPedidoDeVenda));
             this.colunaItemEstahInconsistente = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -2040,15 +2040,15 @@
             this.colunaValorTotal,
             this.colunaItemEstahInconsistente});
             this.gridControl2.CustomizationFormBounds = new System.Drawing.Rectangle(703, 467, 216, 178);
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Yellow;
-            styleFormatCondition4.Appearance.BackColor2 = System.Drawing.Color.Yellow;
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Column = this.colunaItemEstahInconsistente;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition4.Value1 = true;
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Yellow;
+            styleFormatCondition1.Appearance.BackColor2 = System.Drawing.Color.Yellow;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Column = this.colunaItemEstahInconsistente;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition1.Value1 = true;
             this.gridControl2.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition4});
+            styleFormatCondition1});
             this.gridControl2.GridControl = this.gcItens;
             this.gridControl2.GroupPanelText = "Enderecos";
             this.gridControl2.Name = "gridControl2";
@@ -4455,15 +4455,15 @@
             this.gridColumn7,
             this.gridColumn17});
             this.gridView7.CustomizationFormBounds = new System.Drawing.Rectangle(703, 467, 216, 178);
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Yellow;
-            styleFormatCondition1.Appearance.BackColor2 = System.Drawing.Color.Yellow;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.gridColumn17;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = true;
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Yellow;
+            styleFormatCondition2.Appearance.BackColor2 = System.Drawing.Color.Yellow;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Column = this.gridColumn17;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition2.Value1 = true;
             this.gridView7.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
+            styleFormatCondition2});
             this.gridView7.GridControl = this.gcMinimo;
             this.gridView7.GroupPanelText = "Enderecos";
             this.gridView7.Name = "gridView7";
@@ -4590,14 +4590,14 @@
             this.gridColumn10,
             this.gridColumn5});
             this.gridView9.CustomizationFormBounds = new System.Drawing.Rectangle(703, 467, 216, 178);
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Yellow;
-            styleFormatCondition2.Appearance.BackColor2 = System.Drawing.Color.Yellow;
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.ApplyToRow = true;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition2.Value1 = true;
+            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Yellow;
+            styleFormatCondition3.Appearance.BackColor2 = System.Drawing.Color.Yellow;
+            styleFormatCondition3.Appearance.Options.UseBackColor = true;
+            styleFormatCondition3.ApplyToRow = true;
+            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition3.Value1 = true;
             this.gridView9.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition2});
+            styleFormatCondition3});
             this.gridView9.GridControl = this.gcVendas;
             this.gridView9.GroupPanelText = "Enderecos";
             this.gridView9.Name = "gridView9";

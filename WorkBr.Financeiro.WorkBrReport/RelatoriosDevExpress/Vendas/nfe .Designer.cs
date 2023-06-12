@@ -50,7 +50,6 @@
             this.xrLine3 = new DevExpress.XtraReports.UI.XRLine();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.txtPagoNaoPago = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel65 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel64 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel61 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel60 = new DevExpress.XtraReports.UI.XRLabel();
@@ -152,97 +151,15 @@
             this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel17 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel72 = new DevExpress.XtraReports.UI.XRLabel();
+            this.topMarginBand1 = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.detailBand1 = new DevExpress.XtraReports.UI.DetailBand();
+            this.bottomMarginBand1 = new DevExpress.XtraReports.UI.BottomMarginBand();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // ConteudoRelatorio
-            // 
-            this.ConteudoRelatorio.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.GroupHeader1,
-            this.ReportFooter1,
-            this.DetailReport,
-            this.DetailReport1});
-            this.ConteudoRelatorio.DataSource = this.bindingSource3;
-            this.ConteudoRelatorio.Controls.SetChildIndex(this.DetailReport1, 0);
-            this.ConteudoRelatorio.Controls.SetChildIndex(this.DetailReport, 0);
-            this.ConteudoRelatorio.Controls.SetChildIndex(this.ReportFooter1, 0);
-            this.ConteudoRelatorio.Controls.SetChildIndex(this.GroupHeader1, 0);
-            this.ConteudoRelatorio.Controls.SetChildIndex(this.Detail1, 0);
-            // 
-            // Detail1
-            // 
-            this.Detail1.Expanded = true;
-            this.Detail1.HeightF = 0F;
-            // 
-            // PageHeader
-            // 
-            this.PageHeader.HeightF = 118.0833F;
-            // 
-            // PageFooter
-            // 
-            this.PageFooter.HeightF = 35.41667F;
-            // 
-            // pctLogo
-            // 
-            this.pctLogo.LocationFloat = new DevExpress.Utils.PointFloat(3.999996F, 0F);
-            // 
-            // lblTelefone
-            // 
-            this.lblTelefone.LocationFloat = new DevExpress.Utils.PointFloat(436.3801F, 42.12167F);
-            this.lblTelefone.StylePriority.UseFont = false;
-            this.lblTelefone.StylePriority.UseTextAlignment = false;
-            // 
-            // lblCidade
-            // 
-            this.lblCidade.LocationFloat = new DevExpress.Utils.PointFloat(436.3801F, 28.08165F);
-            this.lblCidade.StylePriority.UseFont = false;
-            this.lblCidade.StylePriority.UseTextAlignment = false;
-            // 
-            // lblEndereco
-            // 
-            this.lblEndereco.LocationFloat = new DevExpress.Utils.PointFloat(436.3801F, 14.04166F);
-            this.lblEndereco.StylePriority.UseFont = false;
-            this.lblEndereco.StylePriority.UseTextAlignment = false;
-            // 
-            // lblNomeEmpresa
-            // 
-            this.lblNomeEmpresa.LocationFloat = new DevExpress.Utils.PointFloat(436.3751F, 0F);
-            this.lblNomeEmpresa.StylePriority.UseFont = false;
-            this.lblNomeEmpresa.StylePriority.UseTextAlignment = false;
-            // 
-            // lblDataEmissao
-            // 
-            this.lblDataEmissao.StylePriority.UseFont = false;
-            this.lblDataEmissao.StylePriority.UseTextAlignment = false;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.StylePriority.UseFont = false;
-            this.lblUsuario.StylePriority.UseTextAlignment = false;
-            // 
-            // lblPagina
-            // 
-            this.lblPagina.StylePriority.UseFont = false;
-            this.lblPagina.StylePriority.UseTextAlignment = false;
-            // 
-            // lblTituloRelatorio
-            // 
-            this.lblTituloRelatorio.LocationFloat = new DevExpress.Utils.PointFloat(0F, 80F);
-            this.lblTituloRelatorio.StylePriority.UseFont = false;
-            this.lblTituloRelatorio.StylePriority.UseTextAlignment = false;
-            // 
-            // xrLine2
-            // 
-            this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 111.3333F);
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
             // 
             // Detail
             // 
@@ -389,7 +306,6 @@
             // 
             this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.txtPagoNaoPago,
-            this.xrLabel65,
             this.xrLabel64,
             this.xrLabel61,
             this.xrLabel60,
@@ -446,16 +362,6 @@
             this.txtPagoNaoPago.StylePriority.UseFont = false;
             this.txtPagoNaoPago.StylePriority.UseForeColor = false;
             this.txtPagoNaoPago.WordWrap = false;
-            // 
-            // xrLabel65
-            // 
-            this.xrLabel65.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel65.LocationFloat = new DevExpress.Utils.PointFloat(0.0001831055F, 0F);
-            this.xrLabel65.Name = "xrLabel65";
-            this.xrLabel65.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel65.SizeF = new System.Drawing.SizeF(116F, 20F);
-            this.xrLabel65.StylePriority.UseFont = false;
-            this.xrLabel65.Text = "Tipo Documento:";
             // 
             // xrLabel64
             // 
@@ -1357,7 +1263,6 @@
             // 
             this.Detail2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrTable1});
-            this.Detail2.EvenStyleName = "xrControlStyle2";
             this.Detail2.HeightF = 25F;
             this.Detail2.Name = "Detail2";
             // 
@@ -1594,15 +1499,26 @@
             this.xrLabel72.StylePriority.UseFont = false;
             this.xrLabel72.Text = "Vencimentos:";
             // 
-            // RelatorioPedidoVenda
+            // topMarginBand1
+            // 
+            this.topMarginBand1.HeightF = 1.041667F;
+            this.topMarginBand1.Name = "topMarginBand1";
+            // 
+            // detailBand1
+            // 
+            this.detailBand1.Name = "detailBand1";
+            // 
+            // bottomMarginBand1
+            // 
+            this.bottomMarginBand1.Name = "bottomMarginBand1";
+            // 
+            // nfe
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
-            this.PageHeader,
-            this.PageFooter,
-            this.ConteudoRelatorio});
-            this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
-            this.xrControlStyle1,
-            this.xrControlStyle2});
+            this.topMarginBand1,
+            this.detailBand1,
+            this.bottomMarginBand1});
+            this.Margins = new System.Drawing.Printing.Margins(100, 100, 1, 100);
             this.Version = "18.1";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
@@ -1712,7 +1628,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel60;
         private DevExpress.XtraReports.UI.XRLabel xrLabel63;
         private DevExpress.XtraReports.UI.XRLabel xrLabel62;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel65;
         private DevExpress.XtraReports.UI.XRLabel xrLabel64;
         private DevExpress.XtraReports.UI.XRLabel xrLabel67;
         private DevExpress.XtraReports.UI.XRLabel xrLabel66;
@@ -1735,5 +1650,8 @@
         private DevExpress.XtraReports.UI.XRLabel txtPagoNaoPago;
         private DevExpress.XtraReports.UI.XRLine xrLine10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel14;
+        private DevExpress.XtraReports.UI.TopMarginBand topMarginBand1;
+        private DevExpress.XtraReports.UI.DetailBand detailBand1;
+        private DevExpress.XtraReports.UI.BottomMarginBand bottomMarginBand1;
     }
 }

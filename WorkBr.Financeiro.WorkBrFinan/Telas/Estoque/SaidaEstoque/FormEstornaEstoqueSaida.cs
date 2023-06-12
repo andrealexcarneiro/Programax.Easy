@@ -792,12 +792,8 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                     if (_parametros.ParametrosVenda.TrabalharComEstoqueReservado == true)
                     {
                        
-                       double ItemReservado =  item.Produto.FormacaoPreco.EstoqueReservado + item.Quantidade;
-                        if (ItemReservado <= 0)
-                        {
-                            ItemReservado = 0;
-                        }
-                       AlteraReserva(item.Produto.Id, ItemReservado);
+              
+                       AlteraReserva(item.Produto.Id, item.Quantidade, txtId.Text.ToInt());
                     }
 
 
@@ -815,7 +811,7 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
 
             }
         }
-        private void AlteraReserva(int produto, double quantidade)
+        private void AlteraReserva(int produto, double quantidade,  int Pedido)
         {
             string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
@@ -857,21 +853,16 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
 
 
             }
-            string quant = quantidade.ToString();
-            quant = quant.ToString().Replace(",", ".");
+           
 
-            if (quant.ToInt() < 0)
-            {
-                quant = "0.00";
-            }
             using (var conn = new MySqlConnection(ConectionString))
 
             {
                 conn.Open();
 
-                string Sql = "update produtos set PROD_ESTOQUE_RESERVADO = " + quant +
+                string Sql = "update pedidosvendasitens set PEDITEM_RESERVA = " + quantidade +
 
-                            " where prod_id=" + produto;
+                            " where peditem_produto_id =" + produto + " And peditem_pedido_id = " + Pedido ;
 
                 MySqlCommand MyCommand = new MySqlCommand(Sql, conn);
                 MySqlDataReader MyReader2;

@@ -26,5 +26,13 @@ namespace Programax.Easy.Servico.Telemarketing.TmkServ
                  .Where(expressaoParaConsulta).List().ToList();
         }
 
+        public List<HistoricoAtendimento> ConsulteListaCliente(int idCliente)
+        {
+            Expression<Func<HistoricoAtendimento, bool>> expressaoParaConsulta = pedido => pedido.codCliente == idCliente;
+
+            return _session.QueryOver<HistoricoAtendimento>()
+                 .TransformUsing(Transformers.DistinctRootEntity)
+                 .Where(expressaoParaConsulta).List().ToList();
+        }
     }
 }

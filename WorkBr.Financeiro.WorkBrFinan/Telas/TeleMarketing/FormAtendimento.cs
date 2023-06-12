@@ -94,8 +94,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
             _ehHistorico = ehHistorico;
             consultaVendedor(NumeroPedido);
-            CarregarInformacoesAtendimento(NumeroPedido, DataCompra);
-
+            //CarregarInformacoesAtendimento(NumeroPedido, DataCompra);
+            CarregarInformacoesAtendimentoII(NumeroPedido, DataCompra);
             mostraContador();
 
             CarregaVendas();
@@ -657,6 +657,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             historico.Usuario = Sessao.PessoaLogada;           
             historico.DescricaoHistorico = txtHistorico.Text;
             historico.DataHistorico = DateTime.Now;
+            historico.codCliente = txtIdPessoa.Text.ToInt();
             numChamadas += 1;
             historico.contador = numChamadas;
             //if (txtAgendamento.Text != "")
@@ -866,6 +867,95 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
             //Carrega o Grid Com os históricos
             _listaDeHistoricos = new ServicoHistoricoAtendimento().ConsulteLista(NumeroPedido);
+            numChamadas = _listaDeHistoricos.Count;
+
+            if (_listaDeHistoricos != null && _listaDeHistoricos.Count != 0)
+            {
+                _statusAnterior = _listaDeHistoricos.LastOrDefault().Status;
+
+                if(_statusAnterior == EnumStatusAtendimento.CONCLUIDO)
+                {
+                    if (_listaDeHistoricos.LastOrDefault().NovoPedido.Id == 0)
+                    {
+                        btnConcluir.Enabled = true;
+                        
+                    }
+                    else
+                    {
+                        btnConcluir.Enabled = false;
+
+                        txtPedidoGerado.Text = _listaDeHistoricos.LastOrDefault().NovoPedido.Id.ToString();
+                    }
+            
+                }               
+            }
+
+            if (_ehHistorico)
+            {
+                btnConcluir.Enabled = false;
+                
+            }
+
+            PreenchaGridHistorico();
+        }
+         private void CarregarInformacoesAtendimentoII(int NumeroPedido, DateTime DataCompra)
+        {
+            ServicoPedidoDeVenda servicoPedido = new ServicoPedidoDeVenda();
+                       
+            var pedido = servicoPedido.Consulte(NumeroPedido);
+
+           
+
+            _statusAnterior = pedido.StatusAtendimento;
+            _idCliente = pedido.Cliente.Id;
+
+            if (!_ehHistorico)
+            {
+                pedido.StatusAtendimento = EnumStatusAtendimento.EMATENDIMENTO;
+               // servicoPedido.Atualize(pedido);
+            }
+            
+
+            txtIdPessoa.Text = pedido.Cliente.Id.ToString();
+            txtNomePessoa.Text = pedido.Cliente.DadosGerais.Razao;
+
+            txtDataCompra.Text = DataCompra.ToString("dd/MM/yyyy");
+
+            txtCelular.Text = pedido.Cliente.ListaDeTelefones != null && pedido.Cliente.ListaDeTelefones.ToList().Exists(x => x.TipoTelefone == EnumTipoTelefone.CELULAR)?
+                              pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.CELULAR).Ddd +
+                              pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.CELULAR).Numero:
+                              string.Empty;
+
+            txtFoneComercial.Text = pedido.Cliente.ListaDeTelefones != null && pedido.Cliente.ListaDeTelefones.ToList().Exists(x => x.TipoTelefone == EnumTipoTelefone.COMERCIAL)?
+                              pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.COMERCIAL).Ddd +
+                              pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.COMERCIAL).Numero :
+                              string.Empty;
+
+            txtFoneResidencial.Text = pedido.Cliente.ListaDeTelefones != null && pedido.Cliente.ListaDeTelefones.ToList().Exists(x => x.TipoTelefone == EnumTipoTelefone.RESIDENCIAL)?
+                             pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.RESIDENCIAL).Ddd +
+                             pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.RESIDENCIAL).Numero :
+                             string.Empty;
+
+            txtFoneRecado.Text = pedido.Cliente.ListaDeTelefones != null && pedido.Cliente.ListaDeTelefones.ToList().Exists(x => x.TipoTelefone == EnumTipoTelefone.RECADO)?
+                         pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.RECADO).Ddd +
+                         pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.RECADO).Numero :
+                         string.Empty;
+
+            txtOutroFone.Text = pedido.Cliente.ListaDeTelefones != null && pedido.Cliente.ListaDeTelefones.ToList().Exists(x => x.TipoTelefone == EnumTipoTelefone.OUTROS)?
+                         pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.OUTROS).Ddd +
+                         pedido.Cliente.ListaDeTelefones.FirstOrDefault(x => x.TipoTelefone == EnumTipoTelefone.OUTROS).Numero :
+                         string.Empty;
+
+            txtNumeroPedidoVendas.Text = NumeroPedido.ToString();
+
+            txtUsuario.Text = Sessao.PessoaLogada.Id.ToString() + " - " + Sessao.PessoaLogada.DadosGerais.Razao;
+
+            _inicioAtendimento = DateTime.Now;
+            txtInicioAtendimento.Text = _inicioAtendimento.ToString("HH:mm:ss");
+           
+
+            //Carrega o Grid Com os históricos
+            _listaDeHistoricos = new ServicoHistoricoAtendimento().ConsulteListaCliente(_idCliente);
             numChamadas = _listaDeHistoricos.Count;
 
             if (_listaDeHistoricos != null && _listaDeHistoricos.Count != 0)
@@ -1479,6 +1569,11 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
                 formCadastroPedidoDeVenda.Show();
             }
+        }
+
+        private void txtIdPessoa_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -180,7 +180,12 @@ namespace Programax.Easy.Servico.Fiscal.NotaFiscalServ
             identificacaoNota.dhSaiEnt = notaFiscal.IdentificacaoNotaFiscal.ModeloDocumentoFiscal == 65? null: identificacaoNota.dhSaiEnt; //NFCe não tem data de entrada/saída
             
             identificacaoNota.finNFe = (FinalidadeNFe)notaFiscal.IdentificacaoNotaFiscal.FinalidadeEmissaoNFe;
+            //identificacaoNota.idDest = (DestinoOperacao)notaFiscal.IdentificacaoNotaFiscal.IdentificacaoOperacaoNotaFiscal;
             identificacaoNota.idDest = (DestinoOperacao)notaFiscal.IdentificacaoNotaFiscal.IdentificacaoOperacaoNotaFiscal;
+
+
+
+
             identificacaoNota.indFinal = notaFiscal.IdentificacaoNotaFiscal.ConsumidorFinal ? ConsumidorFinal.cfConsumidorFinal : ConsumidorFinal.cfNao;
             //identificacaoNota.indPag = (IndicadorPagamento)notaFiscal.IdentificacaoNotaFiscal.FormaPagamento; -> NF Versão 3.10
             identificacaoNota.indPres = (PresencaComprador)notaFiscal.IdentificacaoNotaFiscal.IndicacaoPresenca;

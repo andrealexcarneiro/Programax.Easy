@@ -927,6 +927,8 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                 //if (produto.FormacaoPreco.EstoqueReservado <= 0)
                 //{
                     produto.FormacaoPreco.EstoqueReservado = totalQuantidadeItem;
+                
+                
                 //}
                 return produto.FormacaoPreco.EstoqueReservado - (totalQuantidadeItem);
             }
@@ -1130,6 +1132,9 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                         return;
                     }
                 }
+                
+                AlteraReserva(item.Produto.Id, quantidade, pedidoDeVenda.Id);
+
                 if (quantidade != 0)
                 {   
                     item.Quantidade = quantidade;
@@ -1159,8 +1164,8 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                     _listaItensOriginal = new List<ItemPedidoDeVenda>();
                     _listaItens = new List<ItemPedidoDeVenda>();
 
-                    if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
-                    {
+                    //if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
+                    //{
                         foreach (var itemproduto in _listaItensBaixa)
                             
                         {
@@ -1170,12 +1175,12 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                                 ServicoProduto servicoProduto = new ServicoProduto();
                                 var produto = servicoProduto.Consulte(itemproduto.Produto.Id);
 
-                                double ItemReservado = produto.FormacaoPreco.EstoqueReservado - itemproduto.Quantidade;
-                                //AlteraReserva(itemproduto.Produto.Id, ItemReservado);
+                                double ItemReservado = produto.FormacaoPreco.EstoqueReservado = 0;
+                                
                             }
                             
                         }
-                    }
+                    //}
 
                     _listaItensBaixa = new List<ItemPedidoDeVenda>();
                     LimpeTela();
@@ -1187,7 +1192,7 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
                 TratamentosDeTela.TrateInclusaoEAtualizacao(actionSalvar, mensagemDeSucesso: "Item(s) baixado(s) com sucesso.");
             }
         }
-        private void AlteraReserva(int produto, double quantidade)
+        private void AlteraReserva(int produto, double quantidade, int Pedido)
         {
             string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
@@ -1230,24 +1235,18 @@ namespace Programax.Easy.View.Telas.Estoque.SaidaEstoque
 
             }
 
-            
+            double quant = (txtQuantidade.Text.ToDouble()) ;
 
-            string quant = quantidade.ToString();
-            quant = quant.ToString().Replace(",", ".");
-
-            if(quant.ToInt() < 0)
-            {
-                quant = "0.00";
-            }
+            double Resto = quant - quantidade.ToInt();
 
             using (var conn = new MySqlConnection(ConectionString))
 
             {
                 conn.Open();
 
-                string Sql = "update produtos set PROD_ESTOQUE_RESERVADO = " + quant +
+                string Sql = "update pedidosvendasitens set PEDITEM_RESERVA = " + Resto +
 
-                            " where prod_id=" + produto;
+                            " where peditem_produto_id =" + produto + " And peditem_pedido_id = " + Pedido + " And PEDITEM_RESERVA > 0";
 
                 MySqlCommand MyCommand = new MySqlCommand(Sql, conn);
                 MySqlDataReader MyReader2;

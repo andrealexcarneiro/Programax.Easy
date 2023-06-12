@@ -662,6 +662,13 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                             string.Empty, pessoa, categoria,null)
                                                                             .Sum(x => x.Valor);
         }
+        public double retorneTotalCategoriaNoBancoII(CategoriaFinanceira categoria, EnumTipoMovimentacaoBanco tipo, Pessoa pessoa = null)
+        {
+            return new ServicoItemMovimentacaoBanco().ConsulteListaItens(null, txtDataInicialPeriodo.Text.ToDateNullabel(), txtDataFinalPeriodo.Text.ToDateNullabel(),
+                                                                            EnumOrigemMovimentacaoBanco.CONTAPAGAR, string.Empty, tipo,
+                                                                            string.Empty, pessoa, categoria, null)
+                                                                            .Sum(x => x.Valor);
+        }
 
         public void carregaSaldoInicialBancosCaixas()
         {

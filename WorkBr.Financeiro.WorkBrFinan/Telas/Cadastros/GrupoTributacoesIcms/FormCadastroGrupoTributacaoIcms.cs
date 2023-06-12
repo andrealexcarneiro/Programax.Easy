@@ -542,10 +542,14 @@ namespace Programax.Easy.View.Telas.Cadastros.GrupoTributacoesIcms
             foreach (var tributacaoIcms in _listaTributacoes)
             {
                 TributacaoIcmsGrid tributacaoIcmsGrid = new TributacaoIcmsGrid();
+                //if (tributacaoIcms.Cfop != null)
+                //{
+                    var cfop = _listaCfop.FirstOrDefault(cfo => cfo.Id == tributacaoIcms.Cfop.Id);
+                    tributacaoIcmsGrid.Cfop = cfop.Codigo;
+                //}
+                
 
-                var cfop = _listaCfop.FirstOrDefault(cfo => cfo.Id == tributacaoIcms.Cfop.Id);
-
-                tributacaoIcmsGrid.Cfop = cfop.Codigo;
+                
                 tributacaoIcmsGrid.Csosn = ((int)tributacaoIcms.CstCsosn).ToString();
                 tributacaoIcmsGrid.EstadoDestino = tributacaoIcms.EstadoDestino;
                 tributacaoIcmsGrid.Id = tributacaoIcms.Id;

@@ -29,6 +29,7 @@ namespace Programax.Easy.View.Telas
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -192,7 +193,7 @@ namespace Programax.Easy.View.Telas
             this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripMenuItem();
-            this.hintPrincipal = new System.Windows.Forms.ToolTip();
+            this.hintPrincipal = new System.Windows.Forms.ToolTip(this.components);
             this.btnRedimensionar = new System.Windows.Forms.Button();
             this.btnDelImagem = new System.Windows.Forms.Button();
             this.btnAddImagem = new System.Windows.Forms.Button();
@@ -217,7 +218,7 @@ namespace Programax.Easy.View.Telas
             this.toolStripMenuItem31 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem32 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem33 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.painelFundo = new System.Windows.Forms.Panel();
             this.pnlFundoDashBoard = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -307,12 +308,12 @@ namespace Programax.Easy.View.Telas
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Location = new System.Drawing.Point(165, 41);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1484, 85);
+            this.panel2.Size = new System.Drawing.Size(1250, 85);
             this.panel2.TabIndex = 5;
             // 
             // panel4
             // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.Controls.Add(this.lblUsuario);
             this.panel4.Controls.Add(this.lblEmpresa);
             this.panel4.Controls.Add(this.lblDataLicenca);
@@ -321,7 +322,7 @@ namespace Programax.Easy.View.Telas
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(1265, 0);
+            this.panel4.Location = new System.Drawing.Point(868, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(219, 85);
             this.panel4.TabIndex = 5;
@@ -429,7 +430,7 @@ namespace Programax.Easy.View.Telas
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(1484, 81);
+            this.menuStrip1.Size = new System.Drawing.Size(1250, 81);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -457,7 +458,7 @@ namespace Programax.Easy.View.Telas
             // 
             this.tspMenuPessoas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.tspMenuPessoas.Name = "tspMenuPessoas";
-            this.tspMenuPessoas.Size = new System.Drawing.Size(180, 22);
+            this.tspMenuPessoas.Size = new System.Drawing.Size(153, 22);
             this.tspMenuPessoas.Text = "Parceiros";
             this.tspMenuPessoas.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
             // 
@@ -465,7 +466,7 @@ namespace Programax.Easy.View.Telas
             // 
             this.tspMenuItens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.tspMenuItens.Name = "tspMenuItens";
-            this.tspMenuItens.Size = new System.Drawing.Size(180, 22);
+            this.tspMenuItens.Size = new System.Drawing.Size(153, 22);
             this.tspMenuItens.Text = "Itens";
             this.tspMenuItens.Click += new System.EventHandler(this.tspMenuItens_Click);
             // 
@@ -473,7 +474,7 @@ namespace Programax.Easy.View.Telas
             // 
             this.tspMenuEnderecos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(251)))), ((int)(((byte)(251)))));
             this.tspMenuEnderecos.Name = "tspMenuEnderecos";
-            this.tspMenuEnderecos.Size = new System.Drawing.Size(180, 22);
+            this.tspMenuEnderecos.Size = new System.Drawing.Size(153, 22);
             this.tspMenuEnderecos.Text = "Endereços";
             this.tspMenuEnderecos.Click += new System.EventHandler(this.endereçosToolStripMenuItem_Click);
             // 
@@ -489,7 +490,7 @@ namespace Programax.Easy.View.Telas
             this.tspMenuBancos,
             this.tspMenuCadastroCaixa});
             this.tspSubMenuFinanceiro.Name = "tspSubMenuFinanceiro";
-            this.tspSubMenuFinanceiro.Size = new System.Drawing.Size(180, 22);
+            this.tspSubMenuFinanceiro.Size = new System.Drawing.Size(153, 22);
             this.tspSubMenuFinanceiro.Tag = "I";
             this.tspSubMenuFinanceiro.Text = "Financeiro";
             // 
@@ -613,7 +614,7 @@ namespace Programax.Easy.View.Telas
             this.tspMenuMotivoCorrecaoEstoque,
             this.tspMenuSubEstoque});
             this.tspSubMenuEstoque.Name = "tspSubMenuEstoque";
-            this.tspSubMenuEstoque.Size = new System.Drawing.Size(180, 22);
+            this.tspSubMenuEstoque.Size = new System.Drawing.Size(153, 22);
             this.tspSubMenuEstoque.Tag = "I";
             this.tspSubMenuEstoque.Text = "Estoque";
             // 
@@ -707,7 +708,7 @@ namespace Programax.Easy.View.Telas
             this.grupoTributaçãoToolStripMenuItem,
             this.cESTToolStripMenuItem});
             this.tspSubMenuFiscal.Name = "tspSubMenuFiscal";
-            this.tspSubMenuFiscal.Size = new System.Drawing.Size(180, 22);
+            this.tspSubMenuFiscal.Size = new System.Drawing.Size(153, 22);
             this.tspSubMenuFiscal.Text = "Fiscal/Contábil";
             // 
             // tspMenuCnae
@@ -801,7 +802,7 @@ namespace Programax.Easy.View.Telas
             this.tspMenuMotivoTrocaPedidoDeVenda,
             this.tspMenuconfiguracaoCashBack});
             this.tspSubMenuVendas.Name = "tspSubMenuVendas";
-            this.tspSubMenuVendas.Size = new System.Drawing.Size(180, 22);
+            this.tspSubMenuVendas.Size = new System.Drawing.Size(153, 22);
             this.tspSubMenuVendas.Text = "Vendas";
             // 
             // tspMenuRamosAtividades
@@ -1580,7 +1581,7 @@ namespace Programax.Easy.View.Telas
             this.panel5.Controls.Add(this.label1);
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1369, 40);
+            this.panel5.Size = new System.Drawing.Size(1135, 40);
             this.panel5.TabIndex = 11;
             // 
             // btnAcessoRestrito
@@ -1609,7 +1610,7 @@ namespace Programax.Easy.View.Telas
             this.panel7.Controls.Add(this.btnSairSistema);
             this.panel7.Controls.Add(this.btnAlterarUsuario);
             this.panel7.Controls.Add(this.btnSuporte);
-            this.panel7.Location = new System.Drawing.Point(1132, 9);
+            this.panel7.Location = new System.Drawing.Point(898, 9);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(208, 25);
             this.panel7.TabIndex = 10015;
@@ -1803,7 +1804,7 @@ namespace Programax.Easy.View.Telas
             // 
             this.btnRedimensionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRedimensionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedimensionar.Location = new System.Drawing.Point(1546, 3);
+            this.btnRedimensionar.Location = new System.Drawing.Point(1034, 3);
             this.btnRedimensionar.Name = "btnRedimensionar";
             this.btnRedimensionar.Size = new System.Drawing.Size(41, 23);
             this.btnRedimensionar.TabIndex = 10038;
@@ -1823,7 +1824,7 @@ namespace Programax.Easy.View.Telas
             this.btnDelImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelImagem.Image = global::Programax.Easy.View.Properties.Resources.icones2_18;
             this.btnDelImagem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelImagem.Location = new System.Drawing.Point(1620, 3);
+            this.btnDelImagem.Location = new System.Drawing.Point(1108, 3);
             this.btnDelImagem.Name = "btnDelImagem";
             this.btnDelImagem.Size = new System.Drawing.Size(28, 23);
             this.btnDelImagem.TabIndex = 10036;
@@ -1843,7 +1844,7 @@ namespace Programax.Easy.View.Telas
             this.btnAddImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddImagem.Image = global::Programax.Easy.View.Properties.Resources.icones2_19;
             this.btnAddImagem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddImagem.Location = new System.Drawing.Point(1590, 3);
+            this.btnAddImagem.Location = new System.Drawing.Point(1078, 3);
             this.btnAddImagem.Name = "btnAddImagem";
             this.btnAddImagem.Size = new System.Drawing.Size(28, 23);
             this.btnAddImagem.TabIndex = 10035;
@@ -2053,7 +2054,7 @@ namespace Programax.Easy.View.Telas
             this.painelFundo.Controls.Add(this.picFoto);
             this.painelFundo.Location = new System.Drawing.Point(-1, 126);
             this.painelFundo.Name = "painelFundo";
-            this.painelFundo.Size = new System.Drawing.Size(1651, 683);
+            this.painelFundo.Size = new System.Drawing.Size(1417, 683);
             this.painelFundo.TabIndex = 12;
             // 
             // pnlFundoDashBoard
@@ -2063,7 +2064,7 @@ namespace Programax.Easy.View.Telas
             this.pnlFundoDashBoard.Controls.Add(this.panel17);
             this.pnlFundoDashBoard.Controls.Add(this.flowLayoutPanel1);
             this.pnlFundoDashBoard.Controls.Add(this.panel8);
-            this.pnlFundoDashBoard.Location = new System.Drawing.Point(822, 29);
+            this.pnlFundoDashBoard.Location = new System.Drawing.Point(1045, 29);
             this.pnlFundoDashBoard.Name = "pnlFundoDashBoard";
             this.pnlFundoDashBoard.Size = new System.Drawing.Size(108, 396);
             this.pnlFundoDashBoard.TabIndex = 0;
@@ -2336,7 +2337,7 @@ namespace Programax.Easy.View.Telas
             this.picFoto.InitialImage = global::Programax.Easy.View.Properties.Resources.Akil_03;
             this.picFoto.Location = new System.Drawing.Point(1, 2);
             this.picFoto.Name = "picFoto";
-            this.picFoto.Size = new System.Drawing.Size(1650, 680);
+            this.picFoto.Size = new System.Drawing.Size(1416, 680);
             this.picFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFoto.TabIndex = 10037;
             this.picFoto.TabStop = false;
@@ -2347,7 +2348,7 @@ namespace Programax.Easy.View.Telas
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(1370, 701);
+            this.ClientSize = new System.Drawing.Size(1136, 701);
             this.Controls.Add(this.painelFundo);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);

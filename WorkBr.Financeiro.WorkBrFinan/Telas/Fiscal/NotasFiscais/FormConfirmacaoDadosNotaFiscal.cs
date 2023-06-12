@@ -132,9 +132,9 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
 
             if (cboEstado.EditValue.ToString() != "GO")
             {
-                rdbNFCe.Checked = false;
-                rdbNFe.Checked = true;
-                rdbNFCe.Enabled = false;
+                //rdbNFCe.Checked = false;
+                //rdbNFe.Checked = true;
+                //rdbNFCe.Enabled = false;
             }
             else
             {   

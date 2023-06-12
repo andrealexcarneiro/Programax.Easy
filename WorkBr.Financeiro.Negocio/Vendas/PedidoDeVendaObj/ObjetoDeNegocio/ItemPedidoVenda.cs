@@ -43,6 +43,7 @@ namespace Programax.Easy.Negocio.Vendas.PedidoDeVendaObj.ObjetoDeNegocio
         public virtual bool DescontoEhPercentual { get; set; }
 
         public virtual bool ItemEstahInconsistente { get; set; }
+        public virtual double itemReserva { get; set; }
 
         public virtual PedidoDeVenda PedidoDeVenda { get; set; }
 

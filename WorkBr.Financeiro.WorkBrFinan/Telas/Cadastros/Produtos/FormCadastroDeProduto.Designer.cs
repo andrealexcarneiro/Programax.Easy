@@ -139,6 +139,8 @@
             this.btnPesquisaNcm = new System.Windows.Forms.PictureBox();
             this.tbpFormacaoPreco = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtEstoqueTotal = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl76 = new DevExpress.XtraEditors.LabelControl();
             this.txtQtdSub = new DevExpress.XtraEditors.TextEdit();
             this.labelControl75 = new DevExpress.XtraEditors.LabelControl();
             this.txtreserva = new DevExpress.XtraEditors.TextEdit();
@@ -262,8 +264,6 @@
             this.pnlUnidade = new System.Windows.Forms.Panel();
             this.btnAtalhoUnidade = new System.Windows.Forms.Button();
             this.chkProdutoVendaFracionada = new DevExpress.XtraEditors.CheckEdit();
-            this.txtEstoqueTotal = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl76 = new DevExpress.XtraEditors.LabelControl();
             this.painelBotoes.SuspendLayout();
             this.panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).BeginInit();
@@ -327,6 +327,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPesquisaNcm)).BeginInit();
             this.tbpFormacaoPreco.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstoqueTotal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQtdSub.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtreserva.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiasDeVenda.Properties)).BeginInit();
@@ -391,7 +392,6 @@
             this.gcIdentificacao.SuspendLayout();
             this.pnlUnidade.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoVendaFracionada.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEstoqueTotal.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBotoes
@@ -2060,6 +2060,36 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Informações de Análise";
             // 
+            // txtEstoqueTotal
+            // 
+            this.txtEstoqueTotal.EnterMoveNextControl = true;
+            this.txtEstoqueTotal.Location = new System.Drawing.Point(276, 40);
+            this.txtEstoqueTotal.Name = "txtEstoqueTotal";
+            this.txtEstoqueTotal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoqueTotal.Properties.Appearance.Options.UseFont = true;
+            this.txtEstoqueTotal.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtEstoqueTotal.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtEstoqueTotal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtEstoqueTotal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtEstoqueTotal.Properties.Mask.EditMask = "c2";
+            this.txtEstoqueTotal.Properties.MaxLength = 30;
+            this.txtEstoqueTotal.Properties.ReadOnly = true;
+            this.txtEstoqueTotal.Size = new System.Drawing.Size(110, 22);
+            this.txtEstoqueTotal.TabIndex = 629;
+            this.txtEstoqueTotal.TabStop = false;
+            // 
+            // labelControl76
+            // 
+            this.labelControl76.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl76.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl76.Appearance.Options.UseFont = true;
+            this.labelControl76.Appearance.Options.UseForeColor = true;
+            this.labelControl76.Location = new System.Drawing.Point(280, 23);
+            this.labelControl76.Name = "labelControl76";
+            this.labelControl76.Size = new System.Drawing.Size(66, 13);
+            this.labelControl76.TabIndex = 630;
+            this.labelControl76.Text = "Estoque Total";
+            // 
             // txtQtdSub
             // 
             this.txtQtdSub.EnterMoveNextControl = true;
@@ -2443,9 +2473,9 @@
             this.labelControl27.Appearance.Options.UseForeColor = true;
             this.labelControl27.Location = new System.Drawing.Point(762, 24);
             this.labelControl27.Name = "labelControl27";
-            this.labelControl27.Size = new System.Drawing.Size(127, 13);
+            this.labelControl27.Size = new System.Drawing.Size(123, 13);
             this.labelControl27.TabIndex = 628;
-            this.labelControl27.Text = "Valor Venda Suregrido";
+            this.labelControl27.Text = "Valor Venda Sugerido";
             // 
             // txtPercentualComissoesVenda
             // 
@@ -3977,36 +4007,6 @@
             this.chkProdutoVendaFracionada.Size = new System.Drawing.Size(107, 19);
             this.chkProdutoVendaFracionada.TabIndex = 10018;
             // 
-            // txtEstoqueTotal
-            // 
-            this.txtEstoqueTotal.EnterMoveNextControl = true;
-            this.txtEstoqueTotal.Location = new System.Drawing.Point(276, 40);
-            this.txtEstoqueTotal.Name = "txtEstoqueTotal";
-            this.txtEstoqueTotal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstoqueTotal.Properties.Appearance.Options.UseFont = true;
-            this.txtEstoqueTotal.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtEstoqueTotal.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.txtEstoqueTotal.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEstoqueTotal.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
-            this.txtEstoqueTotal.Properties.Mask.EditMask = "c2";
-            this.txtEstoqueTotal.Properties.MaxLength = 30;
-            this.txtEstoqueTotal.Properties.ReadOnly = true;
-            this.txtEstoqueTotal.Size = new System.Drawing.Size(110, 22);
-            this.txtEstoqueTotal.TabIndex = 629;
-            this.txtEstoqueTotal.TabStop = false;
-            // 
-            // labelControl76
-            // 
-            this.labelControl76.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl76.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl76.Appearance.Options.UseFont = true;
-            this.labelControl76.Appearance.Options.UseForeColor = true;
-            this.labelControl76.Location = new System.Drawing.Point(280, 23);
-            this.labelControl76.Name = "labelControl76";
-            this.labelControl76.Size = new System.Drawing.Size(66, 13);
-            this.labelControl76.TabIndex = 630;
-            this.labelControl76.Text = "Estoque Total";
-            // 
             // FormCadastroDeProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4093,6 +4093,7 @@
             this.tbpFormacaoPreco.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEstoqueTotal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQtdSub.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtreserva.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiasDeVenda.Properties)).EndInit();
@@ -4165,7 +4166,6 @@
             this.pnlUnidade.ResumeLayout(false);
             this.pnlUnidade.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkProdutoVendaFracionada.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEstoqueTotal.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

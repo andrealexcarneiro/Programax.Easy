@@ -55,6 +55,8 @@
             this.txtDescricaoProduto = new DevExpress.XtraEditors.TextEdit();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnImprimirRelatorio = new System.Windows.Forms.Button();
+            this.txtreserva = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.painelBotoes.SuspendLayout();
             this.panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).BeginInit();
@@ -68,10 +70,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescricaoProduto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtreserva.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBotoes
             // 
+            this.painelBotoes.Controls.Add(this.labelControl2);
+            this.painelBotoes.Controls.Add(this.txtreserva);
             this.painelBotoes.Controls.Add(this.btnImprimirRelatorio);
             this.painelBotoes.Controls.Add(this.btnSair);
             this.painelBotoes.Location = new System.Drawing.Point(7, 0);
@@ -455,6 +460,36 @@
             this.btnImprimirRelatorio.UseVisualStyleBackColor = true;
             this.btnImprimirRelatorio.Click += new System.EventHandler(this.btnImprimirRelatorio_Click);
             // 
+            // txtreserva
+            // 
+            this.txtreserva.EnterMoveNextControl = true;
+            this.txtreserva.Location = new System.Drawing.Point(440, 12);
+            this.txtreserva.Name = "txtreserva";
+            this.txtreserva.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtreserva.Properties.Appearance.Options.UseFont = true;
+            this.txtreserva.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtreserva.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtreserva.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtreserva.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtreserva.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtreserva.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.txtreserva.Properties.Mask.EditMask = "99/";
+            this.txtreserva.Properties.MaxLength = 80;
+            this.txtreserva.Properties.ReadOnly = true;
+            this.txtreserva.Size = new System.Drawing.Size(85, 22);
+            this.txtreserva.TabIndex = 10039;
+            this.txtreserva.TabStop = false;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(410, 17);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(24, 13);
+            this.labelControl2.TabIndex = 10040;
+            this.labelControl2.Text = "Total";
+            // 
             // FormReservasPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,6 +497,7 @@
             this.ClientSize = new System.Drawing.Size(828, 510);
             this.Name = "FormReservasPedidos";
             this.painelBotoes.ResumeLayout(false);
+            this.painelBotoes.PerformLayout();
             this.panelConteudo.ResumeLayout(false);
             this.panelConteudo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtId.Properties)).EndInit();
@@ -475,6 +511,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDescricaoProduto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtreserva.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,5 +545,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtreserva;
     }
 }

@@ -31,6 +31,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCarteiras));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAtender = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.Cor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colunaStatus = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colunaAgendamento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtDataFinal = new DevExpress.XtraEditors.DateEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
@@ -96,6 +98,17 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.lstsubgrupo = new DevExpress.XtraEditors.ListBoxControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.cboPor = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.cboTentativa = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.painelBotoes.SuspendLayout();
             this.panelConteudo.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -131,6 +144,11 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             ((System.ComponentModel.ISupportInitialize)(this.lstCategoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstMarca)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstsubgrupo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPor.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTentativa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBotoes
@@ -141,6 +159,11 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             // 
             // panelConteudo
             // 
+            this.panelConteudo.Controls.Add(this.cboTentativa);
+            this.panelConteudo.Controls.Add(this.labelControl17);
+            this.panelConteudo.Controls.Add(this.cboPor);
+            this.panelConteudo.Controls.Add(this.labelControl16);
+            this.panelConteudo.Controls.Add(this.gridControl1);
             this.panelConteudo.Controls.Add(this.labelControl15);
             this.panelConteudo.Controls.Add(this.labelControl14);
             this.panelConteudo.Controls.Add(this.lstsubgrupo);
@@ -278,6 +301,9 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             // gcAtendimentos
             // 
             this.gcAtendimentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            gridLevelNode2.RelationName = "Level1";
+            this.gcAtendimentos.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode2});
             this.gcAtendimentos.Location = new System.Drawing.Point(4, 229);
             this.gcAtendimentos.MainView = this.gridView5;
             this.gcAtendimentos.Name = "gcAtendimentos";
@@ -310,7 +336,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaDataCompra,
             this.Cor,
             this.colunaStatus,
-            this.colunaAgendamento});
+            this.colunaAgendamento,
+            this.gridColumn5});
             this.gridView5.CustomizationFormBounds = new System.Drawing.Rectangle(703, 467, 216, 178);
             this.gridView5.GridControl = this.gcAtendimentos;
             this.gridView5.Name = "gridView5";
@@ -332,7 +359,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.Seleciona.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.Seleciona.Visible = true;
             this.Seleciona.VisibleIndex = 0;
-            this.Seleciona.Width = 39;
+            this.Seleciona.Width = 48;
             // 
             // CodigoCliente
             // 
@@ -345,7 +372,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.CodigoCliente.OptionsFilter.AllowFilter = false;
             this.CodigoCliente.Visible = true;
             this.CodigoCliente.VisibleIndex = 1;
-            this.CodigoCliente.Width = 90;
+            this.CodigoCliente.Width = 111;
             // 
             // colunaCliente
             // 
@@ -357,7 +384,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaCliente.OptionsFilter.AllowFilter = false;
             this.colunaCliente.Visible = true;
             this.colunaCliente.VisibleIndex = 2;
-            this.colunaCliente.Width = 329;
+            this.colunaCliente.Width = 407;
             // 
             // colunaPedidonovo
             // 
@@ -366,6 +393,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaPedidonovo.Name = "colunaPedidonovo";
             this.colunaPedidonovo.Visible = true;
             this.colunaPedidonovo.VisibleIndex = 3;
+            this.colunaPedidonovo.Width = 92;
             // 
             // colunaId
             // 
@@ -386,7 +414,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaId.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colunaId.Visible = true;
             this.colunaId.VisibleIndex = 4;
-            this.colunaId.Width = 93;
+            this.colunaId.Width = 115;
             // 
             // colunaDataCompra
             // 
@@ -398,7 +426,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaDataCompra.OptionsFilter.AllowFilter = false;
             this.colunaDataCompra.Visible = true;
             this.colunaDataCompra.VisibleIndex = 5;
-            this.colunaDataCompra.Width = 99;
+            this.colunaDataCompra.Width = 122;
             // 
             // Cor
             // 
@@ -406,8 +434,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.Cor.FieldName = "Cor";
             this.Cor.Name = "Cor";
             this.Cor.Visible = true;
-            this.Cor.VisibleIndex = 8;
-            this.Cor.Width = 49;
+            this.Cor.VisibleIndex = 9;
+            this.Cor.Width = 72;
             // 
             // colunaStatus
             // 
@@ -416,8 +444,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaStatus.Name = "colunaStatus";
             this.colunaStatus.OptionsColumn.ReadOnly = true;
             this.colunaStatus.Visible = true;
-            this.colunaStatus.VisibleIndex = 7;
-            this.colunaStatus.Width = 119;
+            this.colunaStatus.VisibleIndex = 8;
+            this.colunaStatus.Width = 157;
             // 
             // colunaAgendamento
             // 
@@ -428,7 +456,20 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.colunaAgendamento.OptionsColumn.ReadOnly = true;
             this.colunaAgendamento.Visible = true;
             this.colunaAgendamento.VisibleIndex = 6;
-            this.colunaAgendamento.Width = 85;
+            this.colunaAgendamento.Width = 105;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn5.Caption = "Tentativas";
+            this.gridColumn5.FieldName = "Tentativas";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 7;
+            this.gridColumn5.Width = 76;
             // 
             // gridView2
             // 
@@ -563,7 +604,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.btnPesquisa.BackColor = System.Drawing.Color.Transparent;
             this.btnPesquisa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisa.Image = global::Programax.Easy.View.Properties.Resources.pesquisar;
-            this.btnPesquisa.Location = new System.Drawing.Point(1058, 146);
+            this.btnPesquisa.Location = new System.Drawing.Point(1195, 154);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(22, 22);
             this.btnPesquisa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -608,7 +649,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Appearance.Options.UseForeColor = true;
-            this.labelControl9.Location = new System.Drawing.Point(789, 94);
+            this.labelControl9.Location = new System.Drawing.Point(784, 94);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(46, 13);
             this.labelControl9.TabIndex = 10206;
@@ -700,7 +741,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.labelControl7.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Appearance.Options.UseForeColor = true;
-            this.labelControl7.Location = new System.Drawing.Point(1184, 131);
+            this.labelControl7.Location = new System.Drawing.Point(1229, 96);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(64, 13);
             this.labelControl7.TabIndex = 10208;
@@ -710,7 +751,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             // 
             this.txtQtdePedidos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtQtdePedidos.EnterMoveNextControl = true;
-            this.txtQtdePedidos.Location = new System.Drawing.Point(1184, 146);
+            this.txtQtdePedidos.Location = new System.Drawing.Point(1229, 111);
             this.txtQtdePedidos.Name = "txtQtdePedidos";
             this.txtQtdePedidos.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQtdePedidos.Properties.Appearance.Options.UseFont = true;
@@ -847,6 +888,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.cbocpfcnpj.Properties.PopupFormMinSize = new System.Drawing.Size(20, 20);
             this.cbocpfcnpj.Size = new System.Drawing.Size(155, 22);
             this.cbocpfcnpj.TabIndex = 10223;
+            this.cbocpfcnpj.EditValueChanged += new System.EventHandler(this.cbocpfcnpj_EditValueChanged);
             // 
             // cboVendedores
             // 
@@ -1067,11 +1109,156 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             this.labelControl15.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl15.Appearance.Options.UseFont = true;
             this.labelControl15.Appearance.Options.UseForeColor = true;
-            this.labelControl15.Location = new System.Drawing.Point(1058, 171);
+            this.labelControl15.Location = new System.Drawing.Point(1228, 159);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(71, 13);
             this.labelControl15.TabIndex = 10241;
             this.labelControl15.Text = "Consulta Filtros";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gridControl1.Location = new System.Drawing.Point(5, 230);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1307, 311);
+            this.gridControl1.TabIndex = 10242;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1,
+            this.gridView3});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(119)))), ((int)(((byte)(146)))));
+            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
+            this.gridView1.Appearance.GroupPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.GroupPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4});
+            this.gridView1.CustomizationFormBounds = new System.Drawing.Rectangle(703, 467, 216, 178);
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.OptionsView.ShowViewCaption = true;
+            this.gridView1.PaintStyleName = "Skin";
+            this.gridView1.ViewCaption = "Pedidos de Venda para pesquisar ( ctrl + f )";
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = " ";
+            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.gridColumn1.FieldName = "Seleciona";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 39;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Codigo Cliente";
+            this.gridColumn2.FieldName = "CodigoCliente";
+            this.gridColumn2.MinWidth = 19;
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
+            this.gridColumn2.OptionsFilter.AllowFilter = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 90;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Cliente";
+            this.gridColumn3.FieldName = "Cliente";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.OptionsColumn.AllowFocus = false;
+            this.gridColumn3.OptionsFilter.AllowFilter = false;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 329;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn4.Caption = "Tentativas";
+            this.gridColumn4.FieldName = "Tentativas";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridView3
+            // 
+            this.gridView3.GridControl = this.gridControl1;
+            this.gridView3.Name = "gridView3";
+            // 
+            // cboPor
+            // 
+            this.cboPor.EnterMoveNextControl = true;
+            this.cboPor.Location = new System.Drawing.Point(1042, 110);
+            this.cboPor.Name = "cboPor";
+            this.cboPor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPor.Properties.Appearance.Options.UseFont = true;
+            this.cboPor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboPor.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.cboPor.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Descrição")});
+            this.cboPor.Properties.NullText = "";
+            this.cboPor.Size = new System.Drawing.Size(116, 22);
+            this.cboPor.TabIndex = 10244;
+            this.cboPor.EditValueChanged += new System.EventHandler(this.cboPor_EditValueChanged);
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl16.Appearance.Options.UseFont = true;
+            this.labelControl16.Location = new System.Drawing.Point(1042, 96);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(59, 13);
+            this.labelControl16.TabIndex = 10243;
+            this.labelControl16.Text = "Consulta por";
+            // 
+            // cboTentativa
+            // 
+            this.cboTentativa.EnterMoveNextControl = true;
+            this.cboTentativa.Location = new System.Drawing.Point(1042, 158);
+            this.cboTentativa.Name = "cboTentativa";
+            this.cboTentativa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboTentativa.Properties.Appearance.Options.UseFont = true;
+            this.cboTentativa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboTentativa.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.cboTentativa.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Descrição")});
+            this.cboTentativa.Properties.NullText = "";
+            this.cboTentativa.Size = new System.Drawing.Size(125, 22);
+            this.cboTentativa.TabIndex = 10246;
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl17.Appearance.Options.UseFont = true;
+            this.labelControl17.Location = new System.Drawing.Point(1042, 144);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(127, 13);
+            this.labelControl17.TabIndex = 10245;
+            this.labelControl17.Text = "Tentativas de Atendimento";
             // 
             // FormCarteiras
             // 
@@ -1121,6 +1308,11 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             ((System.ComponentModel.ISupportInitialize)(this.lstCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstMarca)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstsubgrupo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPor.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTentativa.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1192,5 +1384,17 @@ namespace Programax.Easy.View.Telas.TeleMarketing
         private DevExpress.XtraEditors.ListBoxControl lstsubgrupo;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        public DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraEditors.LookUpEdit cboPor;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
+        private DevExpress.XtraEditors.LookUpEdit cboTentativa;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

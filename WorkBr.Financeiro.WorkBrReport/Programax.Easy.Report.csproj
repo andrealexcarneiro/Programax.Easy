@@ -255,6 +255,12 @@
     <Compile Include="RelatoriosDevExpress\LayoutsXml\RelatorioVendasClienteII.Designer.cs">
       <DependentUpon>RelatorioVendasClienteII.cs</DependentUpon>
     </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBaseNfe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelatoriosDevExpress\RelatorioBaseNfe.Designer.cs">
+      <DependentUpon>RelatorioBaseNfe.cs</DependentUpon>
+    </Compile>
     <Compile Include="RelatoriosDevExpress\RelatorioBaseDev.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -440,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RelatoriosDevExpress\LayoutsXml\RelatorioVendasClienteII.resx">
       <DependentUpon>RelatorioVendasClienteII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosDevExpress\RelatorioBaseNfe.resx">
+      <DependentUpon>RelatorioBaseNfe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatoriosDevExpress\RelatorioBaseDev.resx">
       <DependentUpon>RelatorioBaseDev.cs</DependentUpon>

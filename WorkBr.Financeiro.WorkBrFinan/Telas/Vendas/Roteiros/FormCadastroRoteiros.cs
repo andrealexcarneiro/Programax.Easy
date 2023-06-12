@@ -424,7 +424,7 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
         private void btnAddAgendaDoDia_Click(object sender, EventArgs e)
         {
             var roteiro = new ServicoRoteiro().ConsulteLista(null, null, EnumStatusRoteiro.EMAGENDA, EnumDataFiltrarRoteiro.ELABORACAO,
-                                                                DateTime.Now.Date, DateTime.Now.Date, 0, false);
+                                                                DateTime.Now.Date, DateTime.Now.Date, 0, 0,false);
             if (roteiro == null) return;
 
             if (txtIdPessoa.Text == string.Empty)

@@ -54,6 +54,7 @@ namespace Programax.Easy.Servico.Fiscal.NotaFiscalServ
         private IRepositorioNotaFiscal _repositorioNotaFiscal;
         private Empresa _empresa;
         private bool _incrementeNumeroNota;
+        private string _strModelo = "";
         
         #endregion
 
@@ -359,8 +360,10 @@ namespace Programax.Easy.Servico.Fiscal.NotaFiscalServ
 
         #region " RETORNE NOTA A PARTIR DE PEDIDO "
 
-        public NotaFiscal RetorneNotaAPartirDePedido(int pedidoId, DestinatarioAuxiliarNotaFiscal destinatarioAuxiliar)
+        public NotaFiscal RetorneNotaAPartirDePedido(int pedidoId, DestinatarioAuxiliarNotaFiscal destinatarioAuxiliar, string modelo)
         {
+            _strModelo = modelo;
+
             ServicoPedidoDeVenda servicoPedidoDeVenda = new ServicoPedidoDeVenda(false, false);
             var pedido = servicoPedidoDeVenda.ConsulteJoinComItens(pedidoId);
 
@@ -1198,15 +1201,41 @@ namespace Programax.Easy.Servico.Fiscal.NotaFiscalServ
                 //item.Impostos.Cofins.ValorCofins = 16.00;
                 notaFiscal.TotaisNotaFiscal.Cofins += item.Impostos.Cofins != null ? item.Impostos.Cofins.ValorCofins.GetValueOrDefault() : 0;
                 
-
+                
 
 
                 if (notaFiscal.Emitente.CRT == EnumCodigoRegimeTributario.REGIMENORMAL)
                 {
+                    double valorTotalItem = 0; 
 
-                    double valorTotalItem = (item.ValorBruto + item.ValorFrete.ToDouble() + item.Impostos.Ipi.ValorIpi.ToDouble() +
-                                               item.Impostos.Icms.ValorSubstituicaoTributaria.ToDouble() +
-                                               item.Seguro.ToDouble() + item.OutrasDespesas.ToDouble()) - item.ValorDesconto.ToDouble();
+                    if (_strModelo == "NFCE")
+                    {
+                        if (item.Impostos.Ipi.ValorIpi.ToDouble() > 0)
+                        {
+                            valorTotalItem = (item.ValorBruto + item.ValorFrete.ToDouble() +
+                                              item.Impostos.Icms.ValorSubstituicaoTributaria.ToDouble() +
+                                              item.Seguro.ToDouble() + item.OutrasDespesas.ToDouble()) - item.ValorDesconto.ToDouble();
+
+                        }
+                        else
+                        {
+                            valorTotalItem = (item.ValorBruto + item.ValorFrete.ToDouble() + item.Impostos.Ipi.ValorIpi.ToDouble() +
+                                             item.Impostos.Icms.ValorSubstituicaoTributaria.ToDouble() +
+                                             item.Seguro.ToDouble() + item.OutrasDespesas.ToDouble()) - item.ValorDesconto.ToDouble();
+
+                        }
+                    }
+                    else
+                    {
+                      
+                        valorTotalItem = (item.ValorBruto + item.ValorFrete.ToDouble() + item.Impostos.Ipi.ValorIpi.ToDouble() +
+                                            item.Impostos.Icms.ValorSubstituicaoTributaria.ToDouble() +
+                                            item.Seguro.ToDouble() + item.OutrasDespesas.ToDouble()) - item.ValorDesconto.ToDouble();
+
+                       
+                    }
+
+                   
 
 
 

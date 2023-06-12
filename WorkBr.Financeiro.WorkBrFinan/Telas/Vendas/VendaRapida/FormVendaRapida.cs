@@ -596,11 +596,11 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                     //Para ignorar a validação do crédito inicial, carrega-se com um valor bem alto. 
 
 
-                    if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
+                    if (_parametros.ParametrosVenda.TrabalharComEstoqueReservado)
                     {
                         foreach (var itemproduto in _listaItensPedidosVenda)
                         {
-                            AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado);
+                            //AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado + itemproduto.itemReserva);
                         }
                     }
                     if (_parametros.ParametrosFinanceiro.IgnorarCreditoInicial)
@@ -1294,18 +1294,24 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                 }
                 double EstoqueReservado = 0;
                 double EstoqueDisponivel = 0;
-                EstoqueDisponivel = produto.FormacaoPreco.Estoque.ToDouble() - produto.FormacaoPreco.EstoqueReservado.ToDouble();
+                ConsultaReserva(txtIdProduto.Text.ToInt());
 
-                if (produto.FormacaoPreco.EstoqueReservado < 0)
+                if (txtReserva.Text == "")
                 {
-                    EstoqueReservado = 0;
+                    txtReserva.Text = "0.0000";
                 }
-                else
-                {
-                    EstoqueReservado = produto.FormacaoPreco.EstoqueReservado ;
-                }
+                EstoqueDisponivel = produto.FormacaoPreco.Estoque.ToDouble() - txtReserva.Text.ToDouble();
 
-                txtReserva.Text = EstoqueReservado.ToString("0.000");
+                //if (produto.FormacaoPreco.EstoqueReservado < 0)
+                //{
+                //    EstoqueReservado = 0;
+                //}
+                //else
+                //{
+                //    EstoqueReservado = produto.FormacaoPreco.EstoqueReservado ;
+                //}
+
+                //txtReserva.Text = EstoqueReservado.ToString("0.000");
 
                 ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
                 var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(produto.Id);
@@ -1374,7 +1380,77 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                 }
             }
         }
+        private void carregaconexao()
+        {
+            string conexoesStringII = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
+            ConexoesJson conexoesII = JsonConvert.DeserializeObject<ConexoesJson>(conexoesStringII);
+
+            var item = conexoesII.Conexoes[IndiceBancoDados];
+            string ipServer = !string.IsNullOrEmpty(item.IpPrincipal) ? item.IpPrincipal : "localhost";
+            string database = !string.IsNullOrEmpty(item.BancoDadosPrincipal) ? item.BancoDadosPrincipal : "akilsmallbusiness";
+            string userId = !string.IsNullOrEmpty(item.UsuarioPrincipal) ? item.UsuarioPrincipal : "root";
+            string senha = !string.IsNullOrEmpty(item.SenhaPrincipal) ? item.SenhaPrincipal : "Progr@max-2015";
+            int porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+            var serverPrincipalOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+            if (serverPrincipalOnline)
+            {
+                ConectionString = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";" + "default command timeout = 240";
+            }
+            else
+            {
+                ipServer = !string.IsNullOrEmpty(item.IpSecundario) ? item.IpSecundario : "localhost";
+                database = !string.IsNullOrEmpty(item.BancoDadosSecundario) ? item.BancoDadosSecundario : "akilsmallbusiness";
+                userId = !string.IsNullOrEmpty(item.UsuarioSecundario) ? item.UsuarioSecundario : "root";
+                senha = !string.IsNullOrEmpty(item.SenhaSecundaria) ? item.SenhaSecundaria : "Progr@max-2015";
+                porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+                var serverSecundarioOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+                if (serverSecundarioOnline)
+                {
+                    StringConexaoII = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";";
+                }
+                else
+                {
+                    //throw new Exception();
+                    //throw new Exception("Servidor de banco de dados não encontrado");
+                }
+
+            }
+
+        }
+        private void ConsultaReserva(int CodProduto)
+        {
+
+            carregaconexao();
+
+
+            string Sql = string.Empty;
+            using (var conn = new MySqlConnection(ConectionString))
+            {
+                conn.Open();
+
+                var sql = "";
+
+                sql = "SELECT sum(PEDITEM_QUANTIDADE) as Reserva FROM pedidosvendasitens where peditem_produto_id = " + CodProduto + " And PEDITEM_RESERVA > 0 ";
+
+
+
+                MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+                MySqlDataReader MyReader2;
+
+
+                var returnValue = MyCommand.ExecuteReader();
+                txtReserva.Text = "0.0000";
+                while (returnValue.Read())
+                {
+                    txtReserva.Text = returnValue["Reserva"].ToString();
+                }
+            }
+        }
         private void CalculeValoresTotaisCamposProduto()
         {
             if (string.IsNullOrEmpty(txtIdProduto.Text))
@@ -1450,7 +1526,7 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
           
 
             ServicoPedidoDeVenda servicoPedido = new ServicoPedidoDeVenda();
-            bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido;
+            bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.TrabalharComEstoqueReservado;
 
             if (servicoPedido.VerifiqueItemQuantidadeEstoqueNegativo(txtQuantidadeProduto.Text.ToDouble(), _produtoEmEdicao, ReserveEstoqueAoFaturarPedido))
 
@@ -1503,6 +1579,7 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                         if(item.Produto.Id == itemPedidoVenda.Produto.Id)
                         {
                             item.Quantidade += itemPedidoVenda.Quantidade;
+                            item.itemReserva += itemPedidoVenda.Quantidade;
                             item.ValorTotal += itemPedidoVenda.ValorTotal;
                             item.DescontoUnitario += itemPedidoVenda.DescontoUnitario;
                             item.TotalDesconto += itemPedidoVenda.TotalDesconto;
@@ -1550,9 +1627,10 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
             item.ValorFrete = txtvalorFreteProduto.Text.ToDouble();
             item.ValorIcmsST = txtValorIcmsSTProduto.Text.ToDouble();
             item.ValorIpi = txtValorIPIProduto.Text.ToDouble();
-
+            
             item.Produto = _produtoEmEdicao;
             item.Quantidade = txtQuantidadeProduto.Text.ToDouble();
+            item.itemReserva = item.Quantidade;
             item.ValorUnitario = txtValorUnitarioProduto.Text.ToDouble();
             item.ValorTotal = txtValorTotalProduto.Text.ToDouble();
 
@@ -1778,7 +1856,7 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                 itemGrid.Cor = item.Produto.Vestuario != null && item.Produto.Vestuario.Cor != null ? item.Produto.Vestuario.Cor.Descricao : string.Empty;
                 itemGrid.Descricao = item.Produto.DadosGerais.Descricao;
                 itemGrid.Desconto = "R$" + item.TotalDesconto.ToString("0.00");
-
+                
                 itemGrid.MarcaFabricante = item.Produto.Principal != null && item.Produto.Principal.Marca != null ? item.Produto.Principal.Marca.Descricao : string.Empty;
                 itemGrid.Modelo = item.Produto.Vestuario != null ? item.Produto.Vestuario.Modelo : string.Empty;
                 itemGrid.Quantidade = item.Quantidade.ToDouble();
@@ -1788,10 +1866,10 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
                 itemGrid.ValorTotal = item.ValorTotal.ToString("0.00");
                 itemGrid.ValorUnitario = item.ValorUnitario.ToString("0.00");
                 itemGrid.ItemEstahInconsistente = item.ItemEstahInconsistente;
-                if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
+                if (_parametros.ParametrosVenda.ReservaItemPedido == true)
                 {
                    itemGrid.QuantidadeReservado = item.Quantidade.ToDouble();
-                    item.Produto.FormacaoPreco.EstoqueReservado += item.Quantidade.ToDouble();
+                   itemGrid.itemReservado = item.Quantidade;
                 }
 
                 listaItemGrid.Add(itemGrid);
@@ -2124,6 +2202,7 @@ namespace Programax.Easy.View.Telas.Vendas.VendaRapida
             public string Modelo { get; set; }
 
             public double Quantidade { get; set; }
+            public double itemReservado { get; set; }
             public double QuantidadeReservado { get; set; }
 
             public string ValorUnitario { get; set; }

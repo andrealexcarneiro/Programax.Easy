@@ -76,17 +76,20 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
         private List<Cidade> _listaCidadesCbo;
         private List<ItemPedidoDeVenda> _listaItensPedidosVenda;
+        private List<ItemPedidoDeVenda> _listaItensPedidosVendaAnterior;
         private List<ParcelaPedidoDeVenda> _listaParcelasPedidoDeVenda;
         private readonly List<BaixaItens> _listaBaixaItens;
         private ItemPedidoDeVenda _itemPedidoDeVendaEmEdicao;
         private ParcelaPedidoDeVenda _parcelaPedidoDeVendaEmEdicao;
         private Produto _produtoEmEdicao;
         private Produto _produtoAnterior;
+        private Produto _ProdutoNovo;
         private Parametros _parametros;
         private Pessoa _clienteSelecionado;
         private FormaPagamento _formaPagamentoSelecionada;
         private List<FormaPagamento> _listaFormasPagamentos;
         private List<Roteirizacao> _listaDeRoteiros;
+        private List<Roteiro> _listaDeRoteirosII;
         private List<ItemPedidoDeVenda> _listaItensPedidosVendaMov;
 
         private Pessoa _cliente;
@@ -107,7 +110,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         private string ConectionString;
         private DataSet mDataSet;
         private MySqlDataAdapter mAdapter;
-       
+
         private Boolean habilitado = false;
         private int dias = 0;
         private int validade = 0;
@@ -120,6 +123,10 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         private string strEmpresa;
         private bool orcamento = false;
         private bool itemEditado = false;
+        private double QuantidadeAnterior = 0;
+        private double QuantidadeAtual = 0;
+        private Boolean verificaMovimento = false;
+
         #endregion
 
         #region " CONSTRUTOR "
@@ -141,7 +148,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             {
                 strEmpresa = empresa.DadosEmpresa.NomeFantasia.Substring(0, 8);
             }
-          
+
 
             _listaItensPedidosVenda = new List<ItemPedidoDeVenda>();
             _listaParcelasPedidoDeVenda = new List<ParcelaPedidoDeVenda>();
@@ -166,7 +173,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             txtUsuario.Text = Sessao.PessoaLogada.Id + " - " + Sessao.PessoaLogada.DadosGerais.Razao;
             txtDataElaboracao.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             txtSituacao.Text = EnumStatusPedidoDeVenda.ABERTO.Descricao();
-                        
+
             TrateUsuarioContemPermissaoAtalhos();
 
             ApliqueParametros();
@@ -182,6 +189,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             {
                 this.ActiveControl = txtId;
             }
+            itemEditado = false;
         }
 
         #endregion
@@ -588,12 +596,12 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
             if (ValideSeSalvarOuFechar()) return;
 
-            if(ValidaTipoDocumento()) return;
+            if (ValidaTipoDocumento()) return;
 
             Action actionSalvar = () =>
             {
                 var pedidoDeVenda = RetornePedidoDeVendaEmEdicao();
-                if (pedidoDeVenda.StatusRoteiro ==  EnumStatusRoteiro.EMAGENDA )
+                if (pedidoDeVenda.StatusRoteiro == EnumStatusRoteiro.EMAGENDA)
                 {
 
                 }
@@ -612,7 +620,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     ServicoPedidoDeVenda servicoPedido = new ServicoPedidoDeVenda();
                     bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido;
 
-                
+
                     foreach (var itemproduto in _listaItensPedidosVenda)
                     {
                         if (servicoPedido.VerifiqueItemQuantidadeEstoqueNegativo(itemproduto.Quantidade, itemproduto.Produto, ReserveEstoqueAoFaturarPedido))
@@ -621,6 +629,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                             throw new Exception("Não foi permitido salvar a venda! Corrija seu estoque!");
 
                         }
+                   
                     }
 
                 }
@@ -649,28 +658,49 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                         MessageBox.Show("Verifique os seguintes itens: " + tipoMensagem.SegundoConteudo + ".", "O estoque mínimo foi atingido!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                else
+                {
+                    if (orcamento )
+                    {
+                        var tipoMensagem = servicoPedidoDeVenda.VerificaEstoqueNegativo(pedidoDeVenda);
+
+                        if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue != EnumTipoPedidoDeVenda.ORCAMENTO)
+                        {
+                            //Mensagem informando o parâmetro: "Não aceitar estoque negativo". Não deixar fechar o pedido.                
+                            if (tipoMensagem.SegundaResposta)
+                            {
+                                MessageBox.Show("O Estoque do(s) seguinte(s) item(s): " + tipoMensagem.PrimeiroConteudo + " . Está ou ficará menor que zero!", "Não é permitido salvar a venda!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                throw new Exception("Não foi permitido salvar a venda! Corrija seu estoque!");
+                            }
+                        }
+
+                        //Mensagem quando preencherem o estoque mínimo. Caso atingir este estoque, o sistema avisa.
+                        if (tipoMensagem.TerceiraResposta)
+                        {
+                            MessageBox.Show("Verifique os seguintes itens: " + tipoMensagem.SegundoConteudo + ".", "O estoque mínimo foi atingido!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+
+
+
                 if (pedidoDeVenda.Id == 0)
                 {
                     servicoPedidoDeVenda.Cadastre(pedidoDeVenda);
                 }
                 else
                 {
-                    PedidoDeVenda pedidoBaseItens = new PedidoDeVenda(); 
+                    PedidoDeVenda pedidoBaseItens = new PedidoDeVenda();
                     pedidoBaseItens = servicoPedidoDeVenda.Consulte(pedidoDeVenda.Id);
                     List<ItemPedidoDeVenda> listaItens = new List<ItemPedidoDeVenda>();
                     listaItens = pedidoBaseItens.ListaItens.ToList();
                     ServicoPedidoDeVenda servicoPedido = new ServicoPedidoDeVenda();
                     bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido;
 
-                    //foreach (var itemproduto in _listaItensPedidosVenda)
-                    //{
-                    //    if (servicoPedido.VerifiqueItemQuantidadeEstoqueNegativo(itemproduto.Quantidade, itemproduto.Produto, ReserveEstoqueAoFaturarPedido))
-                    //    {
-                    //        MessageBox.Show("O Estoque do(s) seguinte(s) item(s): " + itemproduto.Produto.Id.ToString() + " - " + itemproduto.Produto.DadosGerais.Descricao.ToString() + " . Está ou ficará menor que zero!", "Não é permitido salvar a venda!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //        throw new Exception("Não foi permitido salvar a venda! Corrija seu estoque!");
-                           
-                    //    }
-                    //}
+                    foreach (var itemproduto in _listaItensPedidosVenda)
+                    {
+                        itemproduto.itemReserva = itemproduto.Quantidade;
+                    }
 
 
                     //Para ignorar a validação do crédito inicial, carrega-se com um valor bem alto
@@ -679,10 +709,10 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     else if ((EnumTipoFormaPagamento)pedidoDeVenda.FormaPagamento.Id == EnumTipoFormaPagamento.DINHEIRO ||
                             (EnumTipoFormaPagamento)pedidoDeVenda.FormaPagamento.Id == EnumTipoFormaPagamento.CARTAOCREDITO ||
                             (EnumTipoFormaPagamento)pedidoDeVenda.FormaPagamento.Id == EnumTipoFormaPagamento.CARTAODEBITO)
-                                pedidoDeVenda.SaldoDisponivel = 999999999; //Se for dinheiro, débito ou crédito vai ignorar a validação.
+                        pedidoDeVenda.SaldoDisponivel = 999999999; //Se for dinheiro, débito ou crédito vai ignorar a validação.
 
                     servicoPedidoDeVenda.AtualizePedidoJaReservadoComNovosDados(pedidoDeVenda);
-           
+
 
                     if (_parametros.ParametrosVenda.TrabalharComEstoqueReservado)
                     {
@@ -702,41 +732,58 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 {
                     MessageBox.Show("Pedido enviado para liberação.");
                 }
-                if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
+                if (_parametros.ParametrosVenda.TrabalharComEstoqueReservado)
 
-                    if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue != EnumTipoPedidoDeVenda.ORCAMENTO)
+                    if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue == EnumTipoPedidoDeVenda.ORCAMENTO)
                     {
+                   
+                             
+                     
+
 
                         if (itemEditado == false)
                         {
                             if (pedidoDeVenda.TipoPedidoVenda == EnumTipoPedidoDeVenda.PEDIDOVENDA)
                             {
+
                                 foreach (var itemproduto in _listaItensPedidosVenda)
                                 {
-                                    AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado + itemproduto.Quantidade);
+                                    if (_parametros.ParametrosVenda.ReservaItemPedido)
+                                    {
+                                        //AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado + itemproduto.itemReserva);
+                                    }
                                 }
                             }
-                           
-                           
+
+
                         }
                         else
                         {
+                            foreach (var itemproduto in _listaItensPedidosVendaAnterior)
+                            {
+                                if (_parametros.ParametrosVenda.ReservaItemPedido)
+                                {
+                                   // AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado - itemproduto.itemReserva);
+                                }
+                            }
                             foreach (var itemproduto in _listaItensPedidosVenda)
                             {
-                                if (_produtoAnterior.Id != itemproduto.Produto.Id)
+                                if (_parametros.ParametrosVenda.ReservaItemPedido)
                                 {
-                                    AlteraReserva(_produtoAnterior.Id, _produtoAnterior.FormacaoPreco.EstoqueReservado - itemproduto.Quantidade);
-                                    AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado + itemproduto.Quantidade);
-
+                                    if (itemproduto.Produto.FormacaoPreco.EstoqueReservado != 0)
+                                    {
+                                        //AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado);
+                                    }
+                                    else
+                                    {
+                                        //AlteraReserva(itemproduto.Produto.Id, itemproduto.Produto.FormacaoPreco.EstoqueReservado + itemproduto.itemReserva);
+                                    }
                                 }
                             }
                         }
 
-                        //if (Alterar == false)
-                        //{
-                           
-                        //}
-                }
+
+                    }
 
                 MessageBox.Show("Número do pedido/orçamento " + pedidoDeVenda.Id + ".");
 
@@ -744,7 +791,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
                 LimpePedidoDeVenda();
             };
-            
+
             TratamentosDeTela.TrateInclusaoEAtualizacao(actionSalvar, mensagemDeSucesso: "O pedido/orçamento foi salvo com sucesso.");
         }
         private void AlteraReserva(int produto, double quantidade)
@@ -869,8 +916,8 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         private void txtId_Leave(object sender, EventArgs e)
         {
             BusqueECarreguePedido();
-            
-            itemEditado = false;
+
+
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -888,7 +935,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             {
                 this.FecharFormulario();
             }
-            
+
         }
 
         private void btnExcluirItem_Click(object sender, EventArgs e)
@@ -909,13 +956,13 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 if (MessageBox.Show(mensagemConfirmacaoExclusao, "Deseja excluir este item ?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
 
-                    if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
+                    if (_parametros.ParametrosVenda.TrabalharComEstoqueReservado == true)
                     {
                         if (itemASerExcluido.Produto.FormacaoPreco.EstoqueReservado > 0)
                         {
-                            AlteraReserva(itemASerExcluido.Produto.Id, itemASerExcluido.Produto.FormacaoPreco.EstoqueReservado - itemASerExcluido.Quantidade);
+                            //AlteraReserva(itemASerExcluido.Produto.Id, itemASerExcluido.Produto.FormacaoPreco.EstoqueReservado - itemASerExcluido.Quantidade);
                         }
-                       
+
                     }
                     _listaItensPedidosVenda.Remove(itemASerExcluido);
 
@@ -923,11 +970,11 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 }
             }
         }
-       
-       
+
+
         private void btnFecharVenda_Click(object sender, EventArgs e)
         {
-            if(ValidaTipoDocumento()) return;
+            if (ValidaTipoDocumento()) return;
 
             if (ValideSeSalvarOuFechar()) return;
 
@@ -938,7 +985,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 ServicoPedidoDeVenda servicoPedidoDeVenda = new ServicoPedidoDeVenda();
 
                 var tipoMensagem = servicoPedidoDeVenda.VerificaEstoqueNegativo(pedidoDeVendaEmEdicao);
-                
+
                 //Mensagem informando o parâmetro: "Não aceitar estoque negativo". Não deixar fechar o pedido.
                 if (tipoMensagem.SegundaResposta)
                 {
@@ -954,7 +1001,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
                 servicoPedidoDeVenda.ValidePedidoDeVenda(pedidoDeVendaEmEdicao);
 
-               
+
                 try
                 {
                     //Para ignorar a validação do crédito inicial, carrega-se com um valor bem alto
@@ -963,7 +1010,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     else if ((EnumTipoFormaPagamento)pedidoDeVendaEmEdicao.FormaPagamento.Id == EnumTipoFormaPagamento.DINHEIRO ||
                             (EnumTipoFormaPagamento)pedidoDeVendaEmEdicao.FormaPagamento.Id == EnumTipoFormaPagamento.CARTAOCREDITO ||
                             (EnumTipoFormaPagamento)pedidoDeVendaEmEdicao.FormaPagamento.Id == EnumTipoFormaPagamento.CARTAODEBITO)
-                                pedidoDeVendaEmEdicao.SaldoDisponivel = 999999999; //Se for dinheiro, débito ou crédito vai ignorar a validação.
+                        pedidoDeVendaEmEdicao.SaldoDisponivel = 999999999; //Se for dinheiro, débito ou crédito vai ignorar a validação.
 
                     servicoPedidoDeVenda.ValidePedidoParaReserva(pedidoDeVendaEmEdicao);
 
@@ -1026,7 +1073,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     {
                         double itemReservado = itemproduto.Produto.FormacaoPreco.EstoqueReservado;
                         double QuantidadeReservado = 0;
-                        QuantidadeReservado = itemReservado  - itemproduto.Quantidade;
+                        QuantidadeReservado = itemReservado - itemproduto.Quantidade;
                         if (QuantidadeReservado < 0)
                         {
                             QuantidadeReservado = 0;
@@ -1041,7 +1088,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             };
 
             TratamentosDeTela.TrateInclusaoEAtualizacao(actionCancelamentoDePedido, mensagemDeSucesso: "Pedido cancelado com sucesso.");
-            
+
         }
         private void CancelaReserva(int produto, double quantidade)
         {
@@ -1172,7 +1219,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         }
         private void cancelahistorico(int pedido)
         {
-          
+
 
             string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
@@ -1215,7 +1262,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
             }
 
-            
+
 
             using (var conn = new MySqlConnection(ConectionString))
             {
@@ -1236,7 +1283,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 var returnValue = MyCommand.ExecuteReader();
             }
 
-           
+
         }
         private void btnCancelarParcela_Click(object sender, EventArgs e)
         {
@@ -1546,7 +1593,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 cboTabelaPrecos.EditValue = listaTabelaPreco[1].Id;
             }
 
-            if(_parametros.ParametrosVenda.TabelaPreco != null && _parametros.ParametrosVenda.TabelaPreco.Id != 0)
+            if (_parametros.ParametrosVenda.TabelaPreco != null && _parametros.ParametrosVenda.TabelaPreco.Id != 0)
                 cboTabelaPrecos.EditValue = _parametros.ParametrosVenda.TabelaPreco.Id;
         }
 
@@ -1597,49 +1644,49 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             ////if (listaCondicoes.Count != 0)
             ////{
 
-            
 
-                    if (_crediario != null && _crediario.CondicaoPagamento != null)
+
+            if (_crediario != null && _crediario.CondicaoPagamento != null)
+            {
+                listaCondicoes.Add(_crediario.CondicaoPagamento);
+
+                cboCondicaoPagamento.EditValue = _crediario.CondicaoPagamento.Id;
+            }
+            else
+            {
+                ServicoFormaPagamento servicoFormaPagamento = new ServicoFormaPagamento();
+                var formaPagamento = servicoFormaPagamento.Consulte(cboFormaPagamento.EditValue.ToInt());
+
+                if (formaPagamento != null &&
+                    formaPagamento.ListaCondicoesPagamento != null &&
+                    formaPagamento.ListaCondicoesPagamento.Count > 0)
+                {
+                    foreach (var item in formaPagamento.ListaCondicoesPagamento)
                     {
-                        listaCondicoes.Add(_crediario.CondicaoPagamento);
-
-                        cboCondicaoPagamento.EditValue = _crediario.CondicaoPagamento.Id;
-                    }
-                    else
-                    {
-                        ServicoFormaPagamento servicoFormaPagamento = new ServicoFormaPagamento();
-                        var formaPagamento = servicoFormaPagamento.Consulte(cboFormaPagamento.EditValue.ToInt());
-
-                        if (formaPagamento != null &&
-                            formaPagamento.ListaCondicoesPagamento != null &&
-                            formaPagamento.ListaCondicoesPagamento.Count > 0)
+                        if (item.CondicaoPagamento.Status == "A")
                         {
-                            foreach (var item in formaPagamento.ListaCondicoesPagamento)
-                            {
-                                if (item.CondicaoPagamento.Status == "A")
-                                {
-                                    listaCondicoes.Add(item.CondicaoPagamento);
-                                }
-                            }
+                            listaCondicoes.Add(item.CondicaoPagamento);
                         }
                     }
-
-                    listaCondicoes.Insert(0, null);
-
-                    cboCondicaoPagamento.Properties.DisplayMember = "Descricao";
-                    cboCondicaoPagamento.Properties.ValueMember = "Id";
-                    cboCondicaoPagamento.Properties.DataSource = listaCondicoes;
-
-                    if (string.IsNullOrEmpty(cboCondicaoPagamento.Text))
-                    {
-                        cboCondicaoPagamento.EditValue = null;
-                    }
-
-                    if (listaCondicoes.Count == 2)
-                    {
-                        cboCondicaoPagamento.EditValue = listaCondicoes[1].Id;
-                    }
+                }
             }
+
+            listaCondicoes.Insert(0, null);
+
+            cboCondicaoPagamento.Properties.DisplayMember = "Descricao";
+            cboCondicaoPagamento.Properties.ValueMember = "Id";
+            cboCondicaoPagamento.Properties.DataSource = listaCondicoes;
+
+            if (string.IsNullOrEmpty(cboCondicaoPagamento.Text))
+            {
+                cboCondicaoPagamento.EditValue = null;
+            }
+
+            if (listaCondicoes.Count == 2)
+            {
+                cboCondicaoPagamento.EditValue = listaCondicoes[1].Id;
+            }
+        }
         //}
 
         private void PreenchaCboEstados()
@@ -1802,15 +1849,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 cboTransportadoras.EditValue = null;
             }
 
-            if (_parametros.ParametrosVenda.Transportadora != null)            
+            if (_parametros.ParametrosVenda.Transportadora != null)
                 cboTransportadoras.EditValue = _parametros.ParametrosVenda.Transportadora.Id;
-            
+
             if (_parametros.ParametrosVenda.TipoFrete != null)
             {
                 rdbFreteARetirar.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.PORCONTADETERCEIROS ? true : false;
-                rdbFreteCif.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.PORCONTADOEMITENTE? true : false; //Fornecedor
-                rdbFreteFob.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.PORCONTADODESTINATARIOREMETENTE? true:false; //Cliente
-                rdbFreteNenhum.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.SEMCOBRANCADEFRETE? true: false;
+                rdbFreteCif.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.PORCONTADOEMITENTE ? true : false; //Fornecedor
+                rdbFreteFob.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.PORCONTADODESTINATARIOREMETENTE ? true : false; //Cliente
+                rdbFreteNenhum.Checked = _parametros.ParametrosVenda.TipoFrete == EnumTipoFrete.SEMCOBRANCADEFRETE ? true : false;
             }
 
         }
@@ -1953,6 +2000,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 var pedidoDeVenda = servicoPedidoDeVenda.Consulte(txtId.Text.ToInt());
 
                 PreenchaPedidoDeVenda(pedidoDeVenda, exibirMensagemDeNaoEncontrado: true);
+                itemEditado = true;
             }
         }
 
@@ -1976,7 +2024,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             }
         }
 
-        private void PreenchaDadosClienteEndereco(Pessoa cliente, EnumTipoEndereco tipoEndereco = EnumTipoEndereco.PRINCIPAL )
+        private void PreenchaDadosClienteEndereco(Pessoa cliente, EnumTipoEndereco tipoEndereco = EnumTipoEndereco.PRINCIPAL)
         {
             if (cliente != null && cliente.ListaDeEnderecos != null && cliente.ListaDeEnderecos.Count > 0)
             {
@@ -2236,7 +2284,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 txtReserva.Text = EstoqueReservado.ToString("0.000");
 
                 ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
-                
+
                 var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(produto.Id);
 
                 foreach (var itemproduto in ItemTransferencia)
@@ -2307,27 +2355,27 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
         private void InsiraOuAtualizeItemPedido()
         {
-            if(cboTipoDocumento.EditValue == null)
+            if (cboTipoDocumento.EditValue == null)
             {
-                MessageBox.Show("Para continuar, informe o tipo de documento.","Inserção de Itens", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Para continuar, informe o tipo de documento.", "Inserção de Itens", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue != EnumTipoPedidoDeVenda.ORCAMENTO)
+            if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue != EnumTipoPedidoDeVenda.ORCAMENTO)
             {
 
                 ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
                 var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(txtIdProduto.Text.ToInt());
 
-               
+
 
 
                 ServicoPedidoDeVenda servicoPedido = new ServicoPedidoDeVenda();
-                bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido;
+                bool ReserveEstoqueAoFaturarPedido = _parametros.ParametrosVenda.TrabalharComEstoqueReservado;
 
-             
+
                 if (servicoPedido.VerifiqueItemQuantidadeEstoqueNegativo(txtQuantidadeProduto.Text.ToDouble(), _produtoEmEdicao, ReserveEstoqueAoFaturarPedido))
-          
+
                 {
                     if (ItemTransferencia.Count > 0)
                     {
@@ -2340,19 +2388,19 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                         return;
                     }
                     else
-                    MessageBox.Show("O estoque do seguinte item: " + _produtoEmEdicao.Id + " - " + _produtoEmEdicao.DadosGerais.Descricao
-                                    + ". Pode estar zerado, Reservado ou a quantidade requerida não está disponível!", 
-                                    "Verifique o estoque!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("O estoque do seguinte item: " + _produtoEmEdicao.Id + " - " + _produtoEmEdicao.DadosGerais.Descricao
+                                        + ". Pode estar zerado, Reservado ou a quantidade requerida não está disponível!",
+                                        "Verifique o estoque!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
 
 
-          
+
 
             Action actionInserirItem = () =>
             {
-             
+
 
                 ItemPedidoDeVenda itemPedidoVendaII = RetorneItemPedidoDeVendaEmEdicaoII();
                 PedidoDeVenda pedidoDeVendaII = RetornePedidoDeVendaEmEdicao();
@@ -2361,7 +2409,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 {
                     return;
                 }
-                
+
                 ItemPedidoDeVenda itemPedidoVenda = RetorneItemPedidoDeVendaEmEdicao();
                 PedidoDeVenda pedidoDeVenda = RetornePedidoDeVendaEmEdicao();
 
@@ -2393,26 +2441,31 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                         if (item.Produto.Id == itemPedidoVenda.Produto.Id)
                         {
                             item.Quantidade += itemPedidoVenda.Quantidade;
+                            if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue == EnumTipoPedidoDeVenda.PEDIDOVENDA)
+                            {
+                                item.itemReserva += itemPedidoVenda.Quantidade;
+                            }
+                               
                             item.ValorTotal += itemPedidoVenda.ValorTotal;
                             item.DescontoUnitario += itemPedidoVenda.DescontoUnitario;
                             item.TotalDesconto += itemPedidoVenda.TotalDesconto;
                             atualizouInclusao = true;
-                            
-                               
+
+
                         }
                     }
-                    if (itemPedidoVenda.Produto.FormacaoPreco.EstoqueReservado < 0)
-                    {
-                        itemPedidoVenda.Produto.FormacaoPreco.EstoqueReservado = 0;
-                    }
-                    
+                    //if (itemPedidoVenda.Produto.FormacaoPreco.EstoqueReservado < 0)
+                    //{
+                    //    itemPedidoVenda.Produto.FormacaoPreco.EstoqueReservado = 0;
+                    //}
+
                     if (!atualizouInclusao)
                         _listaItensPedidosVenda.Add(itemPedidoVenda);
                 }
                 else
                 {
                     int posicaoItem = itemPedidoVenda.Id - 1;
-                   
+
 
                     _listaItensPedidosVenda.Insert(posicaoItem, itemPedidoVenda);
                 }
@@ -2420,7 +2473,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 LimpeCamposProduto();
 
                 PreenchaGridItens();
-               
+
             };
 
             TratamentosDeTela.TrateInclusaoEAtualizacao(actionInserirItem, exibirMensagemDeSucesso: false);
@@ -2456,6 +2509,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             item.ValorUnitario = txtValorUnitarioProduto.Text.ToDouble();
             item.ValorTotal = txtValorTotalProduto.Text.ToDouble();
 
+            if (_parametros.ParametrosVenda.ReservaItemPedido)
+            {
+
+                if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue == EnumTipoPedidoDeVenda.PEDIDOVENDA)
+                {
+                    item.itemReserva = item.Quantidade;
+                }
+            }
+
             return item;
         }
 
@@ -2485,6 +2547,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             item.ValorUnitario = txtValorUnitarioProduto.Text.ToDouble();
             item.ValorTotal = txtValorTotalProduto.Text.ToDouble();
 
+            if (_parametros.ParametrosVenda.ReservaItemPedido)
+            {
+                if ((EnumTipoPedidoDeVenda)cboTipoDocumento.EditValue == EnumTipoPedidoDeVenda.PEDIDOVENDA)
+                {
+                    item.itemReserva = item.Quantidade;
+                }
+                
+            }
+
             return item;
         }
 
@@ -2497,11 +2568,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         {
             double itensDisponiveis;
             _itemPedidoDeVendaEmEdicao = itemPedidoVenda;
+            //QuantidadeAnterior = 0;
+            //QuantidadeAtual = 0;
 
             if (itemPedidoVenda != null)
             {
                 _produtoEmEdicao = itemPedidoVenda.Produto;
-                _produtoAnterior =  itemPedidoVenda.Produto;
+                _produtoAnterior = itemPedidoVenda.Produto;
+                QuantidadeAnterior = itemPedidoVenda.Quantidade;
+                QuantidadeAtual = itemPedidoVenda.Quantidade;
                 itemEditado = true;
                 rdbDescontoProdutoValor.Checked = true;
                 rdbDescontoProdutoPercentual.Checked = itemPedidoVenda.DescontoEhPercentual;
@@ -2514,7 +2589,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 txtValorUnitarioProduto.Text = itemPedidoVenda.ValorUnitario.ToString("0.00");
                 txtDescontoUnitario.Text = itemPedidoVenda.DescontoUnitario.ToString("0.00##");
                 txtTotalDescontoProduto.Text = itemPedidoVenda.DescontoUnitario.ToString("0.00");
-                
+
                 itensDisponiveis = itemPedidoVenda.Produto.FormacaoPreco.Estoque - itemPedidoVenda.Produto.FormacaoPreco.EstoqueReservado;
 
                 if (itensDisponiveis < 0)
@@ -2584,7 +2659,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             {
                 var itemPedido = _listaItensPedidosVenda.FirstOrDefault(item => item.Id == colunaId.View.GetFocusedRowCellValue(colunaId).ToInt());
                 //itemProduto = itemPedido;
-                
+
                 PreenchaCamposItens(itemPedido);
             }
         }
@@ -2598,29 +2673,29 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             HabiliteOuDesabiliteFreteEDesconto();
 
             List<ItemGrid> listaItemGrid = new List<ItemGrid>();
-           
+
 
             foreach (var item in _listaItensPedidosVenda)
             {
                 ItemGrid itemGrid = new ItemGrid();
                 double Desconto = 0;
                 double Valor = 0;
-                
-               
+
+
 
 
                 itemGrid.Id = item.Id;
 
-               
+
 
 
                 itemGrid.CodigoDeBarras = item.Produto.DadosGerais.CodigoDeBarras;
                 itemGrid.IdProduto = item.Produto.Id;
-                
+
 
                 itemGrid.Cor = item.Produto.Vestuario != null && item.Produto.Vestuario.Cor != null ? item.Produto.Vestuario.Cor.Descricao : string.Empty;
                 itemGrid.Descricao = item.Produto.DadosGerais.Descricao;
-               
+
 
                 itemGrid.Desconto = "R$" + item.TotalDesconto.ToString("0.00");
 
@@ -2642,9 +2717,16 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     Desconto = item.Produto.FormacaoPreco.PercentualDescontoMaximo.ToDouble();
                 }
 
-               
-                Valor = item.Produto.FormacaoPreco.ValorVenda.ToDouble() - (item.Produto.FormacaoPreco.ValorVenda.ToDouble() * Desconto) /100;
+
+                Valor = item.Produto.FormacaoPreco.ValorVenda.ToDouble() - (item.Produto.FormacaoPreco.ValorVenda.ToDouble() * Desconto) / 100;
                 itemGrid.QtdMinimo = string.Format("{0:N}", Valor);
+
+
+                if (_parametros.ParametrosVenda.ReservaItemPedido)
+                {
+                    itemGrid.ItemReserva = item.Quantidade;
+
+                }
 
                 //if (_parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido == true)
                 //{
@@ -2653,7 +2735,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 //}
 
                 listaItemGrid.Add(itemGrid);
-                
+
 
                 BloquearCamposTitulo();
             }
@@ -2795,15 +2877,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 calculosPedidoDeVenda.DefinaIpi(itemPedido, ufDestino, tipoCliente);
                 calculosPedidoDeVenda.DefinaIcmsRegimeNormal(itemPedido, ufDestino, tipoCliente, tipoInscricaoIcms);
                 calculosPedidoDeVenda.DefinaPis(itemPedido, ufDestino, tipoCliente);
-                calculosPedidoDeVenda.DefinaCofins(itemPedido,ufDestino,tipoCliente);
+                calculosPedidoDeVenda.DefinaCofins(itemPedido, ufDestino, tipoCliente);
             }
-            
+
             double valorTotalItem = calculosPedidoDeVenda.RetorneValorTotalItem(itemPedido.ValorUnitario,
                                                                                                                    itemPedido.Quantidade,
                                                                                                                    descontoTotal,
                                                                                                                    itemPedido.ValorFrete,
                                                                                                                    itemPedido.ValorIpi,
-                                                                                                                   itemPedido.ValorIcmsST);            
+                                                                                                                   itemPedido.ValorIcmsST);
 
             txtTotalDescontoProduto.Text = descontoTotal.ToString("0.00");
             txtValorIcmsSTProduto.Text = itemPedido.ValorIcmsST != null ? itemPedido.ValorIcmsST.Value.ToString("0.00") : string.Empty;
@@ -2842,7 +2924,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             pedidoDeVenda.TipoCliente = (EnumTipoCliente)pnlAtendimento.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Tag.ToInt();
 
             pedidoDeVenda.CondicaoPagamento = cboCondicaoPagamento.EditValue != null ? new CondicaoPagamento { Id = cboCondicaoPagamento.EditValue.ToInt() } : null;
-            
+
             if (orcamento == false)
             {
                 pedidoDeVenda.DataElaboracao = txtDataElaboracao.Text.ToDate();
@@ -2893,8 +2975,8 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
             pedidoDeVenda.ListaItens = _listaItensPedidosVenda;
             pedidoDeVenda.ListaParcelasPedidoDeVenda = _listaParcelasPedidoDeVenda;
-            
-            
+
+
             return pedidoDeVenda;
         }
 
@@ -2935,7 +3017,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             _variavelControleEditandoOuLimpandoPedido = true;
             Alterar = true;
             btnSalvar.Visible = true;
-            btnCancelarVenda.Visible = true;            
+            btnCancelarVenda.Visible = true;
             btnFecharVenda.Visible = true;
 
             txtDisponibilidadeItem.ForeColor = Color.Black;
@@ -2968,22 +3050,31 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     orcamento = true;
                     btnFecharVenda.Visible = false;
                 }
+                verificaMovimento = false;
 
                 foreach (var item in pedidoDeVenda.ListaItens)
                 {
                     item.Produto.CarregueLazyLoad();
+                    if (item.Produto.DadosGerais.Descricao == "CANCELAMENTO DE PEDIDO")
+                    {
+                        verificaMovimento = true;
+                    }
                 }
-
-                if (ValideSePedidoEstahEmBaixa(pedidoDeVenda.StatusPedidoVenda)) 
+                
+                if (verificaMovimento == false)
                 {
-                    pnlAtendimento.Enabled = false;
-                    pnlItens.Enabled = true;
-                    pnlFechamento.Enabled = true;
-                    pnlFinanceiro.Enabled = true;
+                    if (ValideSePedidoEstahEmBaixa(pedidoDeVenda.StatusPedidoVenda))
+                    {
+                        pnlAtendimento.Enabled = false;
+                        pnlItens.Enabled = true;
+                        pnlFechamento.Enabled = true;
+                        pnlFinanceiro.Enabled = true;
 
-                    btnCancelarVenda.Visible = false;
-                    btnFecharVenda.Visible = false;                   
+                        btnCancelarVenda.Visible = false;
+                        btnFecharVenda.Visible = false;
+                    }
                 }
+                
 
                 if (pedidoDeVenda.StatusPedidoVenda == EnumStatusPedidoDeVenda.CANCELADO ||
                     pedidoDeVenda.StatusPedidoVenda == EnumStatusPedidoDeVenda.FATURADO ||
@@ -2991,14 +3082,14 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     pedidoDeVenda.StatusPedidoVenda == EnumStatusPedidoDeVenda.RECUSADO)
                 {
                     btnSalvar.Visible = false;
-                    btnCancelarVenda.Visible = false;                   
+                    btnCancelarVenda.Visible = false;
                     btnFecharVenda.Visible = false;
 
                     pnlAtendimento.Enabled = false;
                     pnlItens.Enabled = false;
                     pnlFechamento.Enabled = false;
 
-                    if(_parametros.ParametrosVenda.LimiteDiarioManha > 0 && pedidoDeVenda.StatusPedidoVenda == EnumStatusPedidoDeVenda.EMITIDONFE
+                    if (_parametros.ParametrosVenda.LimiteDiarioManha > 0 && pedidoDeVenda.StatusPedidoVenda == EnumStatusPedidoDeVenda.EMITIDONFE
                         && !pedidoDeVenda.EstahPago)
                     {
                         pnlFinanceiro.Enabled = true;
@@ -3020,15 +3111,15 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
 
                 if (_parametros.ParametrosVenda.LimiteDiarioManha > 0)
                 {
-                    if(pedidoDeVenda.StatusRoteiro == EnumStatusRoteiro.EMAGENDA || pedidoDeVenda.StatusRoteiro == null)
+                    if (pedidoDeVenda.StatusRoteiro == EnumStatusRoteiro.EMAGENDA || pedidoDeVenda.StatusRoteiro == null)
                         btnAgendar.Visible = true;
 
                     tblImpressao.Visible = true;
                 }
 
                 btnImprimir.Visible = true;
-                
-                if(!string.IsNullOrEmpty(_parametros.ParametrosVenda.NomeContrato))
+
+                if (!string.IsNullOrEmpty(_parametros.ParametrosVenda.NomeContrato))
                 {
                     btnContrato.Visible = true;
                     lblDataDesmontagem.Visible = true;
@@ -3039,7 +3130,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 }
 
                 txtId.Properties.ReadOnly = true;
-               
+
             }
             else
             {
@@ -3061,7 +3152,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 lblFinanceiro.Text = "<<Nenhum>>";
                 lblFinanceiro.ForeColor = Color.Black;
 
-                txtNotaFiscal.Text = string.Empty;               
+                txtNotaFiscal.Text = string.Empty;
             }
 
             PreenchaTopoEdicao(pedidoDeVenda);
@@ -3077,25 +3168,25 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             CarregaStatusFinanceiro(pedidoDeVenda);
 
             //CarregaVendas();
-            
+
             if (pedidoDeVenda != null)
             {
-                if(_parametros.ParametrosVenda.LimiteDiarioManha > 0)
+                if (_parametros.ParametrosVenda.LimiteDiarioManha > 0)
                 {
                     //Roteiro
-                   
+
                     CarregaRoteiroPedido(pedidoDeVenda.Id);
-                   
-                }                
+
+                }
 
                 //Numero da Nota, se tiver
                 CarregaNumeroNotaFiscal(pedidoDeVenda);
-               //Andre 
+                //Andre 
                 CarregaItensBaixaPedido(pedidoDeVenda.Id);
 
                 ServicoCaixa servicoCaixa = new ServicoCaixa();
 
-                var caixa = servicoCaixa.Consulte( pedidoDeVenda.Id);
+                var caixa = servicoCaixa.Consulte(pedidoDeVenda.Id);
 
                 ConsultaMovCaixaItens(pedidoDeVenda.Id);
 
@@ -3105,7 +3196,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             else
             {
                 gcRoteiros.DataSource = null;
-            }            
+            }
         }
         private void ConsultaMovCaixaItens(int Numero)
         {
@@ -3152,12 +3243,12 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             {
 
                 conn.Open();
-                string Sql = "SELECT movcaixa_usuario_abertura, pes_razao, movcaixa_caixa, itemcaixa_id FROM movimentacoescaixasitens" + 
+                string Sql = "SELECT movcaixa_usuario_abertura, pes_razao, movcaixa_caixa, itemcaixa_id FROM movimentacoescaixasitens" +
                                 " Inner Join movimentacoescaixa ON " +
                                 " movimentacoescaixasitens.itemcaixa_movimentacao_caixa = movimentacoescaixa.movcaixa_id " +
                                 " Inner join pessoas ON " +
                                 " movimentacoescaixa.movcaixa_usuario_abertura = pessoas.pes_id " +
-                                " where ITEMCAIXA_NUMERO_DOCUMENTO_ORIGEM = " + Numero ;
+                                " where ITEMCAIXA_NUMERO_DOCUMENTO_ORIGEM = " + Numero;
 
                 MySqlCommand MyCommand = new MySqlCommand(Sql, conn);
                 MySqlDataReader MyReader2;
@@ -3166,7 +3257,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 var returnValue = MyCommand.ExecuteReader();
                 while (returnValue.Read())
                 {
-                    txtUsuarioCaixa.Text = returnValue["movcaixa_usuario_abertura"].ToString() +  " - " + returnValue["pes_razao"].ToString();
+                    txtUsuarioCaixa.Text = returnValue["movcaixa_usuario_abertura"].ToString() + " - " + returnValue["pes_razao"].ToString();
                     txtIdCaixa.Text = returnValue["movcaixa_caixa"].ToString();
                     txtRegistroCaixa.Text = returnValue["itemcaixa_id"].ToString();
                 }
@@ -3198,14 +3289,14 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
         {
             //if(pedido.StatusPedidoVenda == EnumStatusPedidoDeVenda.EMITIDONFE)
             //{
-                var pedidoEncontrado = new ServicoNotaFiscal().ConsulteListaDocumentos(pedido.Id, null, null, EnumTipoDocumento.PEDIDODEVENDAS,
-                                                                                       EnumStatusNotaFiscal.AUTORIZADA, null,
-                                                                                       EnumTipoDeEmissaoPesquisa.NORMAL, null)
-                                                                                       .FirstOrDefault();
+            var pedidoEncontrado = new ServicoNotaFiscal().ConsulteListaDocumentos(pedido.Id, null, null, EnumTipoDocumento.PEDIDODEVENDAS,
+                                                                                   EnumStatusNotaFiscal.AUTORIZADA, null,
+                                                                                   EnumTipoDeEmissaoPesquisa.NORMAL, null)
+                                                                                   .FirstOrDefault();
 
-                txtNotaFiscal.Text = pedidoEncontrado != null? pedidoEncontrado.IdentificacaoNotaFiscal.NumeroNota.ToString() : string.Empty;
+            txtNotaFiscal.Text = pedidoEncontrado != null ? pedidoEncontrado.IdentificacaoNotaFiscal.NumeroNota.ToString() : string.Empty;
 
-                
+
             //}
         }
 
@@ -3216,16 +3307,24 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             _empresa = servicoEmpresa.ConsulteUltimaEmpresa();
             //if (_empresa.DadosEmpresa.Cnpj != "28.879.049/0001-85")
             //{
-                var roteiro = new ServicoRoteiro().ConsultePorPedido(pedidoId);
+            //    var roteiro = new ServicoRoteiro().ConsultePorPedido(pedidoId);
+            //var roteiro = new ServicoRoteiro().ConsultePeloNumeroPedidoParceiroEDataElaboracao(pedidoId,null,txtDataElaboracao.Text,0);
 
+            var roteiros = new ServicoRoteiro().ConsulteLista(null, null, null, EnumDataFiltrarRoteiro.ELABORACAO, null,
+                                                             null, pedidoId, 0, false);
 
-                if (roteiro != null)
-                    _listaDeRoteiros = new ServicoRoteirizacao().ConsulteListaCodigoRoteiro(roteiro.RoteirizacaoId);
+            _listaDeRoteirosII = roteiros;
 
-                preencherGrid(roteiro);
-            //}
- 
+            if (_listaDeRoteirosII.Count != 0)
+            {
+                _listaDeRoteiros = new ServicoRoteirizacao().ConsulteListaCodigoRoteiro(roteiros[0].RoteirizacaoId);
+
+                preencherGrid(roteiros[0]);
+            }
+               
         }
+    
+    
 
 
         private void CarregaItensBaixaPedido(int pedidoId)
@@ -3523,6 +3622,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             if (pedidoDeVenda != null)
             {
                 _listaItensPedidosVenda = pedidoDeVenda.ListaItens.ToList();
+                _listaItensPedidosVendaAnterior = pedidoDeVenda.ListaItens.ToList();
             }
             else
             {
@@ -3876,7 +3976,11 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                     //    return true;
                     //}
                     //return false;
+            
+
                 }
+
+                
 
                 if (itemsaida != itemEntrada)
                 {
@@ -4197,7 +4301,35 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
                 cboOperadorasCredito.Properties.DataSource = null;
             }
         }
+        private void preencherGridRoteiro()
+        {
+            List<RoteiroAuxiliar> listaDeRoteirosAuxiliar = new List<RoteiroAuxiliar>();
 
+            if (_listaDeRoteirosII != null || _listaDeRoteirosII.Count != 0)
+            {
+               
+                    RoteiroAuxiliar RoteiroAuxiliar = new RoteiroAuxiliar();
+
+                    RoteiroAuxiliar.Id = 0;
+                    RoteiroAuxiliar.Funcionario = string.Empty;
+
+                    RoteiroAuxiliar.DataCriacao = string.Empty;
+
+                    RoteiroAuxiliar.DataConclusao = string.Empty;
+
+                    //RoteiroAuxiliar.Periodo = agenda.Periodo.Descricao();
+
+                    //RoteiroAuxiliar.Status = agenda.Status.Descricao();
+
+                    RoteiroAuxiliar.Imagem = Properties.Resources.icons8_linha_vertical_30;
+
+                    listaDeRoteirosAuxiliar.Add(RoteiroAuxiliar);
+
+                    gcRoteiros.DataSource = listaDeRoteirosAuxiliar;
+                    gcRoteiros.RefreshDataSource();
+                
+            }
+        }
         private void preencherGrid(Roteiro agenda)
         {
             List<RoteiroAuxiliar> listaDeRoteirosAuxiliar = new List<RoteiroAuxiliar>();
@@ -4319,6 +4451,7 @@ namespace Programax.Easy.View.Telas.Vendas.PedidosDeVendas
             public string Modelo { get; set; }
 
             public double Quantidade { get; set; }
+            public double ItemReserva { get; set; }
 
             public string ValorUnitario { get; set; }
 

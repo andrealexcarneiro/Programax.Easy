@@ -59,6 +59,8 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.cboTipoMovimentacaoEstoque = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSubestoque = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.painelBotoes.SuspendLayout();
             this.panelConteudo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picFoto)).BeginInit();
@@ -78,6 +80,7 @@
             this.gcIdentificacao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiferencaEstoque.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoMovimentacaoEstoque.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubestoque.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBotoes
@@ -88,6 +91,8 @@
             // 
             // panelConteudo
             // 
+            this.panelConteudo.Controls.Add(this.txtSubestoque);
+            this.panelConteudo.Controls.Add(this.labelControl9);
             this.panelConteudo.Controls.Add(this.cboTipoMovimentacaoEstoque);
             this.panelConteudo.Controls.Add(this.labelControl8);
             this.panelConteudo.Controls.Add(this.txtDiferencaEstoque);
@@ -114,7 +119,7 @@
             this.panelConteudo.Controls.Add(this.txtCodigoDeBarras);
             this.panelConteudo.Controls.Add(this.txtStatus);
             this.panelConteudo.Controls.Add(this.txtUnidade);
-            this.panelConteudo.Size = new System.Drawing.Size(806, 349);
+            this.panelConteudo.Size = new System.Drawing.Size(896, 349);
             // 
             // picFoto
             // 
@@ -139,19 +144,19 @@
             this.txtCodigoDeBarras.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigoDeBarras.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.txtCodigoDeBarras.Properties.MaxLength = 30;
-            this.txtCodigoDeBarras.Properties.ReadOnly = false;
             this.txtCodigoDeBarras.Size = new System.Drawing.Size(261, 22);
             this.txtCodigoDeBarras.TabIndex = 4;
-            this.txtCodigoDeBarras.TabStop = true;
-            this.txtCodigoDeBarras.Leave += new System.EventHandler(this.txtCodigoDeBarras_Leave);
-            this.txtCodigoDeBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoDeBarras_KeyPress);
             this.txtCodigoDeBarras.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoDeBarras_KeyDown);
+            this.txtCodigoDeBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoDeBarras_KeyPress);
             this.txtCodigoDeBarras.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigoDeBarras_KeyUp);
+            this.txtCodigoDeBarras.Leave += new System.EventHandler(this.txtCodigoDeBarras_Leave);
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Appearance.Options.UseForeColor = true;
             this.labelControl6.Location = new System.Drawing.Point(228, 3);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(81, 13);
@@ -161,6 +166,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(495, 5);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
@@ -170,6 +176,7 @@
             // labStatus
             // 
             this.labStatus.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labStatus.Appearance.Options.UseFont = true;
             this.labStatus.Location = new System.Drawing.Point(590, 3);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(30, 13);
@@ -197,6 +204,7 @@
             // lblDescricao
             // 
             this.lblDescricao.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescricao.Appearance.Options.UseFont = true;
             this.lblDescricao.Location = new System.Drawing.Point(128, 57);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(48, 13);
@@ -232,12 +240,14 @@
             this.txtId.Properties.MaxLength = 8;
             this.txtId.Size = new System.Drawing.Size(63, 22);
             this.txtId.TabIndex = 1;
+            this.txtId.EditValueChanged += new System.EventHandler(this.txtId_EditValueChanged);
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // labCodigo
             // 
             this.labCodigo.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCodigo.Appearance.Options.UseFont = true;
             this.labCodigo.Location = new System.Drawing.Point(128, 3);
             this.labCodigo.Name = "labCodigo";
             this.labCodigo.Size = new System.Drawing.Size(56, 13);
@@ -300,6 +310,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(698, 3);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(68, 13);
@@ -321,13 +332,14 @@
             this.txtSaldoRealEmEstoque.Properties.Mask.EditMask = "99/";
             this.txtSaldoRealEmEstoque.Properties.MaxLength = 8;
             this.txtSaldoRealEmEstoque.Properties.ReadOnly = true;
-            this.txtSaldoRealEmEstoque.Size = new System.Drawing.Size(123, 22);
+            this.txtSaldoRealEmEstoque.Size = new System.Drawing.Size(117, 22);
             this.txtSaldoRealEmEstoque.TabIndex = 7;
             this.txtSaldoRealEmEstoque.TabStop = false;
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(3, 112);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(111, 13);
@@ -337,7 +349,7 @@
             // txtSaldoIdentificadoEmEstoque
             // 
             this.txtSaldoIdentificadoEmEstoque.EnterMoveNextControl = true;
-            this.txtSaldoIdentificadoEmEstoque.Location = new System.Drawing.Point(403, 129);
+            this.txtSaldoIdentificadoEmEstoque.Location = new System.Drawing.Point(502, 129);
             this.txtSaldoIdentificadoEmEstoque.Name = "txtSaldoIdentificadoEmEstoque";
             this.txtSaldoIdentificadoEmEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSaldoIdentificadoEmEstoque.Properties.Appearance.Options.UseFont = true;
@@ -356,7 +368,8 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Location = new System.Drawing.Point(403, 112);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(502, 112);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(144, 13);
             this.labelControl4.TabIndex = 10027;
@@ -421,6 +434,7 @@
             // labelControl52
             // 
             this.labelControl52.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl52.Appearance.Options.UseFont = true;
             this.labelControl52.Location = new System.Drawing.Point(3, 167);
             this.labelControl52.Name = "labelControl52";
             this.labelControl52.Size = new System.Drawing.Size(63, 13);
@@ -444,7 +458,8 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Location = new System.Drawing.Point(556, 112);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(656, 112);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(93, 13);
             this.labelControl5.TabIndex = 10034;
@@ -453,19 +468,19 @@
             // cboMotivoCorrecaoEstoque
             // 
             this.cboMotivoCorrecaoEstoque.EnterMoveNextControl = true;
-            this.cboMotivoCorrecaoEstoque.Location = new System.Drawing.Point(556, 129);
+            this.cboMotivoCorrecaoEstoque.Location = new System.Drawing.Point(656, 129);
             this.cboMotivoCorrecaoEstoque.Name = "cboMotivoCorrecaoEstoque";
             this.cboMotivoCorrecaoEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMotivoCorrecaoEstoque.Properties.Appearance.Options.UseFont = true;
             this.cboMotivoCorrecaoEstoque.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboMotivoCorrecaoEstoque.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", 5, "Id"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Descricao", "Descrição")});
             this.cboMotivoCorrecaoEstoque.Properties.DropDownRows = 5;
             this.cboMotivoCorrecaoEstoque.Properties.NullText = "";
             this.cboMotivoCorrecaoEstoque.Properties.PopupFormMinSize = new System.Drawing.Size(20, 20);
-            this.cboMotivoCorrecaoEstoque.Size = new System.Drawing.Size(247, 22);
+            this.cboMotivoCorrecaoEstoque.Size = new System.Drawing.Size(228, 22);
             this.cboMotivoCorrecaoEstoque.TabIndex = 11;
             // 
             // flowLayoutPanel1
@@ -500,7 +515,7 @@
             // txtDiferencaEstoque
             // 
             this.txtDiferencaEstoque.EnterMoveNextControl = true;
-            this.txtDiferencaEstoque.Location = new System.Drawing.Point(281, 129);
+            this.txtDiferencaEstoque.Location = new System.Drawing.Point(278, 129);
             this.txtDiferencaEstoque.Name = "txtDiferencaEstoque";
             this.txtDiferencaEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiferencaEstoque.Properties.Appearance.Options.UseFont = true;
@@ -519,7 +534,8 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl7.Location = new System.Drawing.Point(281, 112);
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Location = new System.Drawing.Point(278, 112);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(105, 13);
             this.labelControl7.TabIndex = 10036;
@@ -528,7 +544,7 @@
             // cboTipoMovimentacaoEstoque
             // 
             this.cboTipoMovimentacaoEstoque.EnterMoveNextControl = true;
-            this.cboTipoMovimentacaoEstoque.Location = new System.Drawing.Point(128, 129);
+            this.cboTipoMovimentacaoEstoque.Location = new System.Drawing.Point(123, 129);
             this.cboTipoMovimentacaoEstoque.Name = "cboTipoMovimentacaoEstoque";
             this.cboTipoMovimentacaoEstoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoMovimentacaoEstoque.Properties.Appearance.Options.UseFont = true;
@@ -546,17 +562,45 @@
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Location = new System.Drawing.Point(128, 112);
+            this.labelControl8.Appearance.Options.UseFont = true;
+            this.labelControl8.Location = new System.Drawing.Point(123, 112);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(136, 13);
             this.labelControl8.TabIndex = 10038;
             this.labelControl8.Text = "Tipo Movimentação Estoque";
             // 
+            // txtSubestoque
+            // 
+            this.txtSubestoque.EnterMoveNextControl = true;
+            this.txtSubestoque.Location = new System.Drawing.Point(402, 129);
+            this.txtSubestoque.Name = "txtSubestoque";
+            this.txtSubestoque.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSubestoque.Properties.Appearance.Options.UseFont = true;
+            this.txtSubestoque.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtSubestoque.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtSubestoque.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSubestoque.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSubestoque.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtSubestoque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtSubestoque.Properties.MaxLength = 10;
+            this.txtSubestoque.Size = new System.Drawing.Size(91, 22);
+            this.txtSubestoque.TabIndex = 10039;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Location = new System.Drawing.Point(401, 112);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(91, 13);
+            this.labelControl9.TabIndex = 10040;
+            this.labelControl9.Text = "Saldo Sub Estoque";
+            // 
             // FormCorrecaoEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 460);
+            this.ClientSize = new System.Drawing.Size(942, 460);
             this.Name = "FormCorrecaoEstoque";
             this.Load += new System.EventHandler(this.FormCorrecaoEstoque_Load);
             this.painelBotoes.ResumeLayout(false);
@@ -579,6 +623,7 @@
             this.gcIdentificacao.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtDiferencaEstoque.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoMovimentacaoEstoque.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSubestoque.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -616,5 +661,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LookUpEdit cboTipoMovimentacaoEstoque;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit txtSubestoque;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

@@ -339,6 +339,7 @@ namespace Programax.Easy.Servico.Financeiro.ContasPagarReceberServ
                 //    }
 
                 //}
+                sqlWhere = sqlWhere + " And cpr_status <> 3 ";
             }
 
             var sql = "SELECT cpr_id AS Id,  cpr_tipo_operacao AS TipoOperacao,  cpr_status AS Status, cpr_pes_id AS PessoaId, " +

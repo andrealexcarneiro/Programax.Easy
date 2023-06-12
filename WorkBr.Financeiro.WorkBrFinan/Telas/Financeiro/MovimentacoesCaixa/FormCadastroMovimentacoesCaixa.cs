@@ -200,7 +200,7 @@ namespace Programax.Easy.View.Telas.Financeiro.MovimentacoesCaixa
             {
                 conn.Open();
 
-                string Sql = "update historicosatendimento set hisat_status= " + 2 +
+                string Sql = "update historicosatendimento set hisat_status= " + 1 +
 
                             " where hisat_novo_pedido_id=" + idPedidoDeVenda;
 

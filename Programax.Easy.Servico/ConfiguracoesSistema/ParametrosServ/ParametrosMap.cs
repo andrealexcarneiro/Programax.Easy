@@ -116,6 +116,7 @@ namespace Programax.Easy.Servico.ConfiguracoesSistema.ParametrosServ
                 parametrosVenda.Map(venda => venda.Refiltek).Column("PARAM_REFILTEK");
                 parametrosVenda.Map(venda => venda.BaixarFaturamento).Column("PARAM_BAIXAR_PEDIDO_FATURADO");
                 parametrosVenda.Map(venda => venda.StatusFaturado).Column("PARAM_STATUS_FATURADO");
+                parametrosVenda.Map(venda => venda.ReservaItemPedido).Column("PARAM_RESERVA_PEDIDO");
 
                 parametrosVenda.Map(venda => venda.TipoFrete).Column("PARAM_TIPO_FRETE").CustomType<EnumTipoFrete>();
                 parametrosVenda.Map(venda => venda.ExibirTodasAsTabelasPrecoVendaRapida).Column("PARAM_EXIBIR_TABELAS_VENDA_RAPIDA");

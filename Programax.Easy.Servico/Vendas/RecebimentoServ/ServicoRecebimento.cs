@@ -300,7 +300,20 @@ namespace Programax.Easy.Servico.Vendas.RecebimentoServ
 
             if (parametros.ParametrosVenda.TrabalharComEstoqueReservado)
             {
-                produto.FormacaoPreco.EstoqueReservado -= item.Quantidade;
+                if(produto.FormacaoPreco.EstoqueReservado > 0)
+                {
+                    if (parametros.ParametrosVenda.ReservaItemPedido)
+                    {
+                        if (item.itemReserva > 0)
+                        {
+                            produto.FormacaoPreco.EstoqueReservado -= item.Quantidade;
+                        }
+                    }
+                    else
+                    {
+                        produto.FormacaoPreco.EstoqueReservado -= item.Quantidade;
+                    }
+                }
             }
             
             listaProdutosBaixados.Add(produto);

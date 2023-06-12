@@ -37,6 +37,7 @@ namespace Programax.Easy.Servico.Vendas.RoteiroServ
                                                                            DateTime? dataInicialPeriodo,
                                                                            DateTime? dataFinalPeriodo,
                                                                            int? idPedido, 
+                                                                           int? idRoteiro,
                                                                            bool buscarConcluidos=true)
         {
             Expression<Func<Roteiro, bool>> expressaoParaConsulta = roteiro => roteiro.Id > 0;
@@ -92,6 +93,11 @@ namespace Programax.Easy.Servico.Vendas.RoteiroServ
                 if(idPedido != 0)
                 {
                     expressaoParaConsulta = expressaoParaConsulta.AndAlso(roteiro => roteiro.PedidoVenda.Id == idPedido);
+                }
+
+                if (idRoteiro != 0)
+                {
+                    expressaoParaConsulta = expressaoParaConsulta.AndAlso(roteiro => roteiro.RoteirizacaoId == idRoteiro);
                 }
 
             }

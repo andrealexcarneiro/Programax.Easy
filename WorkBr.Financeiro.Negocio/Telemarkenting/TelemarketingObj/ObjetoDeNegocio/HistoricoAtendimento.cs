@@ -21,6 +21,7 @@ namespace Programax.Easy.Negocio.TeleMarketing.TeleMarketingObj.ObjetoDeNegocio
 
         public virtual string TempoDuracao { get; set; }
         public virtual int contador { get; set; }
+        public virtual int codCliente { get; set; }
 
         public virtual EnumStatusAtendimento Status { get; set; }  
     }

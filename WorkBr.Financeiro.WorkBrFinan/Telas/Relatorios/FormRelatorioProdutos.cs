@@ -38,6 +38,7 @@ namespace Programax.Easy.View.Telas.Relatorios
 {
     public partial class FormRelatorioProdutos : FormularioBase
     {
+        private object funcao;
         #region " CONSTRUTOR "
 
         public FormRelatorioProdutos()
@@ -59,8 +60,25 @@ namespace Programax.Easy.View.Telas.Relatorios
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
+            
             this.Cursor = Cursors.WaitCursor;
+           
+                DateTime dataInicial = txtDataInicialPeriodo.Text.ToDate();
+                DateTime dataFinal = txtDataFinalPeriodo.Text.ToDate();
+            //if (rdnFiscal.Checked)
+            //{
+            //    string inconsistencias = string.Empty;
 
+            //    inconsistencias += dataInicial == DateTime.MinValue ? "Informe a data inicial do período.\n\n" : string.Empty;
+            //    inconsistencias += dataFinal == DateTime.MinValue ? "Informe a data final do período.\n\n" : string.Empty;
+
+            //    if (!string.IsNullOrEmpty(inconsistencias))
+            //    {
+            //        MessageBox.Show(inconsistencias);
+            //        this.Cursor = Cursors.Default;
+            //        return;
+            //    }
+            //}
             Categoria categoria = cboCategorias.EditValue != null ? new Categoria { Id = cboCategorias.EditValue.ToInt() } : null;
             Grupo grupo = cboGrupos.EditValue != null ? new Grupo { Id = cboGrupos.EditValue.ToInt() } : null;
             SubGrupo subgrupo = cboSubGrupos.EditValue != null ? new SubGrupo { Id = cboSubGrupos.EditValue.ToInt() } : null;
@@ -76,7 +94,7 @@ namespace Programax.Easy.View.Telas.Relatorios
 
             EnumOrdenacaoPesquisaProduto ordenacaoPesquisa = (EnumOrdenacaoPesquisaProduto)pnlOrdenacao.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Tag.ToInt();
 
-            RelatorioProdutos relatorioProdutos = new RelatorioProdutos(categoria, grupo, subgrupo, marca, fabricante, tamanho, itensComEstoqueMinimo, mostrarNcms,ddvAbaixoDe, ordenacaoPesquisa, status, estoqueMaiorQue);
+            RelatorioProdutos relatorioProdutos = new RelatorioProdutos(categoria, grupo, subgrupo, marca, fabricante, tamanho, itensComEstoqueMinimo, mostrarNcms,ddvAbaixoDe, ordenacaoPesquisa, status, rdnFiscal.Checked, dataInicial, dataFinal, estoqueMaiorQue);
             
             TratamentosDeTela.ExibirRelatorio(relatorioProdutos);
 
@@ -247,5 +265,19 @@ namespace Programax.Easy.View.Telas.Relatorios
         }
 
         #endregion
+
+        private void rdnFiscal_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rdnFiscal.Checked)
+            {
+                txtDataInicialPeriodo.Enabled = true;
+                txtDataFinalPeriodo.Enabled = true;
+            }
+            else
+            {
+                txtDataInicialPeriodo.Enabled = false;
+                txtDataFinalPeriodo.Enabled = false;
+            }
+        }
     }
 }

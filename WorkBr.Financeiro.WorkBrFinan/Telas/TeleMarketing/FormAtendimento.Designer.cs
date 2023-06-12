@@ -171,6 +171,7 @@
             this.txtIdPessoa.Properties.ReadOnly = true;
             this.txtIdPessoa.Size = new System.Drawing.Size(135, 22);
             this.txtIdPessoa.TabIndex = 1;
+            this.txtIdPessoa.EditValueChanged += new System.EventHandler(this.txtIdPessoa_EditValueChanged);
             this.txtIdPessoa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSomenteNumeros_KeyPress);
             this.txtIdPessoa.Leave += new System.EventHandler(this.txtIdPessoa_Leave);
             // 

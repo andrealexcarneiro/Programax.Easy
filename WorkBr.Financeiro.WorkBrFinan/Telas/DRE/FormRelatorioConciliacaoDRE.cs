@@ -866,7 +866,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                                     retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 });//Cheque
 
                                 //Banco
-                                itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA);
+                                itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                                 itemSubGrupoAux.ListaDeCategorias.Add(itemcategoriaAux);
 
@@ -901,7 +901,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                                 retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                             //Banco
-                            itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA);
+                            itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                             itemSubGrupoAux.ListaDeCategorias.Add(itemcategoriaAux);
                         }
@@ -947,7 +947,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                             retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                         //Banco
-                        itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.ENTRADA);
+                        itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.ENTRADA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                         itemSubGrupoAux.ListaDeCategorias.Add(itemcategoriaAux);
 
@@ -982,7 +982,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                             retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                         //Banco
-                        itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA);
+                        itemcategoriaAux.Valor = itemcategoriaAux.Valor + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                         itemSubGrupoAux2.ListaDeCategorias.Add(itemcategoriaAux);
 
@@ -1019,7 +1019,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                     retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                 //Banco
-                itemSubGrupoAux.Total = itemSubGrupoAux.Total + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.ENTRADA);
+                itemSubGrupoAux.Total = itemSubGrupoAux.Total + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.ENTRADA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                 listaItemSubGrupoAux.Add(itemSubGrupoAux);
             }
@@ -1051,7 +1051,20 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                         retorneTotalFormaPagamentoPorCategoriaNoCaixa(itemCat.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                     //Banco
-                    itemSubGrupoAux.Total = itemSubGrupoAux.Total + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA);
+
+                    EnumOrigemMovimentacaoBanco origem;
+
+                    if (itemCat.Id == 14 )
+                    {
+                        origem = EnumOrigemMovimentacaoBanco.CONCILIADO;
+                    }
+                    else
+                    {
+                        origem = EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL;
+                    }
+
+
+                    itemSubGrupoAux.Total = itemSubGrupoAux.Total + retorneTotalCategoriaNoBanco(itemCat, EnumTipoMovimentacaoBanco.SAIDA, origem);
 
                     if (itemCat.Descricao.ToString() != "FORNECEDORES")
                     {
@@ -1513,7 +1526,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                 itemCategoria.NomeCategoria = fornecedores.Find(x=>x.Pessoa.Id == item.Key).Pessoa.DadosGerais.Razao;
 
                 itemCategoria.Valor = fornecedores.FindAll(x => x.Pessoa.Id == item.Key).Sum(x => x.ValorPago) + //Contas a Pagar
-                                                               retorneTotalCategoriaNoBanco(new CategoriaFinanceira { Id = categoriaId }, EnumTipoMovimentacaoBanco.SAIDA, new Pessoa { Id = item.Key }) + //Banco
+                                                               retorneTotalCategoriaNoBanco(new CategoriaFinanceira { Id = categoriaId }, EnumTipoMovimentacaoBanco.SAIDA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL,new Pessoa { Id = item.Key }) + //Banco
                                                                retorneTotalFormaPagamentoPorCategoriaNoCaixa(categoriaId, new FormaPagamento { Id = 1 }, new Pessoa {Id = item.Key}) + //Caixa Dinheiro
                                                                 retorneTotalFormaPagamentoPorCategoriaNoCaixa(categoriaId, new FormaPagamento { Id = 4 }, new Pessoa { Id = item.Key }); // Caixa Cheque
                 listaCategoria.Add(itemCategoria);
@@ -1541,7 +1554,7 @@ namespace Programax.Easy.View.Telas.Relatorios
                                              retorneTotalFormaPagamentoPorCategoriaNoCaixa(item.Id, new FormaPagamento { Id = 4 }); //Cheque
 
                 //Banco
-                itemDetalheCategoria.Valor = itemDetalheCategoria.Valor + retorneTotalCategoriaNoBanco(item, EnumTipoMovimentacaoBanco.SAIDA);
+                itemDetalheCategoria.Valor = itemDetalheCategoria.Valor + retorneTotalCategoriaNoBanco(item, EnumTipoMovimentacaoBanco.SAIDA, EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL);
 
                 itemDetalheCategoria.Descricao = item.Descricao;
 
@@ -1577,10 +1590,12 @@ namespace Programax.Easy.View.Telas.Relatorios
                                                                                             dateTimeValue2, null).Sum(x=>x.Valor);
         }
 
-        public double retorneTotalCategoriaNoBanco(CategoriaFinanceira categoria, EnumTipoMovimentacaoBanco tipo, Pessoa pessoa=null)
-        {   
+        public double retorneTotalCategoriaNoBanco(CategoriaFinanceira categoria, EnumTipoMovimentacaoBanco tipo, EnumOrigemMovimentacaoBanco origem,   Pessoa pessoa=null)
+        {
+
+            //EnumOrigemMovimentacaoBanco origem,
             return new ServicoItemMovimentacaoBanco().ConsulteListaItens(null, dateTimeValue, dateTimeValue2,
-                                                                            EnumOrigemMovimentacaoBanco.INFORMACAOMANUAL, string.Empty, tipo,
+                                                                            origem, string.Empty, tipo,
                                                                             string.Empty, pessoa, categoria,null)
                                                                             .Sum(x => x.Valor);
         }

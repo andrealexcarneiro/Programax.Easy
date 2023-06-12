@@ -53,6 +53,10 @@ namespace Programax.Easy.Servico.Telemarketing.TmkServ
         {
             return _repositorioAtendimento.ConsulteLista(idPedido);
         }
+        public List<HistoricoAtendimento> ConsulteListaCliente(int IdCliente)
+        {
+            return _repositorioAtendimento.ConsulteListaCliente(IdCliente);
+        }
 
         #endregion
 

@@ -116,7 +116,8 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Vendas
 
             pedidoDeVendaRelatorio.Atendente = pedido.Atendente != null ? pedido.Atendente.Id + " - " + pedido.Atendente.DadosGerais.NomeFantasia : string.Empty;
             pedidoDeVendaRelatorio.Vendedor = pedido.Vendedor != null ? pedido.Vendedor.Id + " - " + pedido.Vendedor.DadosGerais.NomeFantasia : string.Empty;
-            pedidoDeVendaRelatorio.Transportadora = pedido.Transportadora != null ? pedido.Transportadora.Id + " - " + pedido.Transportadora.DadosGerais.NomeFantasia : string.Empty;
+            
+            //pedidoDeVendaRelatorio.Transportadora = pedido.Transportadora != null ? pedido.Transportadora.Id + " - " + pedido.Transportadora.DadosGerais.NomeFantasia : string.Empty;
 
             pedidoDeVendaRelatorio.TipoFrete = pedido.TipoFrete.Descricao();
 

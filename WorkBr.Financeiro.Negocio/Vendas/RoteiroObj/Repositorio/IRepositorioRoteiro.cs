@@ -18,6 +18,7 @@ namespace Programax.Easy.Negocio.Vendas.RoteiroObj.ObjetoDeNegocio
                                                                   DateTime? dataInicialPeriodo,
                                                                   DateTime? dataFinalPeriodo, 
                                                                   int? idPedido,
+                                                                  int? idRoteiro,
                                                                   bool buscarConcluidos = true);
 
         Roteiro ConsultePeloNumeroPedidoParceiroEDataElaboracao(int PedidoId,

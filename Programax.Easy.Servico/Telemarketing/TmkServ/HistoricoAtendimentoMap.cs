@@ -18,6 +18,7 @@ namespace Programax.Easy.Servico.Telemarketing.TmkServ
            
             Map(histAtendimento => histAtendimento.Status).Column("HISAT_STATUS").CustomType<EnumStatusAtendimento>();
             Map(histAtendimento => histAtendimento.contador).Column("hisat_contador");
+            Map(histAtendimento => histAtendimento.codCliente).Column("hisat_cliente");
 
             References(histAtendimento => histAtendimento.Usuario).Column("HISAT_PES_USUARIO_ID");
                       

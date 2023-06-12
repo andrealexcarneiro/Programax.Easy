@@ -52,6 +52,9 @@ using Programax.Easy.View.Telas.Cadastros.GrupoTributacoesIcms;
 using Programax.Easy.Servico.Cadastros.EmpresaServ;
 using Programax.Easy.Negocio.ConfiguracoesSistema.ParametrosObj.ObjetoDeNegocio;
 using Programax.Easy.Servico.Cadastros.TransferenciaServ;
+using static Programax.Easy.Servico.RegistroDeMapeamentos;
+using Newtonsoft.Json;
+using MySql.Data.MySqlClient;
 
 namespace Programax.Easy.View.Telas.Cadastros.Produtos
 {
@@ -68,6 +71,7 @@ namespace Programax.Easy.View.Telas.Cadastros.Produtos
 
         private bool _carregarGrupos = true;
         private bool _carregarSubGrupos = true;
+        private string ConectionString;
 
         private List<FornecedorProduto> _listaFornecedoresProdutos;
 
@@ -808,7 +812,77 @@ namespace Programax.Easy.View.Telas.Cadastros.Produtos
                 PreenchaGrupoTributacaoIcms(null);
             }
         }
+        private void carregaconexao()
+        {
+            string conexoesStringII = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
 
+            ConexoesJson conexoesII = JsonConvert.DeserializeObject<ConexoesJson>(conexoesStringII);
+
+            var item = conexoesII.Conexoes[IndiceBancoDados];
+            string ipServer = !string.IsNullOrEmpty(item.IpPrincipal) ? item.IpPrincipal : "localhost";
+            string database = !string.IsNullOrEmpty(item.BancoDadosPrincipal) ? item.BancoDadosPrincipal : "akilsmallbusiness";
+            string userId = !string.IsNullOrEmpty(item.UsuarioPrincipal) ? item.UsuarioPrincipal : "root";
+            string senha = !string.IsNullOrEmpty(item.SenhaPrincipal) ? item.SenhaPrincipal : "Progr@max-2015";
+            int porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+            var serverPrincipalOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+            if (serverPrincipalOnline)
+            {
+                ConectionString = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";" + "default command timeout = 240";
+            }
+            else
+            {
+                ipServer = !string.IsNullOrEmpty(item.IpSecundario) ? item.IpSecundario : "localhost";
+                database = !string.IsNullOrEmpty(item.BancoDadosSecundario) ? item.BancoDadosSecundario : "akilsmallbusiness";
+                userId = !string.IsNullOrEmpty(item.UsuarioSecundario) ? item.UsuarioSecundario : "root";
+                senha = !string.IsNullOrEmpty(item.SenhaSecundaria) ? item.SenhaSecundaria : "Progr@max-2015";
+                porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+                var serverSecundarioOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+                if (serverSecundarioOnline)
+                {
+                    StringConexaoII = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";";
+                }
+                else
+                {
+                    //throw new Exception();
+                    //throw new Exception("Servidor de banco de dados não encontrado");
+                }
+
+            }
+
+        }
+        private void ConsultaReserva(int CodProduto)
+        {
+
+            carregaconexao();
+
+
+            string Sql = string.Empty;
+            using (var conn = new MySqlConnection(ConectionString))
+            {
+                conn.Open();
+
+                var sql = "";
+
+                sql = "SELECT sum(PEDITEM_QUANTIDADE) as Reserva FROM pedidosvendasitens where peditem_produto_id = " + CodProduto + " And PEDITEM_RESERVA > 0 ";
+
+
+
+                MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+                MySqlDataReader MyReader2;
+
+
+                var returnValue = MyCommand.ExecuteReader();
+                txtreserva.Text = "0.0000";
+                while (returnValue.Read())
+                {
+                    txtreserva.Text = returnValue["Reserva"].ToString();
+                }
+            }
+        }
         private void PreenchaCamposGuiaFormacaoPreco(Produto produto)
         {
             PreenchaInformacoesUltimaCompra(produto);
@@ -893,14 +967,19 @@ namespace Programax.Easy.View.Telas.Cadastros.Produtos
 
                 txtEstoqueTotal.Text = formacaoPrecoProduto.Estoque.ToString("#0.0000");
                 txtQtdEstoque.Text = quantidadeestoque.ToString("#0.0000");
-                if (formacaoPrecoProduto.EstoqueReservado < 0)
+                ConsultaReserva(txtId.Text.ToInt());
+                if (txtreserva.Text == "")
                 {
                     txtreserva.Text = "0.0000";
                 }
-                else
-                {
-                    txtreserva.Text = formacaoPrecoProduto.EstoqueReservado.ToString("#0.0000");
-                }
+                //if (formacaoPrecoProduto.EstoqueReservado < 0)
+                //{
+                //    txtreserva.Text = "0.0000";
+                //}
+                //else
+                //{
+                //    txtreserva.Text = formacaoPrecoProduto.EstoqueReservado.ToString("#0.0000");
+                //}
 
             }
             else

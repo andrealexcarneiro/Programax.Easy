@@ -26,6 +26,7 @@ namespace Programax.Easy.Servico.Vendas.PedidoDeVendaServ
             Map(item => item.ValorIcmsST).Column("PEDITEM_VALOR_ICMS_ST");
             Map(item => item.ValorIpi).Column("PEDITEM_VALOR_IPI");
             Map(item => item.ItemEstahInconsistente).Column("PEDITEM_ESTAH_INCONSISTENTE");
+            Map(item => item.itemReserva).Column("PEDITEM_RESERVA");
 
             References(item => item.PedidoDeVenda).Column("PEDITEM_PEDIDO_ID");
             References(item => item.Produto).Column("PEDITEM_PRODUTO_ID").Not.LazyLoad().Fetch.Join();

@@ -31,6 +31,9 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Vendas
         private DateTime DataFinal;
         private int _numeropedidos;
         private double _valortotal;
+        private int PedidoId = 0;
+        private int RoteiroId = 0;
+
         public List<ItemRoteiro> ListaItensRoteiro { get; set; }
       
         private string DataRoteiro;
@@ -39,7 +42,7 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Vendas
 
         #region " CONSTRUTOR "
 
-        public RelatorioListaRoteiros(DateTime datainicial, DateTime datafinal )
+        public RelatorioListaRoteiros(DateTime datainicial, DateTime datafinal, int idPedido, int IdRoteiro )
         {
             InitializeComponent();
 
@@ -61,7 +64,9 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Vendas
             //DataRoteiro = data;
 
             DataInicial = datainicial;
-              DataFinal = datafinal;
+            DataFinal = datafinal;
+            PedidoId = idPedido;
+            RoteiroId = IdRoteiro;
 
             _tituloRelatorio = "RELATÓRIO DE PEDIDOS";
         }
@@ -78,7 +83,7 @@ namespace Programax.Easy.Report.RelatoriosDevExpress.Vendas
             ServicoProduto servicoProduto = new ServicoProduto();
             ServicoRoteiro servicoRoteiro = new ServicoRoteiro();
 
-            _listaDeRoteiros = servicoRoteiro.ConsulteLista(null, null, null, EnumDataFiltrarRoteiro.ELABORACAO, DataInicial, DataFinal, 0);
+            _listaDeRoteiros = servicoRoteiro.ConsulteLista(null, null, null, EnumDataFiltrarRoteiro.ELABORACAO, DataInicial, DataFinal, PedidoId, RoteiroId);
             
 
             lblData.Text = DataRoteiro;

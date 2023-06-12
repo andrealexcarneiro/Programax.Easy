@@ -6,5 +6,6 @@ namespace Programax.Easy.Negocio.TeleMarketing.TeleMarketingObj.ObjetoDeNegocio
     public interface IRepositorioHistoricoAtendimento : IRepositorioBase<HistoricoAtendimento>
     {
         List<HistoricoAtendimento> ConsulteLista(int idPedido);
+        List<HistoricoAtendimento> ConsulteListaCliente(int idCliente);
     }
 }

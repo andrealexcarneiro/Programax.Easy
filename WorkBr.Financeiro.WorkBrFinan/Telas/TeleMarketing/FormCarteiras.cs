@@ -39,6 +39,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
         private List<TmkGrid> _listaTmkGrid;
         private PedidoDeVenda _pedidoDeVendaSelecionado;
         private string ConectionString;
+
         private DataSet mDataSet;
         private MySqlDataAdapter mAdapter;
         private int UltimoID = 1;
@@ -67,6 +68,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
         private string[] codsubgrupo;
         private string Descricaosubgrupo;
         private string codSubgrupo;
+        private int numeroTentativas = 0;
+
 
         #endregion
 
@@ -85,6 +88,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             PreenchaCboVendedores();
             PreenchaCboCarteiras();
             PreenchaCboCNPJ();
+            PreenchaCboPor();
+            PreenchaCboTentativa();
             PreenchaCboGrupos();
             PreenchaCboSubGrupos();
             btnAtender.Visible = true;
@@ -99,6 +104,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             txtDataFinal.DateTime = DateTime.Now.Date;
             ServicoParametros servicoParametros = new ServicoParametros();
             _parametros = servicoParametros.ConsulteParametros();
+
+            gridControl1.Visible = false;
 
             this.ActiveControl = txtDataInicial;
         }
@@ -123,8 +130,17 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             cboVendedores.EditValue = 0;
             txtNomeCarteira.Text = "";
             Novo = false;
-          
-            Pesquise();
+           if (cboPor.ItemIndex == 1)
+            {
+               
+                PesquiseCliente();
+                Pesquise();
+            }
+            else
+            {
+                Pesquise();
+            }
+            
         }
         private void CarregueParametros()
         {
@@ -594,6 +610,79 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
          
         }
+        private void PreenchaCboPor()
+        {
+            List<ConsultaPorCBO> listaConsultaPor = new List<ConsultaPorCBO>();
+
+
+            ConsultaPorCBO listPor = new ConsultaPorCBO();
+            {
+                listPor.Descricao = "Cliente".ToString();
+                listPor.ID = 1;
+                listaConsultaPor.Add(listPor);
+            }
+            listPor = new ConsultaPorCBO();
+            {
+                listPor.Descricao = "Pedido".ToString();
+                listPor.ID = 2;
+                listaConsultaPor.Add(listPor);
+            }
+
+           
+            var lista = listaConsultaPor;
+
+            lista.Insert(0, null);
+
+
+            cboPor.Properties.DataSource = lista;
+            cboPor.Properties.DisplayMember = "Descricao";
+            cboPor.Properties.ValueMember = "ID";
+
+
+        }
+        private void PreenchaCboTentativa()
+        {
+            List<ConsultaTentativaCBO> listaConsultaTentativa = new List<ConsultaTentativaCBO>();
+
+
+            ConsultaTentativaCBO listTentativa = new ConsultaTentativaCBO();
+            {
+                listTentativa.Descricao = "0 - Nenhuma Tentativa".ToString();
+                listTentativa.ID = 0;
+                listaConsultaTentativa.Add(listTentativa);
+            }
+            listTentativa = new ConsultaTentativaCBO();
+            {
+                listTentativa.Descricao = "1 - 10 tentativas".ToString();
+                listTentativa.ID = 1;
+                listaConsultaTentativa.Add(listTentativa);
+            }
+            listTentativa = new ConsultaTentativaCBO();
+            {
+                listTentativa.Descricao = "11 - 50 tentativas".ToString();
+                listTentativa.ID = 2;
+                listaConsultaTentativa.Add(listTentativa);
+            }
+            listTentativa = new ConsultaTentativaCBO();
+            {
+                listTentativa.Descricao = "mais 50 tentativas".ToString();
+                listTentativa.ID = 3;
+                listaConsultaTentativa.Add(listTentativa);
+            }
+
+
+
+            var lista = listaConsultaTentativa;
+
+            lista.Insert(0, null);
+
+
+            cboTentativa.Properties.DataSource = lista;
+            cboTentativa.Properties.DisplayMember = "Descricao";
+            cboTentativa.Properties.ValueMember = "ID";
+
+
+        }
         private void PreenchaCbo()
         {
             ServicoMarca servicoMarcas = new ServicoMarca();
@@ -664,6 +753,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             string DataIni = string.Empty;
             string DataFim = string.Empty;
             int contador = 0;
+            
+           
 
             if (txtDataInicial.Text.ToString() != string.Empty)
             {
@@ -940,8 +1031,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
                 var sql = " select pedidosvendas.pedido_data_elaboracao as DataCompra, " +
                         " pedidosvendas.pedido_id as NumPedido, pedidosvendas.pedido_cliente_id as ClienteId, " +
-                        " historicosatendimento.hisat_status as status,  pessoas.pes_razao, pessoas.pes_insc_federal" +
-
+                        " historicosatendimento.hisat_status as status,  pessoas.pes_razao, pessoas.pes_insc_federal, " +
+                        " (SELECT count(hisat_id) as contador FROM historicosatendimento where hisat_cliente = ClienteId) as Contador " +
                 " FROM  pedidosvendas " +
                    
                     innerJoin +
@@ -960,58 +1051,104 @@ namespace Programax.Easy.View.Telas.TeleMarketing
                 while (returnValue.Read())
                 {
                     
-                    TmkGrid tmkGrid = new TmkGrid();
+                  
+                        TmkGrid tmkGrid = new TmkGrid();
 
-                    tmkGrid.Id = returnValue["NumPedido"].ToInt();
-                    var dt = DateTime.Parse(returnValue["DataCompra"].ToString()).ToString("dd-MM-yyyy");
+                        tmkGrid.Id = returnValue["NumPedido"].ToInt();
+                        var dt = DateTime.Parse(returnValue["DataCompra"].ToString()).ToString("dd-MM-yyyy");
 
-                    tmkGrid.DataCompra = dt;
+                        tmkGrid.DataCompra = dt;
 
-                   
 
-                    tmkGrid.CodigoCliente = returnValue["ClienteId"].ToInt() != 0 ? returnValue["ClienteId"].ToString() : null;
 
-                    tmkGrid.Cliente = returnValue["pes_razao"].ToString() != "" ? returnValue["pes_razao"].ToString() : null;
-                    tmkGrid.Status = returnValue["status"].ToInt() != 0 ? returnValue["status"].ToString() : null;
-                    tmkGrid.Seleciona = true;
+                        tmkGrid.CodigoCliente = returnValue["ClienteId"].ToInt() != 0 ? returnValue["ClienteId"].ToString() : null;
 
-                    if (returnValue["status"].ToString() != null)
-                    {
-                        if (returnValue["status"].ToInt() == 5)
+                        tmkGrid.Cliente = returnValue["pes_razao"].ToString() != "" ? returnValue["pes_razao"].ToString() : null;
+                        tmkGrid.Status = returnValue["status"].ToInt() != 0 ? returnValue["status"].ToString() : null;
+                        tmkGrid.Seleciona = true;
+
+                        if (returnValue["status"].ToString() != null)
                         {
-                            tmkGrid.Cor = Properties.Resources.circle_black;
-                            tmkGrid.Status = "CANCELADO";
+                            if (returnValue["status"].ToInt() == 5)
+                            {
+                                tmkGrid.Cor = Properties.Resources.circle_black;
+                                tmkGrid.Status = "CANCELADO";
+                            }
+                            else if (returnValue["status"].ToInt() == 2)
+                            {
+                                tmkGrid.Cor = Properties.Resources.CircleYellow;
+                                tmkGrid.Status = "AGENDADO";
+                            }
+                            else if (returnValue["status"].ToInt() == 3)
+                            {
+                                tmkGrid.Cor = Properties.Resources.circle_Blue16x16;
+                                tmkGrid.Status = "FINALIZADO";
+                            }
+                            else if (returnValue["status"].ToInt() == 4)
+                            {
+                                tmkGrid.Cor = Properties.Resources.CircleRed16x16;
+                                tmkGrid.Status = "EM ATENDIMENTO";
+                            }
+                            else
+                            {
+                                tmkGrid.Cor = Properties.Resources.CircleGreen;
+                                tmkGrid.Status = "DISPONIVEL";
+                            }
                         }
-                        else if (returnValue["status"].ToInt() == 2)
-                        {
-                            tmkGrid.Cor = Properties.Resources.CircleYellow;
-                            tmkGrid.Status = "AGENDADO";
-                        }
-                        else if (returnValue["status"].ToInt() == 3)
-                        {
-                            tmkGrid.Cor = Properties.Resources.circle_Blue16x16;
-                            tmkGrid.Status = "FINALIZADO";
-                        }
-                        else if (returnValue["status"].ToInt() == 4)
-                        {
-                            tmkGrid.Cor = Properties.Resources.CircleRed16x16;
-                            tmkGrid.Status = "EM ATENDIMENTO";
-                        }
-                        else
-                        {
-                            tmkGrid.Cor = Properties.Resources.CircleGreen;
-                            tmkGrid.Status = "DISPONIVEL";
-                        }
-                    }
+                    tmkGrid.Tentativas = returnValue["contador"].ToInt();
 
                     if (numPedido != tmkGrid.Id)
                     {
-                        listaTmkGrid.Add(tmkGrid);
-                        contador += 1;
-                    }
+                        if (cboTentativa.ItemIndex != 0)
+                        {
+                            switch (cboTentativa.ItemIndex.ToInt())
+                            {
+                                case 1:
+                                    if (returnValue["contador"].ToInt() == 0)
+                                    {
+                                        listaTmkGrid.Add(tmkGrid);
+                                        contador += 1;
+                                    }
+                                    break;
+                                case 2:
+                                    if (returnValue["contador"].ToInt() > 1 && returnValue["contador"].ToInt() < 10)
+                                    {
+                                        listaTmkGrid.Add(tmkGrid);
+                                        contador += 1;
+                                    }
+                                    break;
+                                case 3:
+                                    if (returnValue["contador"].ToInt() > 10 && returnValue["contador"].ToInt() < 50)
+                                    {
+                                        listaTmkGrid.Add(tmkGrid);
+                                        contador += 1;
+                                    }
+                                    break;
+                                case 4:
+                                    if (returnValue["contador"].ToInt() > 50)
+                                    {
+                                        listaTmkGrid.Add(tmkGrid);
+                                        contador += 1;
+                                    }
+                                    break;
+                            }
+                             
 
-                    numPedido = tmkGrid.Id.ToInt();
+                        }
+                        else
+                        {
+                            listaTmkGrid.Add(tmkGrid);
+                            contador += 1;
+                        }
+
+                        //Tentativas(tmkGrid.CodigoCliente.ToInt());
+
+                        
+
+                        numPedido = tmkGrid.Id.ToInt();
+                    }
                 }
+                   
                 gcAtendimentos.DataSource = listaTmkGrid;
                 gcAtendimentos.RefreshDataSource();
 
@@ -1027,7 +1164,337 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
             this.Cursor = Cursors.Default;
         }
+        private void PesquiseCliente()
+        {
+            this.Cursor = Cursors.WaitCursor;
+            DateTime? dataInicial = txtDataInicial.Text.ToDateNullabel();
+            DateTime? dataFinal = txtDataFinal.Text.ToDateNullabel();
+            string DataIni = string.Empty;
+            string DataFim = string.Empty;
+            int contador = 0;
 
+            if (txtDataInicial.Text.ToString() != string.Empty)
+            {
+                DataIni = dataInicial.Value.ToString("yyyy/MM/dd");
+                DataFim = dataFinal.Value.ToString("yyyy/MM/dd");
+            }
+
+
+
+
+            string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
+
+            ConexoesJson conexoes = JsonConvert.DeserializeObject<ConexoesJson>(conexoesString);
+
+            var item = conexoes.Conexoes[IndiceBancoDados];
+            string ipServer = !string.IsNullOrEmpty(item.IpPrincipal) ? item.IpPrincipal : "localhost";
+            string database = !string.IsNullOrEmpty(item.BancoDadosPrincipal) ? item.BancoDadosPrincipal : "akilsmallbusiness";
+            string userId = !string.IsNullOrEmpty(item.UsuarioPrincipal) ? item.UsuarioPrincipal : "root";
+            string senha = !string.IsNullOrEmpty(item.SenhaPrincipal) ? item.SenhaPrincipal : "Progr@max-2015";
+            int porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+            var serverPrincipalOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+            if (serverPrincipalOnline)
+            {
+                ConectionString = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";" + "default command timeout = 240";
+            }
+            else
+            {
+                ipServer = !string.IsNullOrEmpty(item.IpSecundario) ? item.IpSecundario : "localhost";
+                database = !string.IsNullOrEmpty(item.BancoDadosSecundario) ? item.BancoDadosSecundario : "akilsmallbusiness";
+                userId = !string.IsNullOrEmpty(item.UsuarioSecundario) ? item.UsuarioSecundario : "root";
+                senha = !string.IsNullOrEmpty(item.SenhaSecundaria) ? item.SenhaSecundaria : "Progr@max-2015";
+                porta = item.PortaSecundaria != 0 ? item.PortaSecundaria : 3306;
+
+                var serverSecundarioOnline = InfraUtils.VerifiqueSeIpEPortaEstahAtivo(ipServer, porta);
+
+                if (serverSecundarioOnline)
+                {
+                    StringConexaoII = "Persist Security Info=False;server=" + ipServer + ";port=" + porta + ";database=" + database + ";uid=" + userId + ";pwd=" + senha + ";";
+                }
+                else
+                {
+                    //throw new Exception();
+                    //throw new Exception("Servidor de banco de dados não encontrado");
+                }
+
+            }
+
+
+            int marcaId = cboMarcas.EditValue.ToInt();
+            int categoriaId = cboCategorias.EditValue.ToInt();
+            int GrupoId = cboGrupos.EditValue.ToInt();
+            int SubGrupoId = cboSubGrupos.EditValue.ToInt();
+            int IndicadorId = cboIndicadores.EditValue.ToInt();
+            int cpfcnpjId = cbocpfcnpj.EditValue.ToInt();
+            int clienteId = txtIdCliente.Text.ToInt();
+            int VendedorId = cboVendedor.EditValue.ToInt();
+
+            string Bairro = string.Empty;
+            string DataNasc = string.Empty;
+
+
+            if (lstBairros.SelectedItems.Count > 1)
+            {
+                Descricaobairro = "";
+
+                for (int i = 0; i < lstBairros.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = lstBairros.SelectedItems[i].ToString();
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codbairro = textoPessoa.Split('-');
+                        Descricaobairro += "'" + codbairro[0].ToString() + "'" + ",";
+                    }
+                }
+                codBairro = Descricaobairro.Substring(0, Descricaobairro.Length - 1);
+            }
+
+            if (lstVendedor.SelectedItems.Count > 1)
+            {
+                DescricaoVend = "";
+
+                for (int i = 0; i < lstVendedor.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = lstVendedor.SelectedItems[i].ToString();
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        cod = textoPessoa.Split('-');
+                        DescricaoVend += "'" + cod[0].ToString() + "'" + ",";
+                    }
+                }
+                codPessoa = DescricaoVend.Substring(0, DescricaoVend.Length - 1);
+            }
+
+            if (lstIndicador.SelectedItems.Count > 1)
+            {
+                DescricaoInd = "";
+
+                for (int i = 0; i < lstIndicador.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = lstIndicador.SelectedItems[i].ToString();
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codind = textoPessoa.Split('-');
+                        DescricaoInd += "'" + codind[0].ToString() + "'" + ",";
+                    }
+                }
+                codIndicador = DescricaoInd.Substring(0, DescricaoInd.Length - 1);
+            }
+            if (lstMarca.SelectedItems.Count > 1)
+            {
+                Descricaomarca = "";
+
+                for (int i = 0; i < lstMarca.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = String.Join("", System.Text.RegularExpressions.Regex.Split(lstMarca.SelectedItems[i].ToString(), @"[^\d]"));
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codmarca = textoPessoa.Split('-');
+                        Descricaomarca += "'" + codmarca[0].ToString() + "'" + ",";
+                    }
+                }
+                codMarca = Descricaomarca.Substring(0, Descricaomarca.Length - 1);
+            }
+            if (lstCategoria.SelectedItems.Count > 1)
+            {
+                Descricaocategoria = "";
+
+                for (int i = 0; i < lstCategoria.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = String.Join("", System.Text.RegularExpressions.Regex.Split(lstCategoria.SelectedItems[i].ToString(), @"[^\d]"));
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codcategoria = textoPessoa.Split('-');
+                        Descricaocategoria += "'" + codcategoria[0].ToString() + "'" + ",";
+                    }
+                }
+                codCategoria = Descricaocategoria.Substring(0, Descricaocategoria.Length - 1);
+            }
+            if (lstGrupos.SelectedItems.Count > 1)
+            {
+                Descricaogrupo = "";
+
+
+
+                for (int i = 0; i < lstGrupos.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = String.Join("", System.Text.RegularExpressions.Regex.Split(lstGrupos.SelectedItems[i].ToString(), @"[^\d]"));
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codgrupo = textoPessoa.Split('-');
+                        Descricaogrupo += "'" + codgrupo[0].ToString() + "'" + ",";
+                    }
+                }
+                codGrupo = Descricaogrupo.Substring(0, Descricaogrupo.Length - 1);
+            }
+            if (lstsubgrupo.SelectedItems.Count > 1)
+            {
+                Descricaosubgrupo = "";
+
+
+                for (int i = 0; i < lstsubgrupo.SelectedItems.Count; i++)
+                {
+                    string textoPessoa = String.Join("", System.Text.RegularExpressions.Regex.Split(lstsubgrupo.SelectedItems[i].ToString(), @"[^\d]"));
+
+                    if (textoPessoa != string.Empty)
+                    {
+                        codsubgrupo = textoPessoa.Split('-');
+                        Descricaosubgrupo += "'" + codsubgrupo[0].ToString() + "'" + ",";
+                    }
+                }
+                codSubgrupo = Descricaosubgrupo.Substring(0, Descricaosubgrupo.Length - 1);
+            }
+            ServicoTmk servicoTmk = new ServicoTmk();
+            string Sql = string.Empty;
+            using (var conn = new MySqlConnection(ConectionString))
+            {
+                conn.Open();
+
+                string sqlWhere = "   (pedidosvendas.pedido_status <> 3 OR pedidosvendas.pedido_status is null ) And pedidosvendas.PEDIDO_CARTEIRA = 0 ";
+                string innerJoin = " ";
+
+                if (DataIni != string.Empty)
+                {
+                    sqlWhere = sqlWhere + " And date(pedidosvendas.pedido_data_elaboracao)  Between '" + DataIni + "' And '" + DataFim + "'";
+                }
+
+                innerJoin = innerJoin + " left join historicosatendimento on pedidosvendas.pedido_id = historicosatendimento.hisat_pedido_id ";
+                innerJoin = innerJoin + " inner join pessoas on pedidosvendas.pedido_cliente_id = pessoas.pes_id ";
+                if (marcaId != 0)
+                {
+
+                    sqlWhere = sqlWhere + " AND produtos.prod_marc_id = " + "'" + marcaId + "'";
+
+                }
+                if (lstBairros.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND pedidosvendas.PEDIDO_BAIRRO_ENDERECO IN " + "(" + codBairro + ")";
+                }
+
+                if (lstIndicador.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND pedidosvendas.pedido_indicador_id IN " + "(" + codIndicador + ")";
+                }
+
+                if (lstVendedor.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND pedidosvendas.pedido_vendedor_id IN " + "(" + codPessoa + ")";
+                }
+
+                if (cpfcnpjId != 0)
+                {
+                    switch (cpfcnpjId)
+                    {
+                        case 1:
+                            sqlWhere = sqlWhere + " And char_length(pessoas.pes_insc_federal) = 14 ";
+                            break;
+                        case 2:
+                            sqlWhere = sqlWhere + " And char_length(pessoas.pes_insc_federal) = 18 ";
+                            break;
+                        case 3:
+
+                            break;
+
+
+                    }
+
+                }
+
+
+
+                //if (categoriaId !=0 || GrupoId !=0 || SubGrupoId!=0 || marcaId != 0)
+                //{
+                //    innerJoin = innerJoin + " inner join pedidosvendasitens on pedidosvendasitens.peditem_pedido_id = pedidosvendas.pedido_id ";
+                //    innerJoin = innerJoin + " inner join produtos on pedidosvendasitens.peditem_produto_id = produtos.prod_id ";
+
+                //}
+
+                if (lstCategoria.SelectedItems.Count > 1 || lstMarca.SelectedItems.Count > 1 || lstGrupos.SelectedItems.Count > 1 || lstsubgrupo.SelectedItems.Count > 1)
+                {
+                    innerJoin = innerJoin + " inner join pedidosvendasitens on pedidosvendasitens.peditem_pedido_id = pedidosvendas.pedido_id ";
+                    innerJoin = innerJoin + " inner join produtos on pedidosvendasitens.peditem_produto_id = produtos.prod_id ";
+                }
+
+
+                if (lstCategoria.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND produtos.prod_grup_id IN " + "(" + codCategoria + ")";
+                }
+                if (lstMarca.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND produtos.prod_marc_id IN " + "(" + codMarca + ")";
+                }
+                if (lstGrupos.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND produtos.prod_grup_id IN " + "(" + codGrupo + ")";
+                }
+                if (lstsubgrupo.SelectedItems.Count > 1)
+                {
+                    sqlWhere = sqlWhere + " AND produtos.prod_subgrp_id IN " + "(" + codSubgrupo + ")";
+                }
+
+                if (clienteId != 0)
+                {
+                    sqlWhere = sqlWhere + " AND pedidosvendas.pedido_cliente_id = " + "'" + clienteId + "'";
+                }
+
+                var sql = " select Distinct " +
+                        " pedidosvendas.pedido_cliente_id as ClienteId, " +
+                        " pessoas.pes_razao, pessoas.pes_insc_federal, " +
+                        " (SELECT count(hisat_id) as contador FROM historicosatendimento where hisat_cliente = ClienteId ) as Contador" +
+
+                " FROM  pedidosvendas " +
+
+                    innerJoin +
+
+                    " WHERE " + sqlWhere + "order by  pes_razao ";
+
+
+
+                MySqlCommand MyCommand = new MySqlCommand(sql, conn);
+                MySqlDataReader MyReader2;
+
+
+                var returnValue = MyCommand.ExecuteReader();
+                int numPedido = 0;
+                List<TmkGrid> listaTmkGrid = new List<TmkGrid>();
+                while (returnValue.Read())
+                {
+
+                    TmkGrid tmkGrid = new TmkGrid();
+                    tmkGrid.Seleciona = true;
+                    tmkGrid.CodigoCliente = returnValue["ClienteId"].ToInt() != 0 ? returnValue["ClienteId"].ToString() : null;
+                    tmkGrid.Cliente = returnValue["pes_razao"].ToString() != "" ? returnValue["pes_razao"].ToString() : null;
+                    tmkGrid.Tentativas = returnValue["contador"].ToInt();
+                    listaTmkGrid.Add(tmkGrid);
+                    contador += 1;
+              
+
+                }
+               
+                gridControl1.DataSource = listaTmkGrid;
+                gridControl1.RefreshDataSource();
+
+
+                _listaTmkGrid = listaTmkGrid;
+                txtQtdePedidos.Text = contador.ToString();
+
+                //VerificaContador(dataInicial.ToString(), dataFinal.ToString());
+            }
+            // _listaTmk = servicoTmk.ConsulteListaParaTMK(cliente, statusTmk, dataInicial, dataFinal, marcaId);
+
+
+
+            this.Cursor = Cursors.Default;
+        }
         private void VerificaContador(string DataInicial, string DataFinal)
         {
             string conexoesString = System.IO.File.ReadAllText(InfraUtils.RetorneDiretorioAplicacao() + @"\conexoes.json");
@@ -1462,8 +1929,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
 
         }
-
-       
+        
 
         private void PreenchaGrid()
         {
@@ -1527,6 +1993,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             public string Cliente { get; set; }                      
 
             public string Status { get; set; }
+            public int Tentativas { get; set; }
+
             public int  NumPedidoNovo { get; set; }
 
             public Image Cor { get; set; }
@@ -1552,6 +2020,20 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
         }
         private class CnpjCBO
+        {
+            public int ID { get; set; }
+            public string Descricao { get; set; }
+
+
+        }
+        private class ConsultaPorCBO
+        {
+            public int ID { get; set; }
+            public string Descricao { get; set; }
+
+
+        }
+        private class ConsultaTentativaCBO
         {
             public int ID { get; set; }
             public string Descricao { get; set; }
@@ -1685,7 +2167,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
                 var sql = " select pedidosvendas.pedido_data_elaboracao as DataCompra, " +
                         " pedidosvendas.pedido_id as NumPedido, pedidosvendas.pedido_cliente_id as ClienteId, " +
                         " historicosatendimento.hisat_status as status,  pessoas.pes_razao, agendamentocontato.Data as Agendamento, " +
-                        " historicosatendimento.hisat_novo_pedido_id PedidoNovo " +
+                        " historicosatendimento.hisat_novo_pedido_id PedidoNovo, " +
+                        "(SELECT count(hisat_id) as contador FROM historicosatendimento where hisat_cliente = ClienteId ) as Contador " +
                 " FROM  pedidosvendas " +
 
                     innerJoin +
@@ -1804,6 +2287,12 @@ namespace Programax.Easy.View.Telas.TeleMarketing
                             tmkGrid.Status = "CONCLUIDO";
                         }
                     }
+                    tmkGrid.Tentativas = returnValue["contador"].ToInt();
+
+                    if (tmkGrid.NumPedidoNovo != 0)
+                    {
+                        tmkGrid.Tentativas = 0;
+                    }
 
                     if (numPedido != tmkGrid.Id)
                     {
@@ -1813,6 +2302,8 @@ namespace Programax.Easy.View.Telas.TeleMarketing
 
                     numPedido = tmkGrid.Id.ToInt();
                 }
+                
+
                 gcAtendimentos.DataSource = listaTmkGrid;
                 gcAtendimentos.RefreshDataSource();
 
@@ -2325,6 +2816,7 @@ namespace Programax.Easy.View.Telas.TeleMarketing
             txtNomeCarteira.Text = "";
             txtQtdePedidos.Text = "";
             txtNomeCarteira.Enabled = true;
+            
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -2598,6 +3090,23 @@ namespace Programax.Easy.View.Telas.TeleMarketing
         private void lstGrupos_SelectedIndexChanged(object sender, EventArgs e)
         {
            // PreenchaCboSubGrupos();
+        }
+
+        private void cbocpfcnpj_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboPor_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboPor.ItemIndex == 1)
+            {
+                gridControl1.Visible = true;
+            }
+            else
+            {
+                gridControl1.Visible = false;
+            }
         }
     }
 }

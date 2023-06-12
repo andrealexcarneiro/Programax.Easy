@@ -100,7 +100,7 @@ namespace Programax.Easy.Servico.Estoque.EntradaMercadoriaServ
 
                 ValideConculsao(entradaMercadoria);
 
-                AtualizaPrecoCustoECompra(entradaMercadoria);
+                //AtualizaPrecoCustoECompra(entradaMercadoria);
                 InsiraMovimentacaoDeEntradaOuSaidaDeProdutos(entradaMercadoria);
                 InsiraContasPagar(entradaMercadoria);
 

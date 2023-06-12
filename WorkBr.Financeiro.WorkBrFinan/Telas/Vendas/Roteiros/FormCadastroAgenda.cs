@@ -463,10 +463,10 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
         private void CarregaPeriodos(DateTime dataInicial)
         {
             var roteirosManha = new ServicoRoteiro().ConsulteLista(null, EnumPeriodo.MANHA, null, EnumDataFiltrarRoteiro.ELABORACAO, dataInicial.Date,
-                                                                dataInicial.AddDays(5).Date, 0, false);
+                                                                dataInicial.AddDays(5).Date, 0, 0,false);
 
             var roteirosTarde = new ServicoRoteiro().ConsulteLista(null, EnumPeriodo.TARDE, null, EnumDataFiltrarRoteiro.ELABORACAO, dataInicial.Date,
-                                                                dataInicial.AddDays(5).Date, 0, false);
+                                                                dataInicial.AddDays(5).Date, 0,0, false);
 
             ServicoParametros servParametros = new ServicoParametros();
 
@@ -556,10 +556,10 @@ namespace Programax.Easy.View.Telas.Vendas.Roteiros
         private void validaPeriodos(DateTime dataInicial)
         {
             var roteirosManha = new ServicoRoteiro().ConsulteLista(null, EnumPeriodo.MANHA, null, EnumDataFiltrarRoteiro.ELABORACAO, dataInicial.Date,
-                                                                dataInicial.AddDays(5).Date, 0, false);
+                                                                dataInicial.AddDays(5).Date, 0, 0,false);
 
             var roteirosTarde = new ServicoRoteiro().ConsulteLista(null, EnumPeriodo.TARDE, null, EnumDataFiltrarRoteiro.ELABORACAO, dataInicial.Date,
-                                                                dataInicial.AddDays(5).Date, 0, false);
+                                                                dataInicial.AddDays(5).Date, 0, 0,false);
 
             ServicoParametros servParametros = new ServicoParametros();
 

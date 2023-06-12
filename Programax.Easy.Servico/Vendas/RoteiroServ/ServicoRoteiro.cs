@@ -56,10 +56,11 @@ namespace Programax.Easy.Servico.Vendas.RoteiroServ
                                                                            DateTime? dataInicialPeriodo,
                                                                            DateTime? dataFinalPeriodo,
                                                                            int? idPedido,
+                                                                           int? idRoteiro,
                                                                            bool buscarConcluidos = true)
         {
             
-            return _repositorioRoteiro.ConsulteLista(pessoa, periodo, statusRoteiro, tipoDataFiltrar, dataInicialPeriodo, dataFinalPeriodo, idPedido);
+            return _repositorioRoteiro.ConsulteLista(pessoa, periodo, statusRoteiro, tipoDataFiltrar, dataInicialPeriodo, dataFinalPeriodo, idPedido, idRoteiro);
         }
 
         public Roteiro ConsultePorPedido(int idPedido)

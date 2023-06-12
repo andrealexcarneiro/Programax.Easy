@@ -34,6 +34,9 @@ using Programax.Easy.View.Telas.Fiscal.CartasCorrecoes;
 using Programax.Easy.Negocio.Fiscal.CartaCorrecaoObj.ObjetoDeNegocio;
 using Programax.Easy.Servico.Financeiro.CondicaoPagamentoServ;
 using NFe.Utils.NFe;
+using Programax.Easy.Report.RelatoriosDevExpress.Vendas;
+using DevExpress.XtraReports.UI;
+using DevExpress.LookAndFeel;
 
 namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
 {
@@ -176,6 +179,7 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
         private void btnImprimirDanfe_Click(object sender, EventArgs e)
         {
             ImprimirNota();
+            //ImprimirNotaII();
         }
 
 
@@ -879,7 +883,7 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
             this.Cursor = Cursors.WaitCursor;
             
             ServicoNotaFiscal servicoNotaFiscal = new ServicoNotaFiscal();
-            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(numeroPedidoDeVenda, formConfirmacaoDadosNotaFiscal.DestinatarioAuxiliarNotaFiscal);
+            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(numeroPedidoDeVenda, formConfirmacaoDadosNotaFiscal.DestinatarioAuxiliarNotaFiscal, formConfirmacaoDadosNotaFiscal.modeloEmissaoNotaFiscal.ToString());
 
             _notaFicalComDesconto = formConfirmacaoDadosNotaFiscal.notaComDesconto;
             _modeloEmissaoFiscal = formConfirmacaoDadosNotaFiscal.modeloEmissaoNotaFiscal;
@@ -1050,7 +1054,7 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
             }
 
             servicoNotaFiscal = new ServicoNotaFiscal();
-            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(_notaFiscalEmEdicao.InformacoesDocumentoOrigemNotaFiscal.DocumentoId, formConfirmacaoDadosNotaFiscal.DestinatarioAuxiliarNotaFiscal);
+            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(_notaFiscalEmEdicao.InformacoesDocumentoOrigemNotaFiscal.DocumentoId, formConfirmacaoDadosNotaFiscal.DestinatarioAuxiliarNotaFiscal, "");
 
             _notaFicalComDesconto = formConfirmacaoDadosNotaFiscal.notaComDesconto;
 
@@ -1091,9 +1095,9 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
 
         private void PreenchaNotaFiscalEmEdicao()
         {   
-            PreenchaListaNcmECfop();
+            PreenchaListaNcmECfop(); 
 
-            
+
             PreenchaItensNotaFiscal(_notaFiscalEmEdicao.ListaItens);
 
             PreenchaDuplicatasNotaFiscal(_notaFiscalEmEdicao.DadosCobranca.ListaDuplicatas);
@@ -1792,7 +1796,22 @@ namespace Programax.Easy.View.Telas.Fiscal.NotasFiscais
 
             return configuracaoDanfeNfce;
         }
+        private void ImprimirNotaII()
+        {
+            nfe relatorio = new nfe();
+            relatorio.GereRelatorio();
 
+            using (ReportPrintTool printTool = new ReportPrintTool(relatorio))
+            {
+                // Invoke the Ribbon Print Preview form modally, 
+                // and load the report document into it.
+                printTool.ShowRibbonPreviewDialog();
+
+                // Invoke the Ribbon Print Preview form
+                // with the specified look and feel setting.
+                printTool.ShowRibbonPreview(UserLookAndFeel.Default);
+            }
+        }
         private void ImprimirNota()
         {
             ServicoParametros servicoParametros = new ServicoParametros(false);

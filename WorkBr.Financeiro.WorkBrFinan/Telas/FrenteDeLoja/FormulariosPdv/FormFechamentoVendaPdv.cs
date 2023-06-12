@@ -1280,7 +1280,7 @@ namespace Programax.Easy.View.Telas.FrenteDeLoja.FormulariosPdv
         private void EditePedidoDeVenda()
         {
             ServicoNotaFiscal servicoNotaFiscal = new ServicoNotaFiscal();
-            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(_pedidoDeVenda.Id, BusqueDestinatarioDoPedido(_pedidoDeVenda));
+            var nota = servicoNotaFiscal.RetorneNotaAPartirDePedido(_pedidoDeVenda.Id, BusqueDestinatarioDoPedido(_pedidoDeVenda), null);
 
             _notaFiscalEmEdicao = nota;
             _notaFiscalEmEdicao.ListaNotasReferenciadas = _notaFiscalEmEdicao.ListaNotasReferenciadas.Count == 0 ? _notasFiscaisReferenciadas : _notaFiscalEmEdicao.ListaNotasReferenciadas;

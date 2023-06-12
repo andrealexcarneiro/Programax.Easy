@@ -510,8 +510,9 @@ namespace Programax.Easy.View.Telas.ConfiguracoesSistema.FormParametros
                 chkTodastabelas.Checked = parametrosVenda.ExibirTodasAsTabelasPrecoVendaRapida;
                 chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Checked = parametrosVenda.AproveitarEnderecoEmpresaParaCadastroRapidoCliente;
                 chkStatusConcluido.Checked = parametrosVenda.StatusFaturado;
-                
-                
+                chkReservaportitem.Checked = parametrosVenda.ReservaItemPedido;
+
+
                 cboAtendentes.EditValue = parametrosVenda.Atendente != null ? (int?)parametrosVenda.Atendente.Id : null;
                 cboVendedores.EditValue = parametrosVenda.Vendedor != null ? (int?)parametrosVenda.Vendedor.Id : null;
                 cboTransportadoras.EditValue = parametrosVenda.Transportadora != null ? (int?)parametrosVenda.Transportadora.Id : null;
@@ -724,6 +725,7 @@ namespace Programax.Easy.View.Telas.ConfiguracoesSistema.FormParametros
             parametrosVenda.ExibirInfoPedido = chkinfoPedido.Checked;
             parametrosVenda.BaixarFaturamento = chkbaixarpedidosfaturados.Checked;
             parametrosVenda.StatusFaturado = chkStatusConcluido.Checked;
+            parametrosVenda.ReservaItemPedido = chkReservaportitem.Checked;
 
             return parametrosVenda;
         }

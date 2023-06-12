@@ -188,6 +188,7 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.dialogDiretorio = new System.Windows.Forms.FolderBrowserDialog();
+            this.chkReservaportitem = new DevExpress.XtraEditors.CheckEdit();
             this.painelBotoes.SuspendLayout();
             this.panelConteudo.SuspendLayout();
             this.tbcParametros.SuspendLayout();
@@ -297,6 +298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnNomeContrato.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTermosContrato.Properties)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkReservaportitem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // painelBotoes
@@ -1259,13 +1261,14 @@
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(610, 225);
+            this.tabPage1.Size = new System.Drawing.Size(803, 440);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Venda";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chkReservaportitem);
             this.groupBox3.Controls.Add(this.chkPedidosPorVendedor);
             this.groupBox3.Controls.Add(this.chkImprimirDuasVias);
             this.groupBox3.Controls.Add(this.labelControl25);
@@ -1284,7 +1287,7 @@
             this.groupBox3.Controls.Add(this.chkAlterarSupervisor);
             this.groupBox3.Location = new System.Drawing.Point(4, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(793, 123);
+            this.groupBox3.Size = new System.Drawing.Size(793, 144);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pedido de Venda";
@@ -1495,9 +1498,9 @@
             this.groupBox1.Controls.Add(this.labelControl68);
             this.groupBox1.Controls.Add(this.cboTabelaPrecos);
             this.groupBox1.Controls.Add(this.chkAlterarValorUnitarioVendaRapida);
-            this.groupBox1.Location = new System.Drawing.Point(4, 134);
+            this.groupBox1.Location = new System.Drawing.Point(4, 147);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 301);
+            this.groupBox1.Size = new System.Drawing.Size(793, 289);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Venda Rápida";
@@ -1505,7 +1508,7 @@
             // chkbaixarpedidosfaturados
             // 
             this.chkbaixarpedidosfaturados.EnterMoveNextControl = true;
-            this.chkbaixarpedidosfaturados.Location = new System.Drawing.Point(419, 276);
+            this.chkbaixarpedidosfaturados.Location = new System.Drawing.Point(419, 264);
             this.chkbaixarpedidosfaturados.Name = "chkbaixarpedidosfaturados";
             this.chkbaixarpedidosfaturados.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkbaixarpedidosfaturados.Properties.Appearance.Options.UseFont = true;
@@ -1516,7 +1519,7 @@
             // chkinfoPedido
             // 
             this.chkinfoPedido.EnterMoveNextControl = true;
-            this.chkinfoPedido.Location = new System.Drawing.Point(419, 257);
+            this.chkinfoPedido.Location = new System.Drawing.Point(419, 245);
             this.chkinfoPedido.Name = "chkinfoPedido";
             this.chkinfoPedido.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkinfoPedido.Properties.Appearance.Options.UseFont = true;
@@ -1527,7 +1530,7 @@
             // chkTelefonePedido
             // 
             this.chkTelefonePedido.EnterMoveNextControl = true;
-            this.chkTelefonePedido.Location = new System.Drawing.Point(419, 237);
+            this.chkTelefonePedido.Location = new System.Drawing.Point(419, 225);
             this.chkTelefonePedido.Name = "chkTelefonePedido";
             this.chkTelefonePedido.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTelefonePedido.Properties.Appearance.Options.UseFont = true;
@@ -1539,7 +1542,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 232);
+            this.label2.Location = new System.Drawing.Point(11, 220);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
@@ -1553,7 +1556,7 @@
             this.panel8.Controls.Add(this.txtLimiteManha);
             this.panel8.Controls.Add(this.label4);
             this.panel8.Controls.Add(this.label3);
-            this.panel8.Location = new System.Drawing.Point(8, 249);
+            this.panel8.Location = new System.Drawing.Point(8, 237);
             this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(400, 48);
@@ -1620,7 +1623,7 @@
             // chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente
             // 
             this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.EnterMoveNextControl = true;
-            this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Location = new System.Drawing.Point(206, 206);
+            this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Location = new System.Drawing.Point(206, 194);
             this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Name = "chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente";
             this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAproveitarEnderecoEstabelecimentoParaCadastroRapidoCliente.Properties.Appearance.Options.UseFont = true;
@@ -1631,7 +1634,7 @@
             // chkTodastabelas
             // 
             this.chkTodastabelas.EnterMoveNextControl = true;
-            this.chkTodastabelas.Location = new System.Drawing.Point(568, 206);
+            this.chkTodastabelas.Location = new System.Drawing.Point(568, 194);
             this.chkTodastabelas.Name = "chkTodastabelas";
             this.chkTodastabelas.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTodastabelas.Properties.Appearance.Options.UseFont = true;
@@ -1643,7 +1646,7 @@
             // 
             this.labelControl70.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl70.Appearance.Options.UseFont = true;
-            this.labelControl70.Location = new System.Drawing.Point(9, 145);
+            this.labelControl70.Location = new System.Drawing.Point(9, 138);
             this.labelControl70.Name = "labelControl70";
             this.labelControl70.Size = new System.Drawing.Size(63, 13);
             this.labelControl70.TabIndex = 10049;
@@ -1651,7 +1654,7 @@
             // 
             // txtObservacoesVendaRapida
             // 
-            this.txtObservacoesVendaRapida.Location = new System.Drawing.Point(6, 162);
+            this.txtObservacoesVendaRapida.Location = new System.Drawing.Point(6, 153);
             this.txtObservacoesVendaRapida.Name = "txtObservacoesVendaRapida";
             this.txtObservacoesVendaRapida.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservacoesVendaRapida.Properties.Appearance.Options.UseFont = true;
@@ -1666,7 +1669,7 @@
             // cboTipoFrete
             // 
             this.cboTipoFrete.EnterMoveNextControl = true;
-            this.cboTipoFrete.Location = new System.Drawing.Point(387, 122);
+            this.cboTipoFrete.Location = new System.Drawing.Point(387, 113);
             this.cboTipoFrete.Name = "cboTipoFrete";
             this.cboTipoFrete.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoFrete.Properties.Appearance.Options.UseFont = true;
@@ -1683,7 +1686,7 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(387, 105);
+            this.labelControl2.Location = new System.Drawing.Point(387, 98);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 13);
             this.labelControl2.TabIndex = 10047;
@@ -1692,7 +1695,7 @@
             // cboTransportadoras
             // 
             this.cboTransportadoras.EnterMoveNextControl = true;
-            this.cboTransportadoras.Location = new System.Drawing.Point(6, 122);
+            this.cboTransportadoras.Location = new System.Drawing.Point(6, 113);
             this.cboTransportadoras.Name = "cboTransportadoras";
             this.cboTransportadoras.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTransportadoras.Properties.Appearance.Options.UseFont = true;
@@ -1709,7 +1712,7 @@
             // 
             this.labelControl19.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl19.Appearance.Options.UseFont = true;
-            this.labelControl19.Location = new System.Drawing.Point(6, 105);
+            this.labelControl19.Location = new System.Drawing.Point(6, 98);
             this.labelControl19.Name = "labelControl19";
             this.labelControl19.Size = new System.Drawing.Size(72, 13);
             this.labelControl19.TabIndex = 10045;
@@ -1719,7 +1722,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(387, 61);
+            this.labelControl1.Location = new System.Drawing.Point(387, 57);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(117, 13);
             this.labelControl1.TabIndex = 10043;
@@ -1728,7 +1731,7 @@
             // cboCondicaoPagamento
             // 
             this.cboCondicaoPagamento.EnterMoveNextControl = true;
-            this.cboCondicaoPagamento.Location = new System.Drawing.Point(387, 76);
+            this.cboCondicaoPagamento.Location = new System.Drawing.Point(387, 72);
             this.cboCondicaoPagamento.Name = "cboCondicaoPagamento";
             this.cboCondicaoPagamento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCondicaoPagamento.Properties.Appearance.Options.UseFont = true;
@@ -1746,7 +1749,7 @@
             // 
             this.labelControl52.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl52.Appearance.Options.UseFont = true;
-            this.labelControl52.Location = new System.Drawing.Point(6, 61);
+            this.labelControl52.Location = new System.Drawing.Point(6, 57);
             this.labelControl52.Name = "labelControl52";
             this.labelControl52.Size = new System.Drawing.Size(101, 13);
             this.labelControl52.TabIndex = 10041;
@@ -1755,7 +1758,7 @@
             // cboFormaPagamento
             // 
             this.cboFormaPagamento.EnterMoveNextControl = true;
-            this.cboFormaPagamento.Location = new System.Drawing.Point(6, 76);
+            this.cboFormaPagamento.Location = new System.Drawing.Point(6, 72);
             this.cboFormaPagamento.Name = "cboFormaPagamento";
             this.cboFormaPagamento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFormaPagamento.Properties.Appearance.Options.UseFont = true;
@@ -1852,7 +1855,7 @@
             // chkAlterarValorUnitarioVendaRapida
             // 
             this.chkAlterarValorUnitarioVendaRapida.EnterMoveNextControl = true;
-            this.chkAlterarValorUnitarioVendaRapida.Location = new System.Drawing.Point(6, 206);
+            this.chkAlterarValorUnitarioVendaRapida.Location = new System.Drawing.Point(6, 194);
             this.chkAlterarValorUnitarioVendaRapida.Name = "chkAlterarValorUnitarioVendaRapida";
             this.chkAlterarValorUnitarioVendaRapida.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAlterarValorUnitarioVendaRapida.Properties.Appearance.Options.UseFont = true;
@@ -2313,7 +2316,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(803, 440);
+            this.tabPage5.Size = new System.Drawing.Size(610, 225);
             this.tabPage5.TabIndex = 5;
             this.tabPage5.Text = "Telemarketing";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2444,6 +2447,17 @@
             this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // chkReservaportitem
+            // 
+            this.chkReservaportitem.EnterMoveNextControl = true;
+            this.chkReservaportitem.Location = new System.Drawing.Point(6, 119);
+            this.chkReservaportitem.Name = "chkReservaportitem";
+            this.chkReservaportitem.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkReservaportitem.Properties.Appearance.Options.UseFont = true;
+            this.chkReservaportitem.Properties.Caption = "Reservar Item por pedido";
+            this.chkReservaportitem.Size = new System.Drawing.Size(185, 19);
+            this.chkReservaportitem.TabIndex = 10069;
             // 
             // FormCadastroParametros
             // 
@@ -2579,6 +2593,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtnNomeContrato.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTermosContrato.Properties)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkReservaportitem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2744,5 +2759,6 @@
         private DevExpress.XtraEditors.CheckEdit chkbaixarpedidosfaturados;
         private System.Windows.Forms.TabPage tabPage5;
         private DevExpress.XtraEditors.CheckEdit chkStatusConcluido;
+        private DevExpress.XtraEditors.CheckEdit chkReservaportitem;
     }
 }

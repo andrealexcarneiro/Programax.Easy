@@ -12,6 +12,8 @@ using Programax.Easy.View.Telas.Cadastros.Produtos;
 using Programax.Infraestrutura.Negocio.Utils;
 using Programax.Easy.Negocio.Movimentacao.Enumeradores;
 using System.Text.RegularExpressions;
+using Programax.Easy.Servico.Cadastros.SubEstoqueServ;
+using Programax.Easy.Servico.Cadastros.TransferenciaServ;
 
 namespace Programax.Easy.View.Telas.Cadastros.CorrecoesEstoque
 {
@@ -180,6 +182,45 @@ namespace Programax.Easy.View.Telas.Cadastros.CorrecoesEstoque
         private void Salve()
         {
             this.Cursor = Cursors.WaitCursor;
+            double quantidadesubestoque = 0;
+            double quantidadeestoque = 0;
+            double Saldo = 0;
+            quantidadeestoque = txtSaldoRealEmEstoque.Text.ToDouble();
+           
+            ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
+            var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(txtId.Text.ToInt());
+
+            if (ItemTransferencia != null)
+            {
+                foreach (var itemproduto in ItemTransferencia)
+                {
+                    quantidadesubestoque += itemproduto.QuantidadeEstoque;
+                }
+
+            }
+
+            if (quantidadesubestoque != 0)
+
+            {
+                if (txtSaldoIdentificadoEmEstoque.Text.ToInt() == 0)
+                {
+                    MessageBox.Show("Produto não pode zerar o estoque, o produto tem " + quantidadesubestoque + " unidades no Sub Estoque", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;    
+                }
+
+                Saldo = quantidadeestoque - quantidadesubestoque;
+
+                if(Saldo < txtDiferencaEstoque.Text.ToInt())
+                {
+                    MessageBox.Show("Produto com saldo menor que o estoque, o produto tem " + quantidadesubestoque + " unidades no Sub Estoque", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+               
+            }
+
+         
+
+
             Action actionSalvar = () =>
             {
                 var correcaoEstoque = RetorneMovimentacaoBaseEmEdicao();
@@ -245,6 +286,23 @@ namespace Programax.Easy.View.Telas.Cadastros.CorrecoesEstoque
         {
             if (produto != null)
             {
+                double quantidadesubestoque = 0;
+                ServicoItemTransferencia servicoItemTransferencia = new ServicoItemTransferencia();
+                var ItemTransferencia = servicoItemTransferencia.ConsulteProduto(txtId.Text.ToInt());
+
+                if (ItemTransferencia != null)
+                {
+                    foreach (var itemproduto in ItemTransferencia)
+                    {
+                        quantidadesubestoque += itemproduto.QuantidadeEstoque;
+                    }
+
+                }
+              
+                txtSubestoque.Text = quantidadesubestoque.ToString("#0.0000");
+
+
+
                 txtId.Text = produto.Id.ToString();
                 txtCodigoDeBarras.Text = produto.DadosGerais.CodigoDeBarras;
                 txtUnidade.Text = produto.DadosGerais.Unidade != null ? produto.DadosGerais.Unidade.Abreviacao : string.Empty;
@@ -390,5 +448,10 @@ namespace Programax.Easy.View.Telas.Cadastros.CorrecoesEstoque
         }
 
         #endregion
+
+        private void txtId_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

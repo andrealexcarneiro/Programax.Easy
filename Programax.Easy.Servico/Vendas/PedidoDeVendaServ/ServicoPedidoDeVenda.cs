@@ -337,7 +337,7 @@ namespace Programax.Easy.Servico.Vendas.PedidoDeVendaServ
                 //Na Saída" estiver marcado, senão a baixa será direta faturamento do pedido.
                 if (parametros.ParametrosVenda.TrabalharComEstoqueReservado)
                     if (!parametros.ParametrosVenda.ReserveEstoqueAoFaturarPedido)
-                    ReserveEstoque(pedidoDeVenda);
+                   // ReserveEstoque(pedidoDeVenda);
 
                 InsiraNaturezaOperacaoParaVenda(pedidoDeVenda);
 
@@ -760,7 +760,7 @@ namespace Programax.Easy.Servico.Vendas.PedidoDeVendaServ
 
                     var quantidadeTotalItem = pedidoDeVenda.ListaItens.Sum(x => x.Produto.Id == item.Produto.Id? x.Quantidade:0);
 
-                    if ((produto.FormacaoPreco.Estoque - quantidadeTotalItem) < 0)
+                    if ((produto.FormacaoPreco.Estoque - produto.FormacaoPreco.EstoqueReservado -  quantidadeTotalItem) < 0)
                         tipoMensagem.PrimeiroConteudo += item.Produto.Id + "; ";
 
                     if (produto.Principal.QuantidadeMinima != null)

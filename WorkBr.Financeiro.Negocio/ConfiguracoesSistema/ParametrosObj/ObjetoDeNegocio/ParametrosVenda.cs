@@ -50,6 +50,7 @@ namespace Programax.Easy.Negocio.ConfiguracoesSistema.ParametrosObj.ObjetoDeNego
         public virtual bool Refiltek { get; set; }
         public virtual bool BaixarFaturamento { get; set; }
         public virtual bool StatusFaturado { get; set; }
+        public virtual bool ReservaItemPedido { get; set; }
 
         public virtual bool AproveitarEnderecoEmpresaParaCadastroRapidoCliente { get; set; }
 
